@@ -7,7 +7,11 @@ import { ATTRACTIONS } from '@/data/attractions';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
 
-export default function Experiences() {
+interface ExperiencesProps {
+  showImages?: boolean;
+}
+
+export default function Experiences({ showImages = true }: ExperiencesProps) {
   return (
     <section id="experiences" className="section-padding bg-ivory relative overflow-hidden" style={{ backgroundColor: 'var(--white)' }}>
       <div className="forest-pattern absolute bottom-0 left-0 w-full h-80 opacity-5 pointer-events-none" />
@@ -33,55 +37,109 @@ export default function Experiences() {
         <ScrollReveal className="grid g3" staggerChildren={0.12}>
           {ATTRACTIONS.map((item) => (
             <article key={item.id} className="card" aria-label={item.name}>
-              <div className="card-img" style={{ height: 260 }}>
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <span className="card-badge">{item.category}</span>
+              {showImages && (
+                <div className="card-img" style={{ height: 260 }}>
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <span className="card-badge">{item.category}</span>
 
-                <div className="card-geo-badges">
-                  <span
-                    style={{
-                      background: 'rgba(14, 30, 56, 0.9)',
-                      color: 'var(--gold-soft)',
-                      padding: '4px 10px',
-                      fontSize: '0.72rem',
-                      borderRadius: 3,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 4,
-                      border: '1px solid rgba(198, 168, 105, 0.35)',
-                      backdropFilter: 'blur(4px)',
-                      fontWeight: 600,
-                    }}
-                  >
-                    <MapPin style={{ width: 12, height: 12, color: 'var(--gold)' }} />
-                    {item.distance}
-                  </span>
-                  <span
-                    style={{
-                      background: 'rgba(14, 30, 56, 0.9)',
-                      color: '#fff',
-                      padding: '4px 10px',
-                      fontSize: '0.72rem',
-                      borderRadius: 3,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 4,
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      backdropFilter: 'blur(4px)',
-                    }}
-                  >
-                    <Clock style={{ width: 12, height: 12, color: 'var(--gold-soft)' }} />
-                    {item.travelTime}
-                  </span>
+                  <div className="card-geo-badges">
+                    <span
+                      style={{
+                        background: 'rgba(14, 30, 56, 0.9)',
+                        color: 'var(--gold-soft)',
+                        padding: '4px 10px',
+                        fontSize: '0.72rem',
+                        borderRadius: 3,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        border: '1px solid rgba(198, 168, 105, 0.35)',
+                        backdropFilter: 'blur(4px)',
+                        fontWeight: 600,
+                      }}
+                    >
+                      <MapPin style={{ width: 12, height: 12, color: 'var(--gold)' }} />
+                      {item.distance}
+                    </span>
+                    <span
+                      style={{
+                        background: 'rgba(14, 30, 56, 0.9)',
+                        color: '#fff',
+                        padding: '4px 10px',
+                        fontSize: '0.72rem',
+                        borderRadius: 3,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        backdropFilter: 'blur(4px)',
+                      }}
+                    >
+                      <Clock style={{ width: 12, height: 12, color: 'var(--gold-soft)' }} />
+                      {item.travelTime}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="card-body">
+                {!showImages && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        background: 'var(--navy)',
+                        color: 'var(--gold-soft)',
+                        fontSize: '0.68rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        padding: '4px 10px',
+                        borderRadius: 3,
+                      }}
+                    >
+                      {item.category}
+                    </span>
+                    <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                      <span
+                        style={{
+                          background: 'rgba(14, 30, 56, 0.05)',
+                          color: 'var(--navy)',
+                          padding: '4px 8px',
+                          fontSize: '0.72rem',
+                          borderRadius: 3,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 4,
+                          fontWeight: 600,
+                        }}
+                      >
+                        <MapPin style={{ width: 12, height: 12, color: 'var(--gold)' }} />
+                        {item.distance}
+                      </span>
+                      <span
+                        style={{
+                          background: 'rgba(14, 30, 56, 0.05)',
+                          color: 'var(--muted)',
+                          padding: '4px 8px',
+                          fontSize: '0.72rem',
+                          borderRadius: 3,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 4,
+                        }}
+                      >
+                        <Clock style={{ width: 12, height: 12, color: 'var(--gold-soft)' }} />
+                        {item.travelTime}
+                      </span>
+                    </div>
+                  </div>
+                )}
                 <h3 style={{ fontSize: '1.3rem', marginBottom: 10 }}>{item.name}</h3>
                 <p style={{ fontSize: '0.92rem', lineHeight: 1.6, marginBottom: 18 }}>
                   {item.description}

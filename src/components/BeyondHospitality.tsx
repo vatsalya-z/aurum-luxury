@@ -60,7 +60,7 @@ export default function BeyondHospitality() {
           <FadeIn direction="left">
             <div className="showcase-card">
               <img
-                src="/images/destinations/dal-lake-shikara.jpg"
+                src="/images/gallery/dal-lake-sunset-view.webp"
                 alt="Sunset Shikara ride on Dal Lake Srinagar"
                 loading="lazy"
               />

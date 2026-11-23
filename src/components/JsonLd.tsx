@@ -41,8 +41,8 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: '34.0955',
-        longitude: '74.8722',
+        latitude: '34.0941256',
+        longitude: '74.9056223',
       },
       amenityFeature: [
         { '@type': 'LocationFeatureSpecification', name: 'Free Wi-Fi', value: true },

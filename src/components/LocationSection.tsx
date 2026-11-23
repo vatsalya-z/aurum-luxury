@@ -152,7 +152,7 @@ export default function LocationSection() {
             </a>
           </div>
 
-          <div className="map-frame" style={{ minHeight: 560 }}>
+          <div className="map-frame" style={{ minHeight: 700, height: 700 }}>
             <iframe
               src={HOTEL_INFO.urls.googleMapsEmbed}
               width="100%"

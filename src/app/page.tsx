@@ -33,7 +33,7 @@ export default function HomePage() {
       <RoomsSection onEnquire={(roomName) => openBooking(roomName)} />
 
       {/* 5. Curated Srinagar Escapes (Experiences & Attractions) */}
-      <Experiences />
+      <Experiences showImages={false} />
 
       {/* 6. Exceptional Comforts (Verified Facilities Grid) */}
       <FacilitiesSection darkVariant={false} showFilters={false} redirectToFacilities={true} />
