@@ -77,7 +77,7 @@ export default function Header({ onOpenBooking }: HeaderProps) {
           <div className="nav-actions">
             <button
               onClick={() => onOpenBooking && onOpenBooking()}
-              className="btn btn-outline-gold btn-sm"
+              className="btn btn-outline-gold btn-sm nav-book-btn"
               aria-label="Book Your Stay"
             >
               <Calendar style={{ width: 14, height: 14 }} />
@@ -115,25 +115,6 @@ export default function Header({ onOpenBooking }: HeaderProps) {
             aria-modal="true"
             aria-label="Navigation Menu"
           >
-            {/* Header inside Half Popup */}
-            <div className="popup-top-bar">
-              <div className="popup-brand">
-                <span className="brand-mark" style={{ width: 28, height: 28, fontSize: '0.9rem' }}>A</span>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 800, letterSpacing: '0.15em', color: '#fff' }}>THE AURUM</span>
-                  <span style={{ fontSize: '0.62rem', letterSpacing: '0.18em', color: 'var(--gold)', textTransform: 'uppercase' }}>by Stay Pattern</span>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="popup-close-btn"
-                aria-label="Close navigation menu"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <X style={{ width: 20, height: 20 }} />
-              </button>
-            </div>
-
             {/* Navigation Links in a space-efficient 2-Column Grid */}
             <div className="popup-nav-grid">
               <Link
@@ -166,18 +147,6 @@ export default function Header({ onOpenBooking }: HeaderProps) {
                   <span>{HOTEL_INFO.contact.phoneDisplay}</span>
                 </a>
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  if (onOpenBooking) onOpenBooking();
-                }}
-                className="btn btn-gold btn-sm"
-                style={{ width: '100%', padding: '0.75rem 1rem' }}
-              >
-                <Calendar style={{ width: 14, height: 14 }} />
-                <span>Book Your Stay</span>
-              </button>
             </div>
           </div>
         </>

@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { MapPin, Phone, Mail, Clock, MessageSquare, ExternalLink } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import BookingForm from '@/components/BookingForm';
 import JsonLd from '@/components/JsonLd';
@@ -118,6 +119,23 @@ export default function ContactPage() {
                   </div>
 
                   <div style={{ display: 'flex', gap: 12 }}>
+                    <FaWhatsapp style={{ width: 20, height: 20, color: '#25D366', flexShrink: 0 }} />
+                    <div>
+                      <strong style={{ display: 'block', fontSize: '0.88rem', textTransform: 'uppercase', color: 'var(--navy)' }}>
+                        WhatsApp Desk
+                      </strong>
+                      <a
+                        href={`https://wa.me/${HOTEL_INFO.contact.whatsapp}?text=${encodeURIComponent('Hello, I would like to enquire about staying at The Aurum Luxury Collection Srinagar.')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: '0.94rem', color: 'var(--navy)', fontWeight: 600 }}
+                      >
+                        {HOTEL_INFO.contact.whatsappDisplay}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: 12 }}>
                     <Mail style={{ width: 20, height: 20, color: 'var(--gold)', flexShrink: 0 }} />
                     <div>
                       <strong style={{ display: 'block', fontSize: '0.88rem', textTransform: 'uppercase', color: 'var(--navy)' }}>
@@ -137,7 +155,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="btn btn-wa btn-sm"
                   >
-                    <MessageSquare style={{ width: 14, height: 14 }} />
+                    <FaWhatsapp style={{ width: 16, height: 16 }} />
                     <span>Chat on WhatsApp</span>
                   </a>
 

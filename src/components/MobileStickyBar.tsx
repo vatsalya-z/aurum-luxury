@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Calendar } from 'lucide-react';
-import { FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { Phone, Calendar } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 
 interface MobileStickyBarProps {
@@ -16,14 +16,14 @@ export default function MobileStickyBar({ onOpenBooking }: MobileStickyBarProps)
 
   return (
     <nav className="mobile-sticky-bar" aria-label="Quick mobile booking actions">
-      {/* Button 1: Call Us */}
+      {/* Button 1: Call */}
       <a
         href={`tel:${HOTEL_INFO.contact.phone}`}
         className="mobile-bar-btn mobile-bar-call"
         aria-label="Call Reservations Desk"
       >
-        <FaPhoneAlt style={{ width: 15, height: 15 }} />
-        <span>Call Us</span>
+        <Phone style={{ width: 14, height: 14, color: 'var(--gold)' }} />
+        <span>Call</span>
       </a>
 
       {/* Button 2: WhatsApp */}
@@ -34,7 +34,7 @@ export default function MobileStickyBar({ onOpenBooking }: MobileStickyBarProps)
         className="mobile-bar-btn mobile-bar-wa"
         aria-label="Chat on WhatsApp"
       >
-        <FaWhatsapp style={{ width: 17, height: 17 }} />
+        <FaWhatsapp style={{ width: 16, height: 16, color: '#25D366' }} />
         <span>WhatsApp</span>
       </a>
 
@@ -45,7 +45,7 @@ export default function MobileStickyBar({ onOpenBooking }: MobileStickyBarProps)
         className="mobile-bar-btn mobile-bar-book"
         aria-label="Book Your Stay"
       >
-        <Calendar style={{ width: 17, height: 17 }} />
+        <Calendar style={{ width: 15, height: 15, color: 'var(--navy)' }} />
         <span>Book Now</span>
       </button>
     </nav>

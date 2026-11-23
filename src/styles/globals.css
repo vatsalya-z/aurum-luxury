@@ -609,6 +609,10 @@ p {
   .nav-menu {
     display: none;
   }
+  .navbar .nav-book-btn,
+  .nav-actions .btn {
+    display: none !important;
+  }
   .mobile-nav-half-popup {
     display: flex;
     flex-direction: column;
@@ -2120,33 +2124,106 @@ p {
    MOBILE STICKY BOTTOM BAR (EXACTLY 3 BUTTONS: CALL, WA, BOOK)
    ========================================================== */
 .mobile-sticky-bar {
-  display: none !important;
+  display: none;
 }
 
 @media (max-width: 899px) {
-  .mobile-sticky-bar {
+  /* Remove filter / quick-booking bar from mobile view */
+  .floating-booking-bar {
     display: none !important;
   }
 
-  /* Floating actions on mobile positioned neatly above floating booking bar */
+  /* Hide redundant circular float buttons on mobile */
   .float-actions {
+    display: none !important;
+  }
+
+  /* Show the luxury 3-button sticky bottom bar */
+  .mobile-sticky-bar {
     position: fixed;
-    right: 14px;
-    bottom: 136px;
-    gap: 10px;
-    z-index: 92;
-    display: flex !important;
-    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1.15fr 1.65fr;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(10, 22, 40, 0.94);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(198, 168, 105, 0.28);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    z-index: 9999;
+    box-sizing: border-box;
   }
 
-  .float-btn {
-    width: 44px;
+  .mobile-bar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     height: 44px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    white-space: nowrap;
+    border: 1px solid transparent;
   }
 
-  /* Clear bottom area for the floating booking bar */
+  .mobile-bar-btn:active {
+    transform: scale(0.96);
+  }
+
+  /* Button 1: Call */
+  .mobile-bar-call {
+    background: rgba(255, 255, 255, 0.06);
+    color: #e2e8f0;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-bar-call:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+
+  /* Button 2: WhatsApp (Refined Luxury Emerald) */
+  .mobile-bar-wa {
+    background: rgba(37, 211, 102, 0.12);
+    color: #25d366;
+    border-color: rgba(37, 211, 102, 0.35);
+  }
+
+  .mobile-bar-wa:hover {
+    background: rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.5);
+  }
+
+  /* Button 3: Book Now (Signature Gold Gradient CTA) */
+  .mobile-bar-book {
+    background: linear-gradient(135deg, #e4c995 0%, #c6a869 50%, #ab8942 100%);
+    color: var(--navy);
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    border-color: rgba(255, 238, 195, 0.5);
+    box-shadow: 0 4px 16px rgba(198, 168, 105, 0.38);
+  }
+
+  .mobile-bar-book:hover {
+    background: linear-gradient(135deg, #ecd4a4 0%, #d4b576 50%, #b8954c 100%);
+    box-shadow: 0 6px 20px rgba(198, 168, 105, 0.5);
+  }
+
+  /* Clear bottom area for the mobile sticky bar */
   body {
-    padding-bottom: 136px;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
@@ -2276,6 +2353,12 @@ p {
     box-sizing: border-box !important;
     white-space: nowrap !important;
     text-align: center !important;
+  }
+
+  /* Keep navbar book button hidden on mobile/tablet */
+  .navbar .nav-book-btn,
+  .nav-actions .btn {
+    display: none !important;
   }
 
   /* Equal sizing for paired/multiple buttons in sections */
