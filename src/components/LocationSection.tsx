@@ -137,14 +137,22 @@ export default function LocationSection() {
               href={HOTEL_INFO.urls.googleMapsDirections}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline-white btn-sm"
+              className="btn btn-gold btn-lg"
+              style={{
+                fontSize: '0.95rem',
+                padding: '14px 28px',
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+              }}
             >
               <span>Open in Google Maps</span>
-              <ExternalLink style={{ width: 12, height: 12 }} />
+              <ExternalLink style={{ width: 18, height: 18 }} />
             </a>
           </div>
 
-          <div className="map-frame" style={{ minHeight: 460 }}>
+          <div className="map-frame" style={{ minHeight: 560 }}>
             <iframe
               src={HOTEL_INFO.urls.googleMapsEmbed}
               width="100%"

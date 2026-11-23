@@ -25,7 +25,7 @@ export default function CTASection({ onOpenBooking }: CTASectionProps) {
   return (
     <section className="cta">
       <img
-        src="/images/gallery/aurum-kashmir-sunset-cta.jpg"
+        src="/images/gallery/dal-lake-sunset-view.webp"
         alt="The Aurum Luxury Collection Brein Hills Srinagar panoramic sunset"
         className="cta-bg"
         loading="lazy"
