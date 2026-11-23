@@ -1,0 +1,2592 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Brand Palette - STRICTLY PRESERVED FROM AURUM */
+  --navy: #0e1e38;
+  --navy-2: #162b4d;
+  --navy-3: #0a1628;
+  --gold: #c6a869;
+  --gold-2: #b08f4a;
+  --gold-soft: #e9dcc0;
+  --gold-tint: #f5eedf;
+  --white: #fbf8f2;
+  --beige: #f1e9dc;
+  --beige-2: #e6dccb;
+  --char: #2b2f36;
+  --muted: #667085;
+  --line: rgba(14, 30, 56, 0.12);
+  --line-light: rgba(255, 255, 255, 0.14);
+  --wa: #25d366;
+  --wa-hover: #1fb457;
+
+  /* Typography */
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sans: "Jost", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Shawinn-inspired Layout Dimensions & Spacing */
+  --wrap: 1360px;
+  --wrap-narrow: 1080px;
+  --radius: 6px;
+  --radius-sm: 3px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 4px 12px rgba(14, 30, 56, 0.05);
+  --shadow: 0 16px 40px rgba(14, 30, 56, 0.08);
+  --shadow-lg: 0 30px 80px rgba(14, 30, 56, 0.16);
+  --shadow-float: 0 28px 90px -28px rgba(10, 22, 40, 0.45);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--sans);
+  color: var(--char);
+  background-color: var(--white);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--white);
+  color: var(--char);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   TYPOGRAPHY - SHAWINN HIERARCHY
+   ========================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--serif);
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.font-serif {
+  font-family: var(--serif);
+}
+
+.font-sans {
+  font-family: var(--sans);
+}
+
+.italic-serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.bg-gold {
+  background-color: var(--gold);
+}
+
+.border-gold {
+  border-color: var(--gold);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.eyebrow-wide {
+  letter-spacing: 0.65em;
+}
+
+/* Head Centered */
+.head {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto clamp(40px, 6vw, 68px);
+}
+
+.head h2 {
+  margin-bottom: 16px;
+}
+
+.head p {
+  font-size: 1.15rem;
+  font-weight: 300;
+}
+
+.head.start {
+  text-align: left;
+  margin-left: 0;
+}
+
+/* ==========================================================
+   CONTAINER & SECTION PADDING (SHAWINN STYLE)
+   ========================================================== */
+.container, .wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 4vw, 48px);
+  padding-right: clamp(20px, 4vw, 48px);
+}
+
+.wrap-narrow {
+  max-width: var(--wrap-narrow);
+}
+
+.section-padding {
+  padding-top: clamp(70px, 10vw, 130px);
+  padding-bottom: clamp(70px, 10vw, 130px);
+}
+
+.section-padding-sm {
+  padding-top: clamp(50px, 7vw, 80px);
+  padding-bottom: clamp(50px, 7vw, 80px);
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 10vw, 130px) 0;
+}
+
+.section.alt {
+  background-color: var(--beige);
+}
+
+.section.dark, .bg-pine-luxury {
+  background-color: var(--navy);
+  color: #fff;
+}
+
+.section.dark h1, .section.dark h2, .section.dark h3, .section.dark h4 {
+  color: #fff;
+}
+
+.section.dark p {
+  color: #c4cddc;
+}
+
+.section.white {
+  background-color: #fff;
+}
+
+/* Subtle pattern overlay */
+.forest-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(198, 168, 105, 0.22) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* ==========================================================
+   BUTTONS (SHAWINN LUXURY STYLE)
+   ========================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 1rem 2.2rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-3);
+  box-shadow: 0 8px 24px rgba(198, 168, 105, 0.25);
+  border-color: var(--gold);
+}
+
+.btn-gold:hover {
+  background: var(--gold-2);
+  color: #fff;
+  border-color: var(--gold-2);
+  box-shadow: 0 12px 30px rgba(176, 143, 74, 0.35);
+}
+
+.btn-navy {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+  box-shadow: 0 8px 24px rgba(14, 30, 56, 0.2);
+}
+
+.btn-navy:hover {
+  background: var(--navy-2);
+  color: #fff;
+  border-color: var(--gold);
+  box-shadow: 0 12px 30px rgba(14, 30, 56, 0.3);
+}
+
+.btn-line, .btn-outline-gold {
+  background: transparent;
+  border-color: rgba(198, 168, 105, 0.45);
+  color: var(--gold);
+}
+
+.btn-line:hover, .btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--navy-3);
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(198, 168, 105, 0.3);
+}
+
+.btn-line-white, .btn-outline-white {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.btn-line-white:hover, .btn-outline-white:hover {
+  background: #fff;
+  color: var(--navy);
+  border-color: #fff;
+}
+
+.btn-outline-navy {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--navy);
+}
+
+.btn-outline-navy:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.btn-wa {
+  background: var(--wa);
+  color: #fff;
+  border-color: var(--wa);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+}
+
+.btn-wa:hover {
+  background: var(--wa-hover);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+}
+
+.btn-sm {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+}
+
+.btn-lg {
+  padding: 1.25rem 2.8rem;
+  font-size: 0.84rem;
+  letter-spacing: 0.34em;
+}
+
+/* ==========================================================
+   TOP BAR & SHAWINN FIXED NAVBAR
+   ========================================================== */
+.topbar {
+  background: var(--navy-3);
+  color: #c4cddc;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 105;
+}
+
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.topbar ul {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topbar a, .topbar span.loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #c4cddc;
+  transition: color 0.25s;
+}
+
+.topbar a:hover {
+  color: var(--gold);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(14, 30, 56, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 0;
+}
+
+.navbar.stuck {
+  background: rgba(10, 22, 40, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(198, 168, 105, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  padding: 12px 0;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Logo with Vertical Divider (Shawinn style) */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(198, 168, 105, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: all 0.4s ease;
+}
+
+.brand:hover .brand-mark {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--navy-3);
+  transform: scale(1.05);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 14px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.brand-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.brand-sub {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Shawinn Nav Links with Animated Gold Underline */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.78);
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--gold);
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: #fff;
+}
+
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.nav-toggle span {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-toggle span::before {
+  content: "";
+  top: -7px;
+}
+
+.nav-toggle span::after {
+  content: "";
+  bottom: -7px;
+}
+
+.nav-toggle[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] span::before {
+  top: 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span::after {
+  bottom: 0;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* Mobile Navigation Half Popup */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 12, 22, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 98;
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.mobile-nav-half-popup {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-menu {
+    display: none;
+  }
+  .mobile-nav-half-popup {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 74px;
+    left: 12px;
+    right: 12px;
+    max-height: calc(82vh - 74px);
+    background: linear-gradient(180deg, rgba(14, 27, 49, 0.98), rgba(9, 18, 33, 0.99));
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    z-index: 99;
+    padding: 20px 18px;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border: 1px solid rgba(198, 168, 105, 0.35);
+    border-top: none;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    animation: slideDownPopup 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .popup-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .popup-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .popup-close-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .popup-close-btn:hover {
+    background: var(--gold);
+    color: var(--navy-3);
+    border-color: var(--gold);
+  }
+
+  .popup-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 10px;
+    margin-bottom: 16px;
+  }
+
+  .popup-nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .popup-nav-item:hover, .popup-nav-item.active {
+    background: rgba(198, 168, 105, 0.18);
+    border-color: var(--gold);
+    color: var(--gold-soft);
+    transform: translateX(2px);
+  }
+
+  .popup-footer {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .popup-contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .popup-phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-soft);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+@keyframes slideDownPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================================================
+   HERO SECTION (SHAWINN STYLE FULL BLEED)
+   ========================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--navy);
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 100svh;
+  }
+}
+
+.hero .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.4s;
+}
+
+.hero .slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: slowZoom 14s infinite alternate ease-in-out;
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 22, 40, 0.22);
+  z-index: 2;
+}
+
+.hero-body {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.hero-body .eyebrow {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.hero-title {
+  color: #fff;
+  margin-bottom: 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-subtitle {
+  color: #ffffff;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.8;
+  max-width: 920px;
+  margin: 0 auto 36px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
+   FLOATING QUICK BOOKING BAR (SHAWINN SIGNATURE) - FULLY RESPONSIVE
+   ========================================================== */
+.floating-booking-bar {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  width: calc(100% - 16px);
+  max-width: 1140px;
+  display: block;
+}
+
+.booking-bar-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(251, 248, 242, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(198, 168, 105, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bar-dest-badge {
+  display: none;
+}
+
+.bar-dest-badge .icon-box {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(198, 168, 105, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: all 0.25s;
+  min-width: 0;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.bar-input-group:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(198, 168, 105, 0.2);
+}
+
+.bar-input-group label {
+  display: block;
+  font-size: 0.58rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.bar-input-group input,
+.bar-input-group select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  min-width: 0;
+  cursor: pointer;
+}
+
+.bar-submit-btn {
+  height: 48px !important;
+  min-height: 48px !important;
+  width: 100% !important;
+  padding: 0 12px !important;
+  font-size: 0.74rem !important;
+  letter-spacing: 0.14em !important;
+  border-radius: var(--radius-sm) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+/* Tablet & Intermediate Viewports */
+@media (min-width: 640px) and (max-width: 991px) {
+  .floating-booking-bar {
+    bottom: 18px;
+    width: calc(100% - 24px);
+    max-width: 760px;
+  }
+
+  .booking-bar-form {
+    grid-template-columns: 1fr 1fr 1.2fr auto;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .bar-submit-btn {
+    width: auto !important;
+    padding: 0 20px !important;
+  }
+}
+
+/* Desktop Viewport */
+@media (min-width: 992px) {
+  .floating-booking-bar {
+    bottom: 24px;
+    width: calc(100% - 2rem);
+  }
+
+  .booking-bar-form {
+    grid-template-columns: 1.15fr 1fr 1fr 1.15fr auto;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-xl);
+  }
+
+  .bar-dest-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .bar-input-group {
+    padding: 10px 16px;
+    height: 52px;
+    border-radius: var(--radius-lg);
+    gap: 10px;
+  }
+
+  .bar-input-group label {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em;
+  }
+
+  .bar-input-group input,
+  .bar-input-group select {
+    font-size: 0.88rem;
+  }
+
+  .bar-submit-btn {
+    height: 52px !important;
+    min-height: 52px !important;
+    padding: 0 26px !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.18em !important;
+    border-radius: var(--radius-lg) !important;
+    width: auto !important;
+  }
+}
+
+/* ==========================================================
+   RECOGNIZED EXCELLENCE / TRUST BAR (SHAWINN STYLE)
+   ========================================================== */
+.trust-bar {
+  background: var(--navy-2);
+  color: #fff;
+  padding: 38px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  align-items: center;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.trust-item .icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(198, 168, 105, 0.12);
+  border: 1px solid rgba(198, 168, 105, 0.3);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trust-item strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.trust-item span {
+  font-size: 0.82rem;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================
+   ABOUT SECTION (SHAWINN 2-COLUMN WITH FLOATING CARD)
+   ========================================================== */
+.about-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 90px);
+  align-items: center;
+}
+
+.about-img-frame {
+  position: relative;
+  padding: 16px;
+  border: 1px solid var(--beige-2);
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius);
+}
+
+.about-img-frame .img-inner {
+  position: relative;
+  height: clamp(460px, 60vh, 720px);
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.about-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+
+.about-img-frame:hover img {
+  transform: scale(1.05);
+}
+
+.about-floating-card {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  background: rgba(14, 30, 56, 0.95);
+  backdrop-filter: blur(16px);
+  padding: 28px 36px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  color: #fff;
+  max-width: 320px;
+  transition: transform 0.5s ease;
+}
+
+.about-floating-card:hover {
+  transform: translateY(-8px);
+}
+
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 36px;
+}
+
+.about-pillar-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.pillar-num {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.pillar-content h4 {
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.pillar-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   ELITE RESIDENCES / ROOMS (SHAWINN TALL CARD STYLE)
+   ========================================================== */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: clamp(24px, 4vw, 44px);
+}
+
+.room-card-shawinn {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.room-card-shawinn:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.room-card-shawinn .card-img-wrap {
+  position: relative;
+  height: clamp(340px, 45vh, 480px);
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.room-card-shawinn .card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.room-card-shawinn:hover .card-img-wrap img {
+  transform: scale(1.07);
+}
+
+.room-card-shawinn .card-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(14, 30, 56, 0.9);
+  color: var(--gold-soft);
+  border: 1px solid rgba(198, 168, 105, 0.35);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(8px);
+}
+
+.room-card-shawinn .card-content {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.room-card-shawinn .card-content h3 {
+  margin-bottom: 8px;
+}
+
+.room-specs-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.room-specs-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.room-specs-row svg {
+  width: 15px;
+  height: 15px;
+  color: var(--gold-2);
+}
+
+/* ==========================================================
+   BEYOND HOSPITALITY (DINING & ADVENTURES SPLIT)
+   ========================================================== */
+.experience-split-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.showcase-card {
+  position: relative;
+  height: clamp(420px, 50vh, 560px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.showcase-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.showcase-card:hover img {
+  transform: scale(1.08);
+}
+
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 30, 56, 0.05) 0%, rgba(10, 22, 40, 0.55) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(24px, 5vw, 48px);
+  color: #fff;
+}
+
+.showcase-overlay h3 {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 12px;
+}
+
+.showcase-overlay p {
+  color: #d6dbe6;
+  font-size: 1rem;
+  margin-bottom: 24px;
+  max-width: 480px;
+}
+
+/* ==========================================================
+   FAQ ACCORDION (SHAWINN STYLE)
+   ========================================================== */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.faq-item:hover {
+  border-color: var(--gold);
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  background: transparent;
+}
+
+.faq-trigger svg {
+  color: var(--gold);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.faq-content {
+  padding: 0 28px 24px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ==========================================================
+   FACILITIES & AMENITIES GRID
+   ========================================================== */
+.feature {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(198, 168, 105, 0.4);
+}
+
+.feature-light {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.feature-light:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(198, 168, 105, 0.4);
+}
+
+.feature .ico, .feature-light .ico {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(198, 168, 105, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--gold);
+}
+
+/* ==========================================================
+   GALLERY & LIGHTBOX
+   ========================================================== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.filters button {
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--char);
+  transition: all 0.25s;
+}
+
+.filters button:hover, .filters button[aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--gold-soft);
+  border-color: var(--navy);
+}
+
+.gal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.gal figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--beige-2);
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.gal figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.gal figure:hover img {
+  transform: scale(1.08);
+}
+
+.gal figure figcaption {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 22, 40, 0.88) 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.gal figure:hover figcaption {
+  opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 22, 40, 0.94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-caption {
+  color: #fff;
+  margin-top: 14px;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
+
+.lb-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.lb-btn:hover {
+  background: var(--gold);
+  color: var(--navy-3);
+}
+
+.lb-close {
+  top: 24px;
+  right: 24px;
+}
+
+.lb-prev {
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb-next {
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ==========================================================
+   REVIEWS & RATINGS (SHAWINN RECOGNITION STYLE)
+   ========================================================== */
+.review-box {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 44px 32px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.review-box .g-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.review-box .g-score {
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.review-box .stars {
+  color: #fbbc04;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  margin: 8px 0;
+}
+
+.review-box .meta-count {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.review-box p {
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto 28px;
+}
+
+.review-box .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
+   PLAN YOUR ESCAPE / CONTACT SECTION (SHAWINN STYLE)
+   ========================================================== */
+.contact-split-shawinn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 72px);
+  align-items: start;
+}
+
+.contact-card-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  transition: all 0.3s;
+}
+
+.contact-card-box:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.contact-card-box .icon-frame {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(198, 168, 105, 0.15);
+  border: 1px solid rgba(198, 168, 105, 0.3);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================
+   MAP & LOCATION
+   ========================================================== */
+.map-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==========================================================
+   CTA BANNER (SHAWINN HERO FINALE)
+   ========================================================== */
+.cta {
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  padding: clamp(80px, 12vw, 150px) 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta img.cta-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.32);
+}
+
+.cta .wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.cta h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.cta p {
+  color: #ffffff;
+  font-size: 1.2rem;
+  max-width: 680px;
+  margin: 0 auto 38px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.cta .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================
+   PAGE BANNER & BREADCRUMBS
+   ========================================================== */
+.banner {
+  position: relative;
+  width: 100%;
+  background: var(--navy);
+  color: #fff;
+  padding: clamp(90px, 13vw, 150px) clamp(20px, 4vw, 48px) clamp(50px, 8vw, 90px);
+  text-align: center;
+  overflow: hidden;
+}
+
+.banner-bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.28);
+}
+
+.banner .wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.banner h1 {
+  color: #fff;
+  margin-bottom: 16px;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.banner p {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.breadcrumbs a {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.breadcrumbs a:hover {
+  color: var(--gold);
+}
+
+.breadcrumbs span.sep {
+  opacity: 0.6;
+}
+
+/* ==========================================================
+   FOOTER (SHAWINN LUXURY STYLE)
+   ========================================================== */
+.footer {
+  background: var(--navy-3);
+  color: #b9c2d3;
+  padding-top: clamp(80px, 12vw, 120px);
+  padding-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer .cols {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: clamp(36px, 5vw, 64px);
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer h4 {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  margin-bottom: 22px;
+  letter-spacing: 0.04em;
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer ul a {
+  color: #b9c2d3;
+  transition: all 0.25s;
+  display: inline-block;
+  font-size: 0.94rem;
+}
+
+.footer ul a:hover {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #8c97ab;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ==========================================================
+   BOOKING MODAL & FORM
+   ========================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 680px;
+  overflow: hidden;
+  position: relative;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  color: #fff;
+  font-size: 1.45rem;
+}
+
+.modal-header p {
+  color: var(--gold-soft);
+  font-size: 0.86rem;
+  margin-top: 4px;
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--gold);
+  color: var(--navy-3);
+}
+
+.modal-body {
+  padding: 28px;
+  overflow-y: auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--char);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(198, 168, 105, 0.2);
+}
+
+.success-card {
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(37, 211, 102, 0.15);
+  color: var(--wa);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.success-id {
+  background: var(--beige);
+  border: 1px dashed var(--gold);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 16px 0 24px;
+}
+
+/* ==========================================================
+   FLEXIBLE GRID SYSTEM & CARDS
+   ========================================================== */
+.grid {
+  display: grid;
+  gap: clamp(16px, 3vw, 32px);
+  width: 100%;
+}
+
+.g2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.g3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.g4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Card System for Curated Escapes & Section Features */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.06);
+}
+
+.card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--navy);
+  color: var(--gold);
+  border: 1px solid rgba(198, 168, 105, 0.4);
+  padding: 5px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(6px);
+}
+
+.card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* ==========================================================
+   FLOATING SPEED DIAL (WHATSAPP & CALL - DESKTOP ONLY)
+   ========================================================== */
+.float-actions {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 85;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.float-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.float-wa {
+  background: var(--wa);
+}
+
+.float-phone {
+  background: var(--navy);
+  border: 1px solid var(--gold);
+}
+
+/* ==========================================================
+   MOBILE STICKY BOTTOM BAR (EXACTLY 3 BUTTONS: CALL, WA, BOOK)
+   ========================================================== */
+.mobile-sticky-bar {
+  display: none !important;
+}
+
+@media (max-width: 899px) {
+  .mobile-sticky-bar {
+    display: none !important;
+  }
+
+  /* Floating actions on mobile positioned neatly above floating booking bar */
+  .float-actions {
+    position: fixed;
+    right: 14px;
+    bottom: 136px;
+    gap: 10px;
+    z-index: 92;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .float-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Clear bottom area for the floating booking bar */
+  body {
+    padding-bottom: 136px;
+  }
+}
+
+/* ==========================================================
+   PAGE-SPECIFIC SPLIT & GRID LAYOUTS
+   ========================================================== */
+.room-detail-split,
+.contact-page-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.room-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--beige);
+  border-radius: var(--radius);
+  margin: 32px 0;
+  border: 1px solid var(--line);
+}
+
+.room-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 20px;
+}
+
+.similar-rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.contact-coords-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.card-geo-badges {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.review-quote-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-quote-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN ADAPTATIONS (SECTIONS IN GRID FORMAT)
+   ========================================================== */
+@media (max-width: 1024px) {
+  .g3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .g4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+  .experience-split-showcase {
+    grid-template-columns: 1fr;
+  }
+  .footer .cols {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-split-shawinn {
+    grid-template-columns: 1fr;
+  }
+  .room-detail-split,
+  .contact-page-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .policy-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    display: none;
+  }
+
+  /* Standardize all button sizes in mobile view */
+  .btn,
+  .btn-sm,
+  .btn-lg,
+  .hero-actions .btn,
+  .cta .actions .btn,
+  .banner .btn,
+  form button[type="submit"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 0 1.25rem !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.2em !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-sm) !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  /* Equal sizing for paired/multiple buttons in sections */
+  .hero-actions,
+  .cta .actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 12px !important;
+  }
+
+  .hero-actions .btn,
+  .cta .actions .btn {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Make Sections in Clean 2-Column Grid Format on Mobile */
+  .grid.g3, .grid.g2, .grid.g4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Compact amenities feature cards for mobile grid */
+  .feature, .feature-light {
+    padding: 16px 14px;
+  }
+  .feature .ico, .feature-light .ico {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+  .feature h3, .feature-light h3 {
+    font-size: 0.95rem !important;
+  }
+  .feature p, .feature-light p {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Trust Bar in 2-Column Grid Format */
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .trust-item {
+    gap: 10px;
+  }
+  .trust-item .icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .trust-item strong {
+    font-size: 0.92rem;
+  }
+  .trust-item span {
+    font-size: 0.68rem;
+  }
+
+  /* Photo Gallery in 2-Column Grid Format on Mobile */
+  .gal {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .gal figure {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .gal figure img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .gal figure figcaption {
+    padding: 10px !important;
+  }
+
+  .gal figure figcaption span {
+    font-size: 0.62rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .gal figure figcaption strong {
+    font-size: 0.78rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .gal figure figcaption div {
+    display: none !important;
+  }
+
+  /* Lightbox Mobile Adjustments */
+  .lb-prev {
+    left: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .lb-next {
+    right: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .lb-close {
+    top: 14px !important;
+    right: 14px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .lightbox-content {
+    max-width: 96vw !important;
+    padding: 0 8px !important;
+  }
+  .lightbox-content img {
+    max-height: 65vh !important;
+  }
+
+  /* Curated Escapes Card in Mobile Grid */
+  .card .card-img {
+    height: 180px !important;
+  }
+  .card-body {
+    padding: 16px 14px !important;
+  }
+  .card-body h3 {
+    font-size: 1.05rem !important;
+  }
+  .card-body p {
+    font-size: 0.82rem !important;
+  }
+  .card-geo-badges {
+    bottom: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+  .card-geo-badges span {
+    padding: 3px 7px !important;
+    font-size: 0.68rem !important;
+  }
+  .card-highlight-box {
+    padding: 8px 10px !important;
+    font-size: 0.74rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+  .card-body .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card-body .card-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Review Quote Cards in 2-Column Mobile Grid */
+  .review-quote-card {
+    padding: 16px 14px !important;
+  }
+  .review-quote-card p {
+    font-size: 0.84rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 10px !important;
+  }
+  .review-quote-card cite {
+    font-size: 0.76rem !important;
+  }
+
+  /* Split Layouts Responsive on Mobile */
+  .room-detail-split,
+  .contact-page-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .room-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+    margin: 24px 0;
+  }
+
+  .room-amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .similar-rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-coords-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .policy-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .policy-grid > div {
+    background: rgba(14, 30, 56, 0.03);
+    padding: 16px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+  }
+
+  /* Pillars on About Us in structured cards */
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .about-pillar-item {
+    background: var(--beige);
+    padding: 16px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    gap: 14px;
+  }
+
+  /* Beyond Hospitality cards height in mobile grid */
+  .showcase-card {
+    height: clamp(320px, 45vh, 420px) !important;
+  }
+  .showcase-overlay {
+    padding: 24px 20px !important;
+  }
+  .showcase-overlay h3 {
+    font-size: 1.45rem !important;
+    margin-bottom: 8px !important;
+  }
+  .showcase-overlay p {
+    font-size: 0.88rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Footer Columns in 2-Column Grid Format */
+  .footer .cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+  }
+
+  .about-floating-card {
+    display: none;
+  }
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .room-card-shawinn .card-img-wrap {
+    height: 240px;
+  }
+  .room-card-shawinn .card-content {
+    padding: 20px 18px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-frame {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid.g3, .grid.g2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .gal {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .gal figure {
+    border-radius: 6px !important;
+  }
+  .room-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 14px;
+  }
+  .room-amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .card-geo-badges span {
+    padding: 2px 6px !important;
+    font-size: 0.64rem !important;
+  }
+  .card .card-img {
+    height: 160px !important;
+  }
+  .review-box {
+    padding: 28px 16px !important;
+  }
+  .review-box .g-score {
+    font-size: 2.6rem !important;
+  }
+}
