@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Experiences from '@/components/Experiences';
+import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
 
@@ -23,7 +24,7 @@ export default function ExperiencesPage() {
 
       <section className="banner">
         <img
-          src="/images/destinations/dal-lake-shikara.jpg"
+          src="/images/gallery/dal-lake-sunset-view.webp"
           alt="Dal Lake Srinagar Shikara Boats"
           className="banner-bg"
         />
@@ -44,7 +45,9 @@ export default function ExperiencesPage() {
 
       <Experiences />
 
-      <CTASection />
+      <FAQSection />
+
+      <CTASection variant="experiences" />
     </>
   );
 }

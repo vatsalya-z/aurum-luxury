@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import Gallery from '@/components/Gallery';
+import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
 
@@ -21,7 +22,7 @@ export default function GalleryPage() {
     <>
       <JsonLd type="BreadcrumbList" data={breadcrumbs} />
 
-      <section className="banner">
+      <section className="banner banner-full-height gallery-hero">
         <img
           src="/images/hero/aurum-estate-brein-hills.png"
           alt="The Aurum Luxury Collection Exterior Srinagar"
@@ -39,12 +40,20 @@ export default function GalleryPage() {
             Experience The Aurum Luxury Collection through authentic property photography.
             Explore our handcrafted cottages, panoramic chalets, dining hall, and surrounding Himalayan vistas.
           </p>
+          <div className="gallery-hero-scroll">
+            <a href="#gallery" className="btn btn-outline-white btn-sm" aria-label="Explore Photographs">
+              <span>Explore Collection</span>
+              <span className="scroll-arrow-down" aria-hidden="true">↓</span>
+            </a>
+          </div>
         </div>
       </section>
 
       <Gallery showHeading={false} showFilters={true} redirectToGallery={false} showAllInitial={true} />
 
-      <CTASection />
+      <FAQSection />
+
+      <CTASection variant="gallery" />
     </>
   );
 }

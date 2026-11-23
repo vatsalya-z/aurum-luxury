@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import FacilitiesSection from '@/components/FacilitiesSection';
+import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
 
@@ -91,7 +92,9 @@ export default function FacilitiesPage() {
         </div>
       </section>
 
-      <CTASection />
+      <FAQSection />
+
+      <CTASection variant="facilities" />
     </>
   );
 }

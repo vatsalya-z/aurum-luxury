@@ -5,6 +5,8 @@ import { MapPin, Phone, Mail, Clock, MessageSquare, ExternalLink } from 'lucide-
 import { FaWhatsapp } from 'react-icons/fa';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import BookingForm from '@/components/BookingForm';
+import FAQSection from '@/components/FAQSection';
+import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -225,6 +227,10 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection />
+
+      <CTASection variant="contact" />
     </>
   );
 }

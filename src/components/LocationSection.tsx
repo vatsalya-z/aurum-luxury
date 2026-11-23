@@ -72,7 +72,7 @@ export default function LocationSection() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
+            <div className="location-cta-buttons" style={{ display: 'flex', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
               <a
                 href={HOTEL_INFO.urls.googleMapsDirections}
                 target="_blank"
@@ -126,30 +126,11 @@ export default function LocationSection() {
 
         {/* Embedded Map Block (Shawinn "Prime Location") */}
         <FadeIn direction="up" style={{ marginTop: 80 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 20, flexWrap: 'wrap', gap: 14 }}>
-            <div>
-              <span className="eyebrow" style={{ color: 'var(--gold)' }}>Interactive Map</span>
-              <h3 style={{ color: '#fff', fontSize: '1.6rem', margin: 0 }}>
-                Prime Location in Brein Hills
-              </h3>
-            </div>
-            <a
-              href={HOTEL_INFO.urls.googleMapsDirections}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-gold btn-lg"
-              style={{
-                fontSize: '0.95rem',
-                padding: '14px 28px',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 10,
-              }}
-            >
-              <span>Open in Google Maps</span>
-              <ExternalLink style={{ width: 18, height: 18 }} />
-            </a>
+          <div className="location-map-header" style={{ textAlign: 'center', marginBottom: 24 }}>
+            <span className="eyebrow" style={{ color: 'var(--gold)' }}>Interactive Map</span>
+            <h3 style={{ color: '#fff', fontSize: '1.6rem', margin: '4px 0 0' }}>
+              Prime Location in Brein Hills
+            </h3>
           </div>
 
           <div className="map-frame" style={{ minHeight: 700, height: 700 }}>
@@ -163,6 +144,28 @@ export default function LocationSection() {
               referrerPolicy="no-referrer-when-downgrade"
               title="The Aurum Luxury Collection Google Map Location"
             />
+          </div>
+
+          {/* Action Button Placed Below the Map */}
+          <div style={{ textAlign: 'center', marginTop: 24 }}>
+            <a
+              href={HOTEL_INFO.urls.googleMapsDirections}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-gold btn-lg"
+              style={{
+                fontSize: '0.95rem',
+                padding: '14px 28px',
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+              }}
+            >
+              <span>Open in Google Maps</span>
+              <ExternalLink style={{ width: 18, height: 18 }} />
+            </a>
           </div>
         </FadeIn>
       </div>

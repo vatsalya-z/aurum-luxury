@@ -127,7 +127,7 @@ export default function AboutHotel() {
                 ))}
               </div>
 
-              <div style={{ marginTop: 44, display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+              <div className="about-actions" style={{ marginTop: 44, display: 'flex', gap: 18, flexWrap: 'wrap' }}>
                 <Link href="/rooms" className="btn btn-navy">
                   <span>View Accommodations</span>
                   <ArrowRight style={{ width: 14, height: 14 }} />

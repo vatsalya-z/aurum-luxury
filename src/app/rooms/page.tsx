@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ROOMS } from '@/data/rooms';
 import RoomCard from '@/components/RoomCard';
+import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import { useBooking } from '@/components/ClientLayout';
 import JsonLd from '@/components/JsonLd';
@@ -107,7 +108,9 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <CTASection onOpenBooking={() => openBooking()} />
+      <FAQSection />
+
+      <CTASection variant="rooms" onOpenBooking={() => openBooking()} />
     </>
   );
 }

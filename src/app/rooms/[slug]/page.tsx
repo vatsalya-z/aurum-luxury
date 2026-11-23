@@ -11,6 +11,7 @@ import { ROOMS, Room } from '@/data/rooms';
 import BookingForm from '@/components/BookingForm';
 import RoomCard from '@/components/RoomCard';
 import JsonLd from '@/components/JsonLd';
+import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import RoomGalleryClient from './RoomGalleryClient';
 
@@ -292,7 +293,9 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
         </div>
       </section>
 
-      <CTASection />
+      <FAQSection />
+
+      <CTASection variant="room-detail" roomName={room.name} bgImage={room.images[0]?.src} />
     </>
   );
 }

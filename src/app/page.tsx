@@ -10,7 +10,6 @@ import FacilitiesSection from '@/components/FacilitiesSection';
 import BeyondHospitality from '@/components/BeyondHospitality';
 import Gallery from '@/components/Gallery';
 import Reviews from '@/components/Reviews';
-import FAQSection from '@/components/FAQSection';
 import LocationSection from '@/components/LocationSection';
 import CTASection from '@/components/CTASection';
 import { useBooking } from '@/components/ClientLayout';
@@ -47,10 +46,7 @@ export default function HomePage() {
       {/* 9. Trusted by Discerning Guests (Google Reviews & Rating) */}
       <Reviews />
 
-      {/* 10. Frequently Asked Questions (Shawinn Accordion) */}
-      <FAQSection />
-
-      {/* 11. Plan Your Escape (Coordinates, Contact & Map) */}
+      {/* 10. Plan Your Escape (Coordinates, Contact & Map) */}
       <LocationSection />
 
       {/* 12. Final Call to Action */}

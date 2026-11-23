@@ -101,17 +101,51 @@ export async function POST(request: Request) {
     enquiries.unshift(newEnquiry);
     saveEnquiries(enquiries);
 
-    // Format WhatsApp message
-    const waText = `*New Stay Enquiry - The Aurum Luxury Collection*
-*Enquiry ID:* ${enquiryId}
-*Guest:* ${guestName}
-*Phone:* ${phone}
-*Email:* ${email}
-*Dates:* ${checkIn} to ${checkOut}
-*Guests:* ${adults} Adults, ${children} Children (${roomsCount} Room)
-*Room:* ${preferredRoom || 'Luxury Bedroom Cottage'}
-*Meal Plan:* ${mealPlan}
-${specialRequests ? `*Requests:* ${specialRequests}` : ''}`;
+    // Calculate nights
+    const diffTime = checkOutDate.getTime() - checkInDate.getTime();
+    const nights = Math.max(1, Math.round(diffTime / (1000 * 60 * 60 * 24)));
+
+    const formatDatePretty = (dateStr: string) => {
+      try {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-IN', {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        });
+      } catch {
+        return dateStr;
+      }
+    };
+
+    const formattedCheckIn = formatDatePretty(checkIn);
+    const formattedCheckOut = formatDatePretty(checkOut);
+
+    // Format WhatsApp message with complete enquiry details
+    const waText = `*NEW RESERVATION QUERY - THE AURUM*
+*The Aurum Luxury Collection, Srinagar*
+━━━━━━━━━━━━━━━━━━━━━━━
+📋 *Booking Ref:* ${enquiryId}
+
+👤 *Guest Details:*
+• *Name:* ${guestName}
+• *Phone:* ${phone}
+• *Email:* ${email}
+
+🏨 *Stay Reservation:*
+• *Check-In:* ${checkIn} (${formattedCheckIn})
+• *Check-Out:* ${checkOut} (${formattedCheckOut})
+• *Total Stay:* ${nights} Night${nights > 1 ? 's' : ''}
+• *Room / Suite:* ${preferredRoom || 'Luxury Bedroom Cottage'}
+• *Rooms Count:* ${roomsCount} Room${Number(roomsCount) > 1 ? 's' : ''}
+• *Guests:* ${adults} Adult${Number(adults) > 1 ? 's' : ''}${Number(children) > 0 ? `, ${children} Child${Number(children) > 1 ? 'ren' : ''}` : ''}
+• *Meal Plan:* ${mealPlan}
+
+📝 *Special Requests / Notes:*
+${specialRequests && specialRequests.trim() ? specialRequests.trim() : 'None'}
+━━━━━━━━━━━━━━━━━━━━━━━
+_Please confirm room availability and current best promotional rates._`;
 
     const whatsappUrl = `https://wa.me/${HOTEL_INFO.contact.whatsapp}?text=${encodeURIComponent(waText)}`;
 

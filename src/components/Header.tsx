@@ -37,7 +37,6 @@ export default function Header({ onOpenBooking }: HeaderProps) {
     { name: 'Dining', href: '/#experience' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Experiences', href: '/experiences' },
-    { name: 'Reviews', href: '/#reviews' },
     { name: 'Contact', href: '/contact' },
   ];
 

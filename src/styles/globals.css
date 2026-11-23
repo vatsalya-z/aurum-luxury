@@ -746,7 +746,9 @@ p {
 .hero {
   position: relative;
   width: 100%;
+  min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -755,11 +757,14 @@ p {
   overflow: hidden;
   padding-top: 100px;
   padding-bottom: 100px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .hero {
+    min-height: 100vh;
     min-height: 100svh;
+    min-height: 100dvh;
   }
 }
 
@@ -1730,52 +1735,115 @@ p {
 }
 
 /* ==========================================================
-   PAGE BANNER & BREADCRUMBS
+   PAGE BANNER & HERO SECTION - FULL VIEWPORT HEIGHT ACROSS ALL PAGES
    ========================================================== */
 .banner {
   position: relative;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: var(--navy);
   color: #fff;
-  padding: clamp(90px, 13vw, 150px) clamp(20px, 4vw, 48px) clamp(50px, 8vw, 90px);
+  padding: 100px clamp(20px, 5vw, 48px) 80px;
   text-align: center;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .banner-bg {
   position: absolute;
   inset: 0;
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
   opacity: 0.95;
+  animation: slowZoom 14s infinite alternate ease-in-out;
 }
 
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 22, 40, 0.28);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 40, 0.45) 0%,
+    rgba(10, 22, 40, 0.35) 45%,
+    rgba(10, 22, 40, 0.72) 100%
+  );
+  z-index: 1;
 }
 
 .banner .wrap {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1180px;
+  max-width: 980px;
   margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner h1 {
   color: #fff;
-  margin-bottom: 16px;
-  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.9);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-family: var(--font-cormorant), 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .banner p {
-  color: #ffffff;
-  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
   font-weight: 400;
+  line-height: 1.8;
+  max-width: 780px;
+  margin: 0 auto 32px;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.banner-scroll,
+.gallery-hero-scroll {
+  margin-top: 8px;
+}
+
+.banner-scroll .btn,
+.gallery-hero-scroll .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.banner-scroll .scroll-arrow-down,
+.gallery-hero-scroll .scroll-arrow-down {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  animation: bounceDown 2s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
 }
 
 .breadcrumbs {
@@ -2146,7 +2214,7 @@ p {
     right: 0;
     width: 100%;
     display: grid !important;
-    grid-template-columns: 1fr 1.15fr 1.65fr;
+    grid-template-columns: repeat(3, 1fr) !important;
     align-items: center;
     gap: 8px;
     padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
@@ -2361,9 +2429,12 @@ p {
     display: none !important;
   }
 
-  /* Equal sizing for paired/multiple buttons in sections */
+  /* Equal sizing for all button containers & buttons in mobile view */
   .hero-actions,
-  .cta .actions {
+  .cta .actions,
+  .about-actions,
+  .location-cta-buttons,
+  .actions {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
@@ -2375,10 +2446,125 @@ p {
   }
 
   .hero-actions .btn,
-  .cta .actions .btn {
+  .cta .actions .btn,
+  .about-actions .btn,
+  .location-cta-buttons .btn,
+  .location-map-header .btn,
+  .rooms-header-flex .btn,
+  .actions .btn {
     width: 100% !important;
     min-width: 100% !important;
     max-width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+  }
+
+  /* Center headings and subheadings for all sections on mobile */
+  .head,
+  .head.start,
+  section .head,
+  .section-head {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-items: center !important;
+  }
+
+  .head h2,
+  .head h3,
+  .head p,
+  .head .eyebrow,
+  .head.start h2,
+  .head.start h3,
+  .head.start p,
+  .head.start .eyebrow,
+  section h2,
+  section .eyebrow,
+  section .head p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  /* About section headings centered on mobile */
+  .about-split {
+    text-align: center !important;
+  }
+
+  .about-split .eyebrow,
+  .about-split h2,
+  .about-split h3,
+  .about-split p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .about-pillars {
+    text-align: left !important;
+  }
+
+  /* Rooms section heading centered on mobile */
+  .rooms-header-flex {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+  }
+
+  .rooms-header-flex > div {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .rooms-header-flex h2,
+  .rooms-header-flex .eyebrow,
+  .rooms-header-flex p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Interactive Map section header centered on mobile */
+  .location-map-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+  }
+
+  .location-map-header > div {
+    text-align: center !important;
+  }
+
+  .location-map-header h3,
+  .location-map-header .eyebrow {
+    text-align: center !important;
+  }
+
+  /* Contact page split headings centered on mobile */
+  .contact-page-split .eyebrow,
+  .contact-page-split h2,
+  .contact-page-split h3,
+  .contact-page-split > div > p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Showcase overlay headings centered on mobile */
+  .showcase-overlay {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .showcase-overlay h3,
+  .showcase-overlay span,
+  .showcase-overlay p {
+    text-align: center !important;
   }
 
   /* Make Sections in Clean 2-Column Grid Format on Mobile */

@@ -1,5 +1,37 @@
 [
   {
+    "enquiryId": "AURUM-2026-N8VBF",
+    "status": "pending",
+    "createdAt": "2026-11-23T19:11:18.608Z",
+    "checkIn": "2026-06-10",
+    "checkOut": "2026-06-14",
+    "adults": 2,
+    "children": 1,
+    "roomsCount": 1,
+    "preferredRoom": "Luxury Bedroom Cottage",
+    "mealPlan": "Room + Breakfast",
+    "guestName": "Aarav Mehta",
+    "email": "aarav.mehta@example.com",
+    "phone": "+91 98765 43210",
+    "specialRequests": "High floor with Dal lake view and airport pickup."
+  },
+  {
+    "enquiryId": "AURUM-2026-ITVQY",
+    "status": "pending",
+    "createdAt": "2026-11-23T19:09:28.322Z",
+    "checkIn": "2026-06-10",
+    "checkOut": "2026-06-14",
+    "adults": 2,
+    "children": 1,
+    "roomsCount": 1,
+    "preferredRoom": "Luxury Bedroom Cottage",
+    "mealPlan": "Room + Breakfast",
+    "guestName": "Aarav Mehta",
+    "email": "aarav.mehta@example.com",
+    "phone": "+91 98765 43210",
+    "specialRequests": "High floor with Dal lake view and airport pickup."
+  },
+  {
     "enquiryId": "AURUM-2026-A62H4",
     "status": "confirmed",
     "createdAt": "2026-11-23T13:41:17.796Z",
