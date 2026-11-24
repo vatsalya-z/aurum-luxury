@@ -30,7 +30,6 @@ export default function TermsConditionsPage() {
           alt="The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Terms & Conditions</h1>

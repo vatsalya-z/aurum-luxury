@@ -79,54 +79,19 @@ export default function RoomCard({ room, onEnquire }: RoomCardProps) {
           {room.shortDescription}
         </p>
 
-        {/* Available Meal Plans Tags */}
-        <div style={{ marginBottom: 20 }}>
-          <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--navy)', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            <Utensils style={{ width: 13, height: 13, color: 'var(--gold)' }} />
-            <span>Supported Meal Plans:</span>
-          </span>
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-            {room.mealPlans.map((mp) => (
-              <span
-                key={mp.id}
-                style={{
-                  fontSize: '0.7rem',
-                  background: 'var(--gold-tint)',
-                  color: 'var(--navy-2)',
-                  padding: '4px 9px',
-                  borderRadius: 3,
-                  border: '1px solid var(--gold-soft)',
-                  fontWeight: 600,
-                }}
-              >
-                {mp.name}
-              </span>
-            ))}
-          </div>
-        </div>
-
         {/* Rate & Dual Action Buttons */}
-        <div style={{ paddingTop: 18, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-          <div>
-            <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--muted)', display: 'block' }}>
-              Tariff
-            </span>
-            <span style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--navy)' }}>
-              {room.rateDisplay}
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', gap: 8 }}>
-            <Link href={`/rooms/${room.slug}`} className="btn btn-outline-navy btn-sm" style={{ padding: '0.6rem 1rem' }}>
-              <Eye style={{ width: 13, height: 13 }} />
+        <div className="room-card-footer" style={{ marginTop: 'auto', paddingTop: 18, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, width: '100%' }}>
+          <div className="room-card-actions" style={{ display: 'flex', gap: 8, width: '100%' }}>
+            <Link href={`/rooms/${room.slug}`} className="btn btn-outline-navy btn-sm" style={{ padding: '0.6rem 1rem', flex: 1, justifyContent: 'center' }}>
+              <Eye style={{ width: 15, height: 13 }} />
               <span>Details</span>
             </Link>
             <button
               onClick={handleEnquire}
               className="btn btn-gold btn-sm"
-              style={{ padding: '0.6rem 1.2rem' }}
+              style={{ padding: '0.6rem 1.2rem', flex: 1, justifyContent: 'center' }}
             >
-              <Calendar style={{ width: 13, height: 13 }} />
+              <Calendar style={{ width: 15, height: 13 }} />
               <span>Enquire</span>
             </button>
           </div>

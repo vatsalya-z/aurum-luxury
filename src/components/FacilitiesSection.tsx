@@ -3,11 +3,15 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  Thermometer, Coffee, Refrigerator, Bath, Sparkles, Wifi,
-  Utensils, Egg, Bell, Soup, Leaf, Clock, MapPin, Briefcase,
-  Shirt, Activity, Car, Plane, Navigation, Compass, Smile,
-  Gamepad2, ShoppingBag, Check, ArrowRight, ChevronDown, ChevronUp
-} from 'lucide-react';
+  FaTemperatureHigh, FaMugHot, FaShower, FaWifi,
+  FaUtensils, FaEgg, FaBellConcierge, FaBowlFood, FaLeaf,
+  FaClock, FaMapLocationDot, FaSuitcaseRolling, FaShirt,
+  FaKitMedical, FaSquareParking, FaPlaneDeparture, FaCarSide,
+  FaVanShuttle, FaChildren, FaGamepad, FaBagShopping,
+  FaCircleCheck, FaArrowRight, FaChevronDown, FaChevronUp
+} from 'react-icons/fa6';
+import { BiFridge } from 'react-icons/bi';
+import { HiSparkles } from 'react-icons/hi2';
 import { FACILITY_CATEGORIES } from '@/data/facilities';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
@@ -29,32 +33,32 @@ export default function FacilitiesSection({
   const [showAll, setShowAll] = useState<boolean>(false);
 
   const getIcon = (iconName: string) => {
-    const props = { style: { width: 22, height: 22 } };
+    const size = 20;
     switch (iconName) {
-      case 'thermometer': return <Thermometer {...props} />;
-      case 'coffee': return <Coffee {...props} />;
-      case 'refrigerator': return <Refrigerator {...props} />;
-      case 'bath': return <Bath {...props} />;
-      case 'sparkles': return <Sparkles {...props} />;
-      case 'wifi': return <Wifi {...props} />;
-      case 'utensils': return <Utensils {...props} />;
-      case 'egg-fried': return <Egg {...props} />;
-      case 'bell': return <Bell {...props} />;
-      case 'soup': return <Soup {...props} />;
-      case 'leaf': return <Leaf {...props} />;
-      case 'clock': return <Clock {...props} />;
-      case 'map-pin': return <MapPin {...props} />;
-      case 'briefcase': return <Briefcase {...props} />;
-      case 'shirt': return <Shirt {...props} />;
-      case 'activity': return <Activity {...props} />;
-      case 'car': return <Car {...props} />;
-      case 'plane': return <Plane {...props} />;
-      case 'navigation': return <Navigation {...props} />;
-      case 'compass': return <Compass {...props} />;
-      case 'smile': return <Smile {...props} />;
-      case 'gamepad-2': return <Gamepad2 {...props} />;
-      case 'shopping-bag': return <ShoppingBag {...props} />;
-      default: return <Check {...props} />;
+      case 'thermometer': return <FaTemperatureHigh size={size} />;
+      case 'coffee': return <FaMugHot size={size} />;
+      case 'refrigerator': return <BiFridge size={22} />;
+      case 'bath': return <FaShower size={size} />;
+      case 'sparkles': return <HiSparkles size={size} />;
+      case 'wifi': return <FaWifi size={size} />;
+      case 'utensils': return <FaUtensils size={size} />;
+      case 'egg-fried': return <FaEgg size={size} />;
+      case 'bell': return <FaBellConcierge size={size} />;
+      case 'soup': return <FaBowlFood size={size} />;
+      case 'leaf': return <FaLeaf size={size} />;
+      case 'clock': return <FaClock size={size} />;
+      case 'map-pin': return <FaMapLocationDot size={size} />;
+      case 'briefcase': return <FaSuitcaseRolling size={size} />;
+      case 'shirt': return <FaShirt size={size} />;
+      case 'activity': return <FaKitMedical size={size} />;
+      case 'car': return <FaSquareParking size={size} />;
+      case 'plane': return <FaPlaneDeparture size={size} />;
+      case 'navigation': return <FaCarSide size={size} />;
+      case 'compass': return <FaVanShuttle size={size} />;
+      case 'smile': return <FaChildren size={size} />;
+      case 'gamepad-2': return <FaGamepad size={size} />;
+      case 'shopping-bag': return <FaBagShopping size={size} />;
+      default: return <FaCircleCheck size={size} />;
     }
   };
 
@@ -156,7 +160,25 @@ export default function FacilitiesSection({
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-                  <div className="ico" style={{ margin: 0 }}>
+                  <div
+                    className="ico"
+                    style={{
+                      margin: 0,
+                      width: 46,
+                      height: 46,
+                      borderRadius: 10,
+                      background: darkVariant
+                        ? 'linear-gradient(135deg, rgba(198, 168, 105, 0.22), rgba(198, 168, 105, 0.08))'
+                        : 'linear-gradient(135deg, rgba(198, 168, 105, 0.18), rgba(198, 168, 105, 0.06))',
+                      border: '1px solid rgba(198, 168, 105, 0.35)',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.04)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--gold)',
+                      flexShrink: 0,
+                    }}
+                  >
                     {getIcon(item.icon)}
                   </div>
                   <span
@@ -229,7 +251,7 @@ export default function FacilitiesSection({
               }}
             >
               <span>View All Amenities ({allItems.length})</span>
-              <ArrowRight style={{ width: 16, height: 16 }} />
+              <FaArrowRight style={{ width: 14, height: 14 }} />
             </Link>
             <span style={{ fontSize: '0.82rem', color: darkVariant ? '#9ba8bc' : 'var(--muted)', letterSpacing: '0.05em' }}>
               Showing {displayedItems.length} of {allItems.length} verified amenities · Click to explore full directory
@@ -261,11 +283,11 @@ export default function FacilitiesSection({
             >
               {showAll ? (
                 <>
-                  Show Less Amenities <ChevronUp style={{ width: 16, height: 16, marginLeft: 6 }} />
+                  Show Less Amenities <FaChevronUp style={{ width: 14, height: 14, marginLeft: 6 }} />
                 </>
               ) : (
                 <>
-                  View All Amenities ({baseItems.length - initialLimit} More) <ChevronDown style={{ width: 16, height: 16, marginLeft: 6 }} />
+                  View All Amenities ({baseItems.length - initialLimit} More) <FaChevronDown style={{ width: 14, height: 14, marginLeft: 6 }} />
                 </>
               )}
             </button>
@@ -301,7 +323,7 @@ export default function FacilitiesSection({
           </div>
           <Link href="/contact" className="btn btn-gold btn-sm">
             <span>Speak with Concierge</span>
-            <ArrowRight style={{ width: 14, height: 14 }} />
+            <FaArrowRight style={{ width: 13, height: 13 }} />
           </Link>
         </div>
       </div>

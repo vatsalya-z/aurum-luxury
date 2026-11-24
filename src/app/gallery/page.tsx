@@ -32,7 +32,6 @@ export default function GalleryPage() {
           alt="The Aurum Luxury Collection Exterior Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Photo Gallery</h1>

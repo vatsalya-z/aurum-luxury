@@ -14,8 +14,8 @@ export default function Footer() {
 
       <div className="container relative" style={{ zIndex: 10 }}>
         <div className="cols">
-          {/* Column 1: Brand Logo & Mission */}
-          <div>
+          {/* Column 1: Brand Logo & Mission (Footer About Us) */}
+          <div className="footer-about">
             <Link href="/" className="brand" style={{ marginBottom: 20 }}>
               <span className="brand-mark">A</span>
               <div className="brand-info">
@@ -24,7 +24,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p style={{ marginTop: 20, color: '#b9c2d3', fontSize: '0.94rem', lineHeight: 1.75, maxWidth: 320 }}>
+            <p style={{ marginTop: 20, color: '#b9c2d3', fontSize: '0.94rem', lineHeight: 1.75, maxWidth: 360 }}>
               An ultra-luxury hillside retreat in Brein Hills, Astanpora, Srinagar, offering
               handcrafted wooden cottages, panoramic Dal View chalets, and authentic Kashmiri hospitality.
             </p>
@@ -55,18 +55,26 @@ export default function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/#about">About Us</Link></li>
+              <li><Link href="/about">About Us</Link></li>
               <li><Link href="/rooms">Rooms & Suites</Link></li>
               <li><Link href="/facilities">Exceptional Comforts</Link></li>
               <li><Link href="/gallery">Capturing Memories</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Discover & Experiences */}
+          <div>
+            <h4>Discover</h4>
+            <ul>
               <li><Link href="/experiences">Srinagar Escapes</Link></li>
               <li><Link href="/#reviews">Guest Reviews</Link></li>
               <li><Link href="/#faq">Frequently Asked Questions</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/contact#booking">Direct Stay Enquiry</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Elite Residences */}
+          {/* Column 4: Elite Residences */}
           <div>
             <h4>Accommodations</h4>
             <ul>
@@ -75,7 +83,7 @@ export default function Footer() {
                   <Link href={`/rooms/${room.slug}`}>{room.name}</Link>
                 </li>
               ))}
-              <li><Link href="/contact#booking">Direct Stay Enquiry</Link></li>
+              <li><Link href="/rooms">All Chalets & Cottages</Link></li>
             </ul>
           </div>
 

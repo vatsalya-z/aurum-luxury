@@ -12,24 +12,24 @@ interface HeroProps {
 
 const HERO_SLIDES = [
   {
-    image: '/images/hero/aurum-luxury-estate-hero.jpg',
-    alt: 'The Aurum Luxury Collection 5-star mountain resort estate in Brein Hills Srinagar',
+    image: '/images/rooms/elegant-chalet-dal-view.jpg',
+    alt: 'Master luxury chalet bedroom suite overlooking Dal Lake at The Aurum Luxury Collection',
     eyebrow: 'WELCOME TO THE AURUM LUXURY COLLECTION',
     headingPrefix: 'Experience the Art of ',
     headingHighlight: 'Luxury in Kashmir',
     subtitle: 'Discover an exceptional stay surrounded by the timeless beauty of Kashmir. Experience refined accommodation, beautiful views and warm hospitality at The Aurum Luxury Collection.',
   },
   {
-    image: '/images/rooms/sunset-chalet-master.png',
-    alt: 'Sunset View Chalet overlooking Dal Lake Srinagar',
+    image: '/images/rooms/sunset-chalet-dal-view.jpg',
+    alt: 'Sunset View Chalet overlooking Dal Lake Srinagar at golden hour',
     eyebrow: 'SIGNATURE DAL VIEW CHALETS',
     headingPrefix: 'Golden Hour Splendour ',
     headingHighlight: 'Above Dal Lake',
     subtitle: 'Perched on the serene slopes of Brein Hills, enjoy panoramic vistas of Dal Lake and the Zabarwan mountain ranges from your private terrace.',
   },
   {
-    image: '/images/rooms/luxury-cottage-bedroom.png',
-    alt: 'Warm handcrafted pine wood interior of Aurum Cottage',
+    image: '/images/gallery/aframe-chalet-master-bedroom.jpg',
+    alt: 'Warm handcrafted timber interior of Aurum A-Frame Master Chalet',
     eyebrow: 'HANDCRAFTED TIMBER SANCTUARY',
     headingPrefix: 'Timeless Warmth & ',
     headingHighlight: 'Bespoke Comfort',

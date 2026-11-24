@@ -10,7 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
     'Explore handcrafted timber cottages and panoramic Dal View chalets in Brein Hills Srinagar with climate control, mountain balconies, and authentic Kashmiri hospitality.',
   path: '/rooms',
   keywords: KEYWORD_MAP.rooms.secondaryKeywords,
-  image: '/images/rooms/sunset-chalet-master.png',
+  image: '/images/rooms/elegant-chalet-dal-view.jpg',
 });
 
 export default function RoomsPage() {

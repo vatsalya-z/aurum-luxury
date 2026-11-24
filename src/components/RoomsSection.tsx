@@ -59,7 +59,7 @@ export default function RoomsSection({
         {/* 3-Column Luxury Rooms Grid */}
         <ScrollReveal className="rooms-grid" staggerChildren={0.15}>
           {ROOMS.map((room) => (
-            <ScrollRevealItem key={room.id}>
+            <ScrollRevealItem key={room.id} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
               <RoomCard
                 room={room}
                 onEnquire={onEnquire}

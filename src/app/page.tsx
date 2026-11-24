@@ -33,35 +33,35 @@ export default function HomePage() {
       {/* 4. Elite Residences / Rooms & Suites */}
       <RoomsSection onEnquire={(roomName) => openBooking(roomName)} />
 
-      {/* 5. Curated Srinagar Escapes (Experiences & Attractions) */}
-      <Experiences showImages={false} />
+      {/* 5. Experience / Property Highlights (Dining & Adventures Visual Split Showcase) */}
+      <BeyondHospitality />
 
       {/* 6. Exceptional Comforts (Verified Facilities Grid) */}
       <FacilitiesSection darkVariant={false} showFilters={false} redirectToFacilities={true} />
 
-      {/* 7. Beyond Hospitality (Dining & Adventures Visual Split Showcase) */}
-      <BeyondHospitality />
-
-      {/* 8. Capturing Memories (Photo Gallery with Lightbox) */}
+      {/* 7. Capturing Memories (Photo Gallery with Lightbox) */}
       <Gallery showFilters={false} redirectToGallery={true} />
 
-      {/* 9. Trusted by Discerning Guests (Google Reviews & Rating) */}
+      {/* 8. Destination / Srinagar Escapes (Experiences & Attractions) */}
+      <Experiences showImages={false} />
+
+      {/* 9. Plan Your Escape (Coordinates, Contact & Interactive Map) */}
+      <LocationSection />
+
+      {/* 10. Trusted by Discerning Guests (TripAdvisor & Google Reviews Slider) */}
       <Reviews />
 
-      {/* 10. Frequently Asked Questions (AEO & Answer Engines) */}
+      {/* 11. Frequently Asked Questions (AEO & Answer Engines) */}
       <FAQSection limit={6} />
 
-      {/* 11. Contextual Internal Linking */}
+      {/* 12. Contextual Internal Linking */}
       <RelatedPages
         currentPath="/"
         title="Explore The Aurum Collection"
         subtitle="Navigate through our handcrafted chalets, dining options, and Srinagar excursions."
       />
 
-      {/* 12. Plan Your Escape (Coordinates, Contact & Map) */}
-      <LocationSection />
-
-      {/* 13. Final Call to Action */}
+      {/* 13. Final Call to Action / Direct Reservation Desk */}
       <CTASection onOpenBooking={() => openBooking()} />
     </>
   );

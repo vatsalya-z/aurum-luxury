@@ -323,62 +323,61 @@ _Please confirm room availability and current best promotional rates._`;
             value={formData.mealPlan}
             onChange={handleChange}
           >
-            <option value="Room Only">Room Only (European Plan)</option>
-            <option value="Room + Breakfast">Room + Breakfast (Continental Plan)</option>
-            <option value="Room + Breakfast + 1 Meal">Room + Breakfast + 1 Meal (MAP Plan)</option>
+            <option value="Room Only">Room Only (EP)</option>
+            <option value="Room + Breakfast">Room + Breakfast (CP)</option>
+            <option value="Room + Breakfast + 1 Meal">Room + Breakfast + 1 Meal (MAP)</option>
           </select>
         </div>
 
-        {/* Number of Rooms */}
-        <div className="form-group">
-          <label htmlFor="roomsCount">Rooms</label>
-          <select
-            id="roomsCount"
-            name="roomsCount"
-            className="form-control"
-            value={formData.roomsCount}
-            onChange={handleChange}
-          >
-            <option value={1}>1 Room / Residence</option>
-            <option value={2}>2 Rooms</option>
-            <option value={3}>3 Rooms</option>
-            <option value={4}>4 Rooms</option>
-            <option value={5}>5+ Rooms (Group)</option>
-          </select>
-        </div>
+        {/* Occupancy Row: Rooms, Adults, Children (Compact 3-column row) */}
+        <div className="form-trio-row" style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+          <div className="form-group">
+            <label htmlFor="roomsCount">Rooms</label>
+            <select
+              id="roomsCount"
+              name="roomsCount"
+              className="form-control"
+              value={formData.roomsCount}
+              onChange={handleChange}
+            >
+              <option value={1}>1 Room</option>
+              <option value={2}>2 Rooms</option>
+              <option value={3}>3 Rooms</option>
+              <option value={4}>4+ Rooms</option>
+            </select>
+          </div>
 
-        {/* Adults & Children */}
-        <div className="form-group">
-          <label htmlFor="adults">Adults (12+ yrs)</label>
-          <select
-            id="adults"
-            name="adults"
-            className="form-control"
-            value={formData.adults}
-            onChange={handleChange}
-          >
-            <option value={1}>1 Adult</option>
-            <option value={2}>2 Adults</option>
-            <option value={3}>3 Adults (Max per room)</option>
-            <option value={4}>4 Adults (Multiple rooms)</option>
-            <option value={6}>6+ Adults (Group)</option>
-          </select>
-        </div>
+          <div className="form-group">
+            <label htmlFor="adults">Adults (12+)</label>
+            <select
+              id="adults"
+              name="adults"
+              className="form-control"
+              value={formData.adults}
+              onChange={handleChange}
+            >
+              <option value={1}>1 Adult</option>
+              <option value={2}>2 Adults</option>
+              <option value={3}>3 Adults</option>
+              <option value={4}>4+ Adults</option>
+            </select>
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="children">Children (Under 12)</label>
-          <select
-            id="children"
-            name="children"
-            className="form-control"
-            value={formData.children}
-            onChange={handleChange}
-          >
-            <option value={0}>No Children</option>
-            <option value={1}>1 Child</option>
-            <option value={2}>2 Children</option>
-            <option value={3}>3+ Children</option>
-          </select>
+          <div className="form-group">
+            <label htmlFor="children">Children</label>
+            <select
+              id="children"
+              name="children"
+              className="form-control"
+              value={formData.children}
+              onChange={handleChange}
+            >
+              <option value={0}>0 Child</option>
+              <option value={1}>1 Child</option>
+              <option value={2}>2 Children</option>
+              <option value={3}>3+ Children</option>
+            </select>
+          </div>
         </div>
 
         {/* Guest Full Name */}
@@ -398,7 +397,7 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Phone Number */}
         <div className="form-group">
-          <label htmlFor="phone">Phone / WhatsApp Number *</label>
+          <label htmlFor="phone">Phone / WhatsApp *</label>
           <input
             type="tel"
             id="phone"
@@ -412,7 +411,7 @@ _Please confirm room availability and current best promotional rates._`;
         </div>
 
         {/* Email */}
-        <div className="form-group full">
+        <div className="form-group">
           <label htmlFor="email">Email Address *</label>
           <input
             type="email"
@@ -427,13 +426,13 @@ _Please confirm room availability and current best promotional rates._`;
         </div>
 
         {/* Special Requests */}
-        <div className="form-group full">
-          <label htmlFor="specialRequests">Special Requests / Travel Notes</label>
-          <textarea
+        <div className="form-group">
+          <label htmlFor="specialRequests">Special Notes / Requests</label>
+          <input
+            type="text"
             id="specialRequests"
             name="specialRequests"
-            rows={3}
-            placeholder="e.g. Airport shuttle required, dietary preferences, anniversary setup..."
+            placeholder="e.g. Airport shuttle, early check-in"
             className="form-control"
             value={formData.specialRequests}
             onChange={handleChange}
@@ -441,26 +440,26 @@ _Please confirm room availability and current best promotional rates._`;
         </div>
       </div>
 
-      <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14 }}>
-        <span style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>
-          * We respect your privacy. No spam. Official direct rates guaranteed.
-        </span>
-
+      <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8, textAlign: 'center' }}>
         <button
           type="submit"
           disabled={isLoading}
-          className="btn btn-gold"
-          style={{ minWidth: 220, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
+          className="btn btn-gold btn-sm"
+          style={{ minWidth: 220, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, height: 44, padding: '0 2rem' }}
         >
           {isLoading ? (
-            <span>Preparing WhatsApp Enquiry...</span>
+            <span>Preparing...</span>
           ) : (
             <>
               <FaWhatsapp style={{ width: 17, height: 17 }} />
-              <span>Submit & Send on WhatsApp</span>
+              <span>Send on WhatsApp</span>
             </>
           )}
         </button>
+
+        <span style={{ fontSize: '0.74rem', color: 'var(--muted)', marginTop: 2 }}>
+          * Best direct rates guaranteed. No spam.
+        </span>
       </div>
     </form>
   );

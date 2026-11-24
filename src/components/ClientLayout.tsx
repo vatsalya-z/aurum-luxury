@@ -5,7 +5,6 @@ import Header from './Header';
 import Footer from './Footer';
 import BookingModal from './BookingModal';
 import FloatingActions from './FloatingActions';
-import FloatingBookingBar from './FloatingBookingBar';
 import MobileStickyBar from './MobileStickyBar';
 import PageTransition from './animations/PageTransition';
 
@@ -40,9 +39,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <main id="main-content">
         <PageTransition>{children}</PageTransition>
       </main>
-
-      {/* Shawinn-style Fixed Bottom Quick Booking Bar (Desktop only) */}
-      <FloatingBookingBar onOpenBooking={openBooking} />
 
       {/* Mobile Sticky Bottom Bar (3 buttons: Call Us, WhatsApp, Book Now) */}
       <MobileStickyBar onOpenBooking={openBooking} />

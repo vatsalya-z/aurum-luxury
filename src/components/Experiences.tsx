@@ -89,18 +89,18 @@ export default function Experiences({ showImages = true }: ExperiencesProps) {
 
               <div className="card-body">
                 {!showImages && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 10 }}>
                     <span
                       style={{
                         display: 'inline-block',
                         background: 'var(--navy)',
                         color: 'var(--gold-soft)',
-                        fontSize: '0.68rem',
+                        fontSize: '0.7rem',
                         fontWeight: 700,
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        padding: '4px 10px',
-                        borderRadius: 3,
+                        padding: '5px 12px',
+                        borderRadius: 8,
                       }}
                     >
                       {item.category}
@@ -110,61 +110,28 @@ export default function Experiences({ showImages = true }: ExperiencesProps) {
                         style={{
                           background: 'rgba(14, 30, 56, 0.05)',
                           color: 'var(--navy)',
-                          padding: '4px 8px',
-                          fontSize: '0.72rem',
-                          borderRadius: 3,
+                          padding: '5px 10px',
+                          fontSize: '0.74rem',
+                          borderRadius: 8,
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: 4,
+                          gap: 6,
                           fontWeight: 600,
+                          border: '1px solid rgba(14, 30, 56, 0.08)',
                         }}
                       >
-                        <MapPin style={{ width: 12, height: 12, color: 'var(--gold)' }} />
+                        <MapPin style={{ width: 13, height: 13, color: 'var(--gold)' }} />
                         {item.distance}
-                      </span>
-                      <span
-                        style={{
-                          background: 'rgba(14, 30, 56, 0.05)',
-                          color: 'var(--muted)',
-                          padding: '4px 8px',
-                          fontSize: '0.72rem',
-                          borderRadius: 3,
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 4,
-                        }}
-                      >
-                        <Clock style={{ width: 12, height: 12, color: 'var(--gold-soft)' }} />
-                        {item.travelTime}
                       </span>
                     </div>
                   </div>
                 )}
-                <h3 style={{ fontSize: '1.3rem', marginBottom: 10 }}>{item.name}</h3>
-                <p style={{ fontSize: '0.92rem', lineHeight: 1.6, marginBottom: 18 }}>
+                <h3 style={{ fontSize: '1.35rem', marginBottom: 12, lineHeight: 1.3 }}>{item.name}</h3>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.65, marginBottom: 20 }}>
                   {item.description}
                 </p>
 
-                <div
-                  className="card-highlight-box"
-                  style={{
-                    padding: '10px 14px',
-                    borderRadius: 4,
-                    background: 'var(--beige)',
-                    marginBottom: 18,
-                    fontSize: '0.8rem',
-                    color: 'var(--navy)',
-                    borderLeft: '3px solid var(--gold)',
-                  }}
-                >
-                  <strong>Must Experience: </strong>
-                  <span>{item.highlight}</span>
-                </div>
-
                 <div className="card-footer">
-                  <span style={{ fontSize: '0.78rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                    From Brein Hills
-                  </span>
                   <Link
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' Srinagar')}`}
                     target="_blank"
@@ -172,7 +139,7 @@ export default function Experiences({ showImages = true }: ExperiencesProps) {
                     className="btn btn-outline-navy btn-sm"
                   >
                     <span>Directions</span>
-                    <ExternalLink style={{ width: 12, height: 12 }} />
+                    <ExternalLink style={{ width: 13, height: 13 }} />
                   </Link>
                 </div>
               </div>

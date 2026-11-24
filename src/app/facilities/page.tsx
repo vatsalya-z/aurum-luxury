@@ -32,7 +32,6 @@ export default function FacilitiesPage() {
           alt="Dining Hall at The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Hotel Facilities & Amenities</h1>

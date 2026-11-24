@@ -37,6 +37,38 @@ export const INTERNAL_LINKS: Record<string, InternalLinkItem[]> = {
       description: 'Direct WhatsApp desk, phone numbers, and Google Maps GPS navigation.',
       category: 'Information',
     },
+    {
+      title: 'Our Story & Heritage',
+      href: '/about',
+      description: 'Discover the brand story and hospitality vision behind The Aurum Luxury Collection.',
+      category: 'Information',
+    },
+  ],
+  '/about': [
+    {
+      title: 'Rooms & Luxury Chalets',
+      href: '/rooms',
+      description: 'Handcrafted timber cottages and panoramic Dal View chalets.',
+      category: 'Residences',
+    },
+    {
+      title: 'Verified Facilities',
+      href: '/facilities',
+      description: 'On-site Kashmiri restaurant, climate control, and personalized concierge.',
+      category: 'Facilities',
+    },
+    {
+      title: 'Srinagar Sights & Escapes',
+      href: '/experiences',
+      description: 'Discover nearby Dal Lake, Mughal Gardens, and valley excursions.',
+      category: 'Experiences',
+    },
+    {
+      title: 'Contact & Reservations',
+      href: '/contact',
+      description: 'Connect with our 24/7 reservations desk for rates and bookings.',
+      category: 'Information',
+    },
   ],
   '/rooms': [
     {

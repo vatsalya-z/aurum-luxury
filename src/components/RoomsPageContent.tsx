@@ -22,11 +22,10 @@ export default function RoomsPageContent() {
       {/* Page Banner */}
       <section className="banner">
         <img
-          src="/images/rooms/sunset-chalet-master.png"
-          alt="Dal View Chalets at The Aurum Srinagar"
+          src="/images/rooms/elegant-chalet-dal-view.jpg"
+          alt="Luxury Chalets and Master Bedroom Suites overlooking Dal Lake at The Aurum Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Rooms & Luxury Chalets</h1>

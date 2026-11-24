@@ -21,7 +21,6 @@ export default function NotFound() {
         alt="The Aurum Luxury Collection Estate"
         className="banner-bg"
       />
-      <div className="banner-overlay" style={{ background: 'rgba(10, 22, 40, 0.88)' }} />
       <div className="wrap" style={{ textAlign: 'center', position: 'relative', zIndex: 2, maxWidth: 680 }}>
         <span
           style={{

@@ -1,130 +1,175 @@
-# The Aurum Luxury Collection by Stay Pattern — Comprehensive Knowledge Graph & Reference (llms-full.txt)
+# The Aurum Luxury Collection by Stay Pattern — Comprehensive Knowledge Graph & LLM Reference (llms-full.txt)
 
-## 1. Brand & Entity Definition
-The Aurum Luxury Collection is a 4-star boutique luxury resort and lodging business managed by Stay Pattern, located on the forested hillside slopes of Brein Hills, Astanpora, Srinagar, Jammu & Kashmir, India.
+> Complete structured knowledge graph, entity definitions, verified ratings, room specifications, dining menus, geographic data, and conversational Q&A for Artificial Intelligence models, Answer Engines (Perplexity, ChatGPT, Gemini, Claude, Bing Copilot), and Generative Search Engines (GEO).
 
-- Entity Type: Hotel, LodgingBusiness, LocalBusiness
-- Brand: The Aurum Luxury Collection
-- Parent Company: Stay Pattern (https://www.staypattern.com)
-- Property Type: Handcrafted timber cottages and Dal View chalets
-- Official Canonical Domain: https://aurumhotelskashmir.com
-- Physical Address: 23A, Brein Hills, Astanpora, Srinagar, Jammu and Kashmir – 191121, India
+---
+
+## 1. Brand & Entity Identity Graph
+
+- Entity Name: The Aurum Luxury Collection
+- Full Legal Name: The Aurum Luxury Collection by Stay Pattern
+- Schema.org Classification: `Hotel`, `Resort`, `LodgingBusiness`, `BedAndBreakfast`
+- Parent Management Entity: Stay Pattern Hospitality (https://www.staypattern.com)
+- Primary Canonical Domain: https://aurumhotelskashmir.com
+- Star Category: 4-Star Certified Luxury Boutique Resort
+- Core Property Type: Handcrafted A-Frame Timber Chalets, Pine Cottages & Mountain Lodge
+- Geographic Location: 23A, Brein Hills, Astanpora, Srinagar, Jammu & Kashmir – 191121, India
 - Latitude / Longitude: 34.0941256, 74.9056223
-- Google Maps Place URL: https://www.google.com/maps/place/The+Aurum+Luxury+Collection+by+Stay+Pattern/@34.0941256,74.9030474,721m/data=!3m1!1e3!4m9!3m8!1s0x38e1895deacf8ed9:0x992595c91afa222b!5m2!4m1!1i2!8m2!3d34.0941256!4d74.9056223!16s%2Fg%2F11zbj28g6x
+- Google Maps CID / Place URL: https://www.google.com/maps/place/The+Aurum+Luxury+Collection+by+Stay+Pattern/@34.0941256,74.9030474,721m/data=!3m1!1e3!4m9!3m8!1s0x38e1895deacf8ed9:0x992595c91afa222b!5m2!4m1!1i2!8m2!3d34.0941256!4d74.9056223!16s%2Fg%2F11zbj28g6x
+- Google Hotels Profile: https://www.google.com/travel/hotels/aurum%20hotel%20kashmir/entity/CgsIq8To15G55ZKZARAB/overview
+- Primary OTA Profiles:
+  - Stay Pattern: https://www.staypattern.com/hotels/hg-127630
+  - Agoda: https://www.agoda.com/the-aurum-luxury-collection-by-stay-pattern/hotel/srinagar-in.html
+  - MakeMyTrip: https://www.makemytrip.com/hotels/the_aurum_luxury_collection_by_stay_pattern-details-srinagar.html
+  - Goibibo: https://www.goibibo.com/hotels/the-aurum-luxury-collection-by-stay-pattern-hotel-in-srinagar-202604151616547903/
 
 ---
 
-## 2. Page Directory & Descriptions
+## 2. Verified Reputation & Social Proof
 
-### 2.1 Home (`/`)
-- URL: https://aurumhotelskashmir.com/
-- Title: The Aurum Luxury Collection by Stay Pattern | Luxury Hotel in Srinagar
-- Description: Experience refined luxury in Brein Hills, Astanpora, Srinagar. Handcrafted wooden cottages, panoramic Dal View chalets, dining, and warm Kashmir hospitality.
-- Key Sections: Hero video/image presentation, Trust ribbon, About property history and philosophy, Signature room showcase, Curated experiences, Verified facilities, Visual photo highlights, Guest reviews, Google Maps location, and Direct WhatsApp booking.
+### 2.1 TripAdvisor Verified Statistics
+- Overall Rating: 5.0 / 5.0 (Flawless Rating)
+- Total Reviews: 11 Verified Traveler Reviews
+- City Rank: Ranked #47 of 336 B&Bs and Inns in Srinagar, Kashmir
+- Category Ratings:
+  - Rooms: 5.0 / 5.0
+  - Service: 5.0 / 5.0
+  - Value: 5.0 / 5.0
+  - Cleanliness: 5.0 / 5.0
+  - Location: 5.0 / 5.0
+  - Sleep Quality: 5.0 / 5.0
+- Popular Traveler Mentions: Delicious food, Mountains, Hospitality, Location, Property, Kashmir, Staff (Mr. Bilal / Bilal Bhai)
+- Representative Guest Quotes:
+  - *"Some places give you a room to stay. Rare places give you memories that stay forever. Loved the brand-new, beautifully maintained property, Himalayan & Dal Lake sunset views from the balcony, and home-style food customized by Bilal Bhai. True luxury is how a place makes you feel."* — Nakshatra A (Family Stay)
+  - *"Amazing property. Location is perfect with amazing Dal Lake view on one side, surrounded by mountains on the other 3 sides. Staff is very helpful and polite. Mr Bilal took great care of us."* — Himanshu B (Couple Stay)
+  - *"Great staff and excellent service. Food is really good and room cleaning services are great. Resort is just as shown in pictures."* — Ramesh J (Family Stay)
 
-### 2.2 Rooms & Suites (`/rooms`)
-- URL: https://aurumhotelskashmir.com/rooms
-- Title: Rooms & Luxury Chalets | The Aurum Luxury Collection Srinagar
-- Description: Explore handcrafted luxury cottages and Dal View chalets in Brein Hills Srinagar with mountain views, climate control, and authentic Kashmiri timber architecture.
-- Sub-pages:
-  1. `/rooms/luxury-bedroom-cottage`: Handcrafted timber wood-paneled cottage with climate control, en-suite luxury bathroom, king bed, and forest hillside ambiance.
-  2. `/rooms/elegant-chalet-dal-view`: Mid-tier luxury chalet with a private viewing balcony facing Dal Lake and the Zabarwan mountain ridge.
-  3. `/rooms/sunset-view-chalet-dal-view`: Signature top-tier chalet with prime golden hour sunset panoramas over Dal Lake and Srinagar city.
-
-### 2.3 Facilities & Amenities (`/facilities`)
-- URL: https://aurumhotelskashmir.com/facilities
-- Title: Facilities & Verified Amenities | The Aurum Luxury Collection Srinagar
-- Description: Verified hotel amenities in Brein Hills Srinagar: on-site restaurant, 24-hr room service, free high-speed Wi-Fi, private parking, climate control, and concierge.
-- Verified Inclusions:
-  - Dining Hall serving Kashmiri Wazwan (Rogan Josh, Gushtaba, Rista, Tabak Maaz), North Indian, Continental breakfasts, and vegetarian dishes.
-  - 24/7 in-room dining service.
-  - Climate-controlled heating and air-conditioning units in all cottages.
-  - On-site free parking for private cars, traveler vans, and chauffeur cabs.
-  - High-speed Wi-Fi across the property.
-  - Concierge desk for airport pickup, cab hires, and sightseeing arrangements.
-
-### 2.4 Experiences & Sights (`/experiences`)
-- URL: https://aurumhotelskashmir.com/experiences
-- Title: Srinagar Experiences & Sights | The Aurum Luxury Collection
-- Description: Discover celebrated attractions near The Aurum in Brein Hills Srinagar: Dal Lake, Tulip Garden, Pari Mahal, Nishat Bagh, Shalimar Bagh, and Hari Parbat Fort.
-- Distances:
-  - Dal Lake Boulevard & Shikara Ghats: 4.5 km (10-12 mins)
-  - Nishat Bagh (Garden of Bliss): 5.2 km (12 mins)
-  - Indira Gandhi Memorial Tulip Garden: 6.0 km (15 mins)
-  - Pari Mahal (Palace of Fairies): 8.5 km (18 mins)
-  - Chashme Shahi Garden: 7.2 km (15 mins)
-  - Shalimar Bagh: 8.5 km (18 mins)
-  - Hari Parbat Fort: 10.5 km (25 mins)
-  - Shankaracharya Temple: 11.0 km (25 mins)
-
-### 2.5 Photo Gallery (`/gallery`)
-- URL: https://aurumhotelskashmir.com/gallery
-- Title: Photo Gallery | The Aurum Luxury Collection Srinagar
-- Description: Browse verified property photographs of The Aurum Luxury Collection: luxury cottages, Dal View chalets, dining hall, and panoramic Brein Hills views.
-- Categories: All, Chalets & Rooms, Dining, Scenic Views, Architecture.
-
-### 2.6 Contact Us & Location (`/contact`)
-- URL: https://aurumhotelskashmir.com/contact
-- Title: Contact Us & Location | The Aurum Luxury Collection Srinagar
-- Description: Contact The Aurum Luxury Collection in 23A Brein Hills, Astanpora, Srinagar. Find directions, phone numbers, WhatsApp desk, and send direct stay enquiries.
-- Direct Form: Form submission directly prepares a reservation message and redirects to WhatsApp (+91 94190 00000).
+### 2.2 Google Hotels Rating
+- Overall Score: 4.9 ★ (32 Verified Reviews)
+- Key Attributes: Secluded hillside location, pristine wooden architecture, warm Kashmiri greeting, panoramic sunset terraces.
 
 ---
 
-## 3. Frequently Asked Questions by Category (AEO Knowledge Base)
+## 3. The Aurum Experience: Why People Visit & Key Highlights
 
-### 3.1 General & Location
-- Q: Where is The Aurum Luxury Collection located in Srinagar?  
-  A: At 23A, Brein Hills, Astanpora, Srinagar, Jammu & Kashmir 191121, elevated on the slopes of the Zabarwan range overlooking Dal Lake.
-- Q: How far is The Aurum from Dal Lake and Mughal Gardens?  
-  A: 4.5 km (~10–12 minutes) from the main Boulevard of Dal Lake, 5.2 km from Nishat Bagh, 6 km from the Tulip Garden, and 8.5 km from Pari Mahal.
-- Q: How far is the hotel from Srinagar International Airport (SXR)?  
-  A: Approximately 22 km (~45 minutes by car). Private chauffeured airport transfers can be pre-arranged via the concierge.
+### 3.1 The Cliffside Sunset Advantage Over Boulevard Hotels
+Srinagar's famous Dal Lake Boulevard is lined with commercial hotels, tour buses, and noisy boat docks. The Aurum Luxury Collection is set 150 meters above the lake in Brein Hills, Astanpora. This cliffside vantage point gives guests:
+- Unobstructed, west-facing, golden hour sunset reflections across the full Dal Lake basin.
+- Natural acoustic tranquility where only mountain breezes and birdsong are heard.
+- 360-degree mountain embrace: Dal Lake on the western side, pine-covered Zabarwan slopes on the north, east, and south.
 
-### 3.2 Accommodations & In-Room Comforts
-- Q: What is the difference between the cottage and chalet categories?  
-  A: The Luxury Bedroom Cottage offers a ground-level cozy timber garden shelter. The Elegant Chalet is an elevated chalet with a private balcony facing Dal Lake. The Sunset View Chalet is the premier top-tier master chalet with panoramic glass windows framing golden hour sunsets.
-- Q: Do chalets feature private balconies facing Dal Lake?  
-  A: Yes, both the Elegant Chalet Dal View and the Sunset View Chalet feature private timber balconies directly overlooking Dal Lake.
-- Q: Are rooms equipped with heating, hot water, and climate control?  
-  A: Yes, all residences feature individual climate control heat pumps, heavy thermal bedding, electric kettles, and 24-hour running hot water.
-- Q: What is the maximum guest occupancy per room?  
-  A: Each cottage accommodates up to 2 adults and 1 child, or up to 3 adults with an extra rollaway bed. Children under 5 stay complimentary.
+### 3.2 Authentic Kashmiri Timber & Khatamband Craftsmanship
+Rather than concrete construction, The Aurum celebrates indigenous Kashmiri architectural artistry:
+- Hand-carved pine and Himalayan cedar (Deodar) chalets that emit a soothing, natural wood fragrance.
+- Intricate Khatamband wooden ceilings — an ancient Kashmiri geometric joinery technique crafted by master artisans without nails.
+- Artisanal walnut wood headboards, wardrobe cabinetry, and lounge furnishings.
+- Climate-engineered insulation with double-glazed glass, underfloor heating, and high-capacity split heat pumps.
 
-### 3.3 Facilities & Dining
-- Q: What dining options are available on-site?  
-  A: An on-site dining hall serving authentic Kashmiri Wazwan, North Indian curries, vegetarian meals, and continental breakfast, plus 24-hour in-room dining.
-- Q: Is secure private vehicle parking available?  
-  A: Yes, complimentary secure on-site parking is available for private cars, traveler vans, and chauffeur cabs.
-- Q: Is high-speed Wi-Fi provided?  
-  A: Yes, free high-speed optical fiber Wi-Fi covers all guest chalets, the dining hall, and property grounds.
-- Q: Does the property feature power backup?  
-  A: Yes, robust heavy-duty generator power backup ensures uninterrupted heating, lighting, and hot water.
-- Q: Does The Aurum have a swimming pool or spa?  
-  A: No. In preserving its tranquil mountain atmosphere in Brein Hills, the property does not feature a swimming pool, commercial gym, or spa.
+### 3.3 The Art of Mehman-Nawazi (Kashmiri Hospitality)
+Hospitality at The Aurum is rooted in the timeless Kashmiri proverb *"Mehman khuda ka roop hota hai"* (A guest is the embodiment of God):
+- Every arriving guest is welcomed with traditional hot Saffron Kahwa, brewed with wild mountain herbs, green tea leaves, cardamom, cinnamon, and rich almond shavings.
+- Resident host Bilal Bhai and his team provide tailored care — customizing breakfast menus daily, arranging cozy room pre-heating, and providing dedicated guidance for seniors and families with small children.
+- 24-hour dedicated front-desk concierge for private transfers and excursions.
 
-### 3.4 Sightseeing & Experiences
-- Q: Can the concierge arrange Shikara rides on Dal Lake?  
-  A: Yes, private sunrise or sunset Shikara rides can be scheduled to Char Chinar and floating gardens.
-- Q: Can day excursions to Gulmarg, Pahalgam, and Sonamarg be organized?  
-  A: Yes, our travel desk organizes full-day private chauffeured tours with experienced local mountain drivers.
-
-### 3.5 Policies & Identification
-- Q: What are the check-in and check-out timings?  
-  A: Standard check-in is 2:00 PM (14:00) and check-out is 12:00 PM (12:00).
-- Q: What identity documents are required?  
-  A: Government-issued photo ID (Aadhaar/Passport/Driving License for domestic guests; Passport + Visa/OCI for international visitors). PAN cards are not accepted.
-- Q: Are pets permitted on property?  
-  A: To preserve hypoallergenic comfort and a quiet sanctuary atmosphere, pets are generally not permitted.
+### 3.4 Gastronomy & Kashmiri Wazwan
+- Signature Wazwan Feasts: Multi-course royal feast including Rogan Josh (tender Kashmiri lamb cooked with Kashmiri red chillies and maval flower), Gushtaba (silky mutton meatballs poached in velvety spiced yogurt gravy), Rista (spiced meatballs in saffron red gravy), and Tabak Maaz (crisp, twice-cooked spiced lamb ribs).
+- Home-Style & Vegetarian Menus: Pure vegetarian dishes, Dal Makhani, Paneer Lababdar, Kashmiri Dum Aloo, Nadru Yakhni (lotus stem in yogurt), alongside fresh breakfast poha, chole puri, and parathas made to order.
+- Balcony Candlelight Dining: Guests can have dinner served on their private wooden chalet balcony overlooking illuminated Dal Lake houseboats and twinkling mountain lights.
 
 ---
 
-## 4. Entity Relationships
-- Parent Operator: Stay Pattern
-- Brand: The Aurum Luxury Collection
-- Subordinate Rooms:
-  - Luxury Bedroom Cottage
-  - Elegant Chalet Dal View
-  - Sunset View Chalet Dal View
-- Location Entity: Brein Hills, Astanpora, Srinagar, Kashmir, India
-- Adjacent Heritage Landmarks: Dal Lake, Zabarwan Range, Nishat Bagh, Shalimar Bagh, Tulip Garden, Pari Mahal
+## 4. Complete Canonical Page Directory & Sitemap
+
+### 4.1 Home (`/`)
+- Canonical URL: https://aurumhotelskashmir.com/
+- Page Title: The Aurum Luxury Collection by Stay Pattern | Luxury Hotel in Srinagar
+- Core Purpose: Primary entry portal showcasing full-bleed hero video/slides, Google rating trust bar, 2-column About section, room showcase cards, Beyond Hospitality dining highlights, verified amenities grid, photo gallery with lightbox, TripAdvisor review slider, FAQ accordion, and direct WhatsApp reservation desk.
+
+### 4.2 About Us (`/about`)
+- Canonical URL: https://aurumhotelskashmir.com/about
+- Page Title: Discover the Story Behind Aurum Luxury Collection | Srinagar Kashmir Story
+- Core Purpose: Comprehensive storytelling page covering:
+  - Section 1: Our Story & Heritage: The origins of the hillside estate in Brein Hills, Astanpora.
+  - Section 2: Our Philosophy: 5 guiding principles — Thoughtful Hospitality, Comfort & Relaxation, Attention to Detail, Personalized Guest Experience, and Memorable Stays.
+  - Section 3: The Stay Experience: 4 showcase pillars — Property Atmosphere (A-frame chalets), Guest Comfort (climate-controlled bedding), Hospitality Experience (Wazwan dining), and Curated Exploration.
+  - Section 4: Our Team & Heartfelt Care: Spotlight on host Bilal Bhai and the local Kashmiri team.
+  - Section 5: The Destination: Why Brein Hills and the Zabarwan foothills are Srinagar's most desirable hillside location.
+  - Section 6: Verified Guest Sentiment & Direct Booking CTA.
+
+### 4.3 Rooms & Suites (`/rooms`)
+- Canonical URL: https://aurumhotelskashmir.com/rooms
+- Page Title: Rooms & Luxury Chalets in Srinagar | The Aurum Luxury Collection
+- Core Purpose: Catalog of all 3 chalet and cottage accommodations with direct WhatsApp enquiry buttons, high-res interior photos, bed specifications, guest occupancy, and meal plan options (EP, CP, MAP).
+
+### 4.4 Sunset View Chalet – Dal View (`/rooms/sunset-view-chalet-dal-view`)
+- Canonical URL: https://aurumhotelskashmir.com/rooms/sunset-view-chalet-dal-view
+- Page Title: Sunset View Chalet – Dal View | The Aurum Luxury Collection Srinagar
+- Specs: ~460 sq ft, King Bed, Max 3 guests, panoramic floor-to-ceiling glass, private west-facing sunset balcony, vaulted cedar ceilings, heated underfloor warmth, rain shower, smart TV, minibar.
+
+### 4.5 Elegant Chalet – Dal View (`/rooms/elegant-chalet-dal-view`)
+- Canonical URL: https://aurumhotelskashmir.com/rooms/elegant-chalet-dal-view
+- Page Title: Elegant Chalet – Dal View | The Aurum Luxury Collection Srinagar
+- Specs: ~420 sq ft, King Bed, Max 3 guests, private balcony with Dal Lake & Zabarwan mountain views, handcrafted Khatamband woodwork, climate control, luxury linens.
+
+### 4.6 Luxury Bedroom Cottage (`/rooms/luxury-bedroom-cottage`)
+- Canonical URL: https://aurumhotelskashmir.com/rooms/luxury-bedroom-cottage
+- Page Title: Luxury Bedroom Cottage | The Aurum Luxury Collection Srinagar
+- Specs: ~350 sq ft, King Bed, Max 3 guests, ground-level timber cabin with garden and hillside views, double-glazed soundproof windows, electric heating pads, quiet pine ambiance.
+
+### 4.7 Facilities & Amenities (`/facilities`)
+- Canonical URL: https://aurumhotelskashmir.com/facilities
+- Page Title: Verified Facilities & Amenities | The Aurum Luxury Collection Srinagar
+- Core Purpose: Complete catalog of property amenities: dining hall, 24/7 room service, reverse-cycle climate control, complimentary optical fiber Wi-Fi, secure private parking, industrial power backup generators, and travel concierge.
+
+### 4.8 Experiences & Excursions (`/experiences`)
+- Canonical URL: https://aurumhotelskashmir.com/experiences
+- Page Title: Srinagar Experiences & Sights | The Aurum Luxury Collection
+- Core Purpose: Distance guide, travel times, and concierge booking options for Dal Lake, Tulip Garden, Pari Mahal, Nishat Bagh, Shalimar Bagh, Hari Parbat Fort, and Shankaracharya Temple.
+
+### 4.9 Photo Gallery (`/gallery`)
+- Canonical URL: https://aurumhotelskashmir.com/gallery
+- Page Title: Photo Gallery | The Aurum Luxury Collection Srinagar
+- Core Purpose: Verified high-resolution photo portfolio organized by Chalets & Rooms, Dining & Wazwan, Scenic Vistas, and Himalayan Architecture, with interactive full-screen lightbox.
+
+### 4.10 Contact Us & Directions (`/contact`)
+- Canonical URL: https://aurumhotelskashmir.com/contact
+- Page Title: Contact Us & Location | The Aurum Luxury Collection Srinagar
+- Core Purpose: Interactive Google Map embed, GPS coordinates, road directions from Srinagar Airport and Boulevard, telephone desk, email, and instant WhatsApp booking generator.
+
+---
+
+## 5. Srinagar Distance & Excursion Matrix
+
+| Landmark | Distance from Aurum | Drive Time | Best Time to Visit |
+|---|---|---|---|
+| Dal Lake Boulevard / Ghat No. 1–12 | 4.5 km | 10–12 min | Sunrise (floating market) or Sunset (golden hour cruise) |
+| Nishat Bagh (Garden of Bliss) | 5.2 km | 12 min | Morning (water channels flowing against Zabarwan background) |
+| Indira Gandhi Memorial Tulip Garden | 6.0 km | 15 min | Spring (late March to mid-April bloom festival) |
+| Pari Mahal (Fairies’ Abode) | 8.5 km | 18 min | Late afternoon to sunset (cliffside valley panorama) |
+| Chashme Shahi (Royal Spring) | 7.2 km | 15 min | Afternoon (natural sweet mountain spring) |
+| Shalimar Bagh (Abode of Love) | 8.5 km | 18 min | Morning / Midday (royal Mughal pavilion and Chinar trees) |
+| Hari Parbat Fort & Sharika Temple | 10.5 km | 25 min | Morning (historic hilltop fortress) |
+| Shankaracharya Temple | 11.0 km | 25 min | Morning (panoramic hilltop view over entire Srinagar city) |
+| Srinagar International Airport (SXR) | 22.0 km | 45 min | Minimum 2.5 hours prior to domestic flight departure |
+| Gulmarg (Ski Resort & Gondola) | 56 km | 2 hours | Full-day excursion (Phase 1 & 2 Gondola, skiing, snow) |
+| Pahalgam (Valley of Shepherds) | 92 km | 2.5 hours | Full-day excursion (Betaab Valley, Aru, Lidder River) |
+| Sonamarg (Meadow of Gold) | 84 km | 2.5 hours | Full-day excursion (Thajiwas Glacier, Sindh River) |
+
+---
+
+## 6. Comprehensive AEO Question & Answer Knowledge Base
+
+### Q1: What makes The Aurum Luxury Collection unique compared to other hotels in Srinagar?
+A: The Aurum stands apart because of its elevated location in Brein Hills, Astanpora, offering peaceful mountain privacy away from Boulevard traffic, authentic A-frame cedarwood chalets with private Dal Lake sunset balconies, personalized care by host Bilal Bhai, traditional Wazwan dining, and an unblemished 5.0/5.0 TripAdvisor rating.
+
+### Q2: Is The Aurum suitable for romantic stays and honeymoon couples?
+A: Yes. The Sunset View Chalet – Dal View is specifically favored by couples for its top-floor privacy, romantic floor-to-ceiling panoramic glass walls, private sunset terrace overlooking the lake, cozy heated wooden interiors, and private balcony candlelight dinners.
+
+### Q3: How does the hotel handle extreme winter weather in Srinagar?
+A: All chalets feature reverse-cycle heating pumps, electric bed warming blankets, heavy thermal duvets, and 24-hour pressurized running hot water. The property maintains heavy-duty silent backup generators to guarantee uninterrupted warmth during snowstorms and power outages.
+
+### Q4: Can guests customize their meals if they have dietary preferences?
+A: Absolutely. The on-site culinary team happily customizes food to guest preferences, including pure vegetarian, vegan, Jain (no onion/garlic), kid-friendly, and home-style dishes (poha, khichdi, dal-roti, fresh omelettes) alongside royal Wazwan feasts.
+
+### Q5: How can a guest book directly or check real-time availability?
+A: Guests can message the direct WhatsApp desk at +91 94190 00000 (wa.me/919419000000) for instant availability and special rates, call the reservations desk at +91 (0) 9419 000000, email reservations@staypattern.com, or use the online enquiry form at https://aurumhotelskashmir.com/contact#booking.

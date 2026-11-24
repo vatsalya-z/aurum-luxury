@@ -37,7 +37,6 @@ export default function ContactPage() {
           alt="The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Contact & Location</h1>

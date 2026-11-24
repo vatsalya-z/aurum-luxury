@@ -255,6 +255,38 @@ export const KEYWORD_MAP: Record<string, PageKeywordTarget> = {
     semanticEntities: ['23A Brein Hills Astanpora', 'Google Maps Coordinates', 'Direct Reservation Desk', 'WhatsApp Concierge'],
     internalLinkTargets: ['/rooms', '/facilities', '/experiences'],
   },
+  about: {
+    path: '/about',
+    pageName: 'About Us',
+    primaryKeyword: 'About The Aurum Luxury Collection Srinagar',
+    secondaryKeywords: [
+      'The Aurum Srinagar story',
+      'luxury boutique hotel Brein Hills',
+      'Stay Pattern Kashmir hospitality',
+      'hillside retreat Dal Lake',
+      'Kashmir luxury chalets history',
+    ],
+    longTailKeywords: [
+      'discover the story behind The Aurum Luxury Collection by Stay Pattern in Srinagar',
+      'handcrafted wooden chalets and hospitality philosophy in Brein Hills Srinagar',
+    ],
+    searchIntent: 'Informational',
+    targetAudience: 'Travelers, couples, and families seeking an authentic luxury mountain sanctuary in Srinagar, Kashmir.',
+    relatedQuestions: [
+      'What is the story behind The Aurum Luxury Collection in Srinagar?',
+      'Where is The Aurum located and who manages the property?',
+      'What makes the hospitality and stay experience at The Aurum unique?',
+    ],
+    semanticEntities: [
+      'The Aurum Luxury Collection',
+      'Stay Pattern',
+      'Brein Hills Astanpora',
+      'Kashmiri Woodwork Architecture',
+      'Dal Lake Panoramas',
+      'Authentic Wazwan Hospitality',
+    ],
+    internalLinkTargets: ['/rooms', '/facilities', '/experiences', '/gallery', '/contact'],
+  },
   privacy: {
     path: '/privacy-policy',
     pageName: 'Privacy Policy',

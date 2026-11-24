@@ -39,7 +39,7 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
               Reserve Stay
             </p>
             <p style={{ fontSize: '0.88rem', fontWeight: 700, margin: 0, whiteSpace: 'nowrap' }}>
-              Brein Hills · Dal View
+              Brein Hills - Dal View
             </p>
           </div>
         </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface RoomGalleryClientProps {
   images: {
@@ -64,7 +63,7 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
             border: '1px solid rgba(255, 255, 255, 0.25)',
           }}
         >
-          <ChevronLeft style={{ width: 20, height: 20 }} />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         </button>
 
         <button
@@ -86,7 +85,7 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
             border: '1px solid rgba(255, 255, 255, 0.25)',
           }}
         >
-          <ChevronRight style={{ width: 20, height: 20 }} />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </button>
 
         {/* Caption Bar */}
@@ -110,6 +109,7 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
 
       {/* Thumbnails Row */}
       <div
+        className="room-gallery-thumbs"
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${images.length}, 1fr)`,

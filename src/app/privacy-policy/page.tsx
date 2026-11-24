@@ -30,7 +30,6 @@ export default function PrivacyPolicyPage() {
           alt="The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="banner-overlay" />
         <div className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Privacy Policy</h1>

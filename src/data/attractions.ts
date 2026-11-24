@@ -19,8 +19,8 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '12 min drive',
     description: 'The iconic jewel of Srinagar. Experience tranquil Shikara rides, vibrant floating vegetable markets, and traditional wooden houseboats framed by snow-dusted mountains.',
     highlight: 'Sunset Shikara cruises & floating flower bazaars',
-    image: '/images/destinations/dal-lake-shikara.jpg',
-    alt: 'Traditional Shikara boats resting peacefully on the glassy waters of Dal Lake Srinagar',
+    image: '/images/destinations/dal-lake-srinagar.jpg',
+    alt: 'Shikara boats and vibrant floating markets on the calm waters of Dal Lake Srinagar',
   },
   {
     id: 'tulip-garden',
@@ -77,15 +77,5 @@ export const ATTRACTIONS: Attraction[] = [
     image: '/images/destinations/botanical-garden-srinagar.jpg',
     alt: 'Tall evergreen pine trees and manicured gardens in Srinagar',
   },
-  {
-    id: 'hari-parbat',
-    name: 'Hari Parbat Fort',
-    category: 'Historic Citadel',
-    distance: '11.0 km',
-    travelTime: '28 min drive',
-    description: 'A historic fortress atop Hari Parbat hill, constructed under Afghan governor Atta Mohammad Khan in the 18th century, with historical ramparts dating back to Emperor Akbar.',
-    highlight: 'Historic mountain fortress with commanding 360-degree city views',
-    image: '/images/gallery/zabarwan-pine-slopes.webp',
-    alt: 'Scenic view of historic Himalayan hills and ridges in Srinagar',
-  },
+  
 ];

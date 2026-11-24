@@ -3,8 +3,12 @@
 import React from 'react';
 import { Award, Star, ShieldCheck, Mountain } from 'lucide-react';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
+import FloatingBookingBar from './FloatingBookingBar';
+import { useBooking } from './ClientLayout';
 
 export default function TrustBar() {
+  const { openBooking } = useBooking();
+
   const credentials = [
     {
       icon: <Award style={{ width: 22, height: 22 }} />,
@@ -30,7 +34,7 @@ export default function TrustBar() {
 
   return (
     <section className="trust-bar" aria-label="Hotel Credentials and Ratings">
-      <div className="container">
+      <div className="container trust-bar-container">
         <ScrollReveal className="trust-grid" staggerChildren={0.1}>
           {credentials.map((c, i) => (
             <ScrollRevealItem key={i} className="trust-item">
@@ -42,7 +46,13 @@ export default function TrustBar() {
             </ScrollRevealItem>
           ))}
         </ScrollReveal>
+
+        {/* Attached Quick Booking Search Bar */}
+        <div className="trust-booking-wrapper">
+          <FloatingBookingBar onOpenBooking={openBooking} />
+        </div>
       </div>
     </section>
   );
 }
+
