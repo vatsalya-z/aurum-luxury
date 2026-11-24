@@ -582,11 +582,7 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
                   <BookingForm initialRoom={room.name} isInline={true} />
                 </div>
 
-                <div className="room-guarantee-box">
-                  <p>
-                    <strong>Best Rate Guarantee:</strong> Direct bookings via our website or concierge desk receive complimentary local travel guidance.
-                  </p>
-                </div>
+                
               </div>
             </aside>
           </div>

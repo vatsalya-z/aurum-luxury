@@ -147,7 +147,7 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div className="footer-legal-links" style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
               <Link href="/privacy-policy" style={{ color: '#8c97ab' }}>Privacy Policy</Link>
               <Link href="/terms-conditions" style={{ color: '#8c97ab' }}>Terms & Conditions</Link>
               <Link href="/sitemap.xml" style={{ color: '#8c97ab' }}>XML Sitemap</Link>
