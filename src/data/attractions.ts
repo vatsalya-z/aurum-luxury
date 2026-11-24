@@ -30,7 +30,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '15 min drive',
     description: 'Asia’s largest tulip garden, nestled in the foothills of the Zabarwan range. Spanning over 30 hectares with millions of blooming tulips in vivid spectral bands during spring.',
     highlight: 'Over 60 varieties of blooming tulips against mountain backdrops',
-    image: '/images/destinations/tulip-garden-srinagar.jpg',
+    image: '/images/experience/tulip-garden-srinagar.jpg',
     alt: 'Expansive field of vibrant red and yellow tulips blooming in Srinagar',
   },
   {
@@ -41,7 +41,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '20 min drive',
     description: 'A seven-terraced Mughal garden and architectural marvel perched high above Dal Lake. Built by Prince Dara Shikoh in the mid-1600s, offering breathtaking panoramic vistas of Srinagar.',
     highlight: 'Panoramic cliffside sunset viewpoint overlooking the entire lake valley',
-    image: '/images/destinations/pari-mahal-srinagar.jpg',
+    image: '/images/experience/pari-mahal-srinagar.jpg',
     alt: 'Terraced stone arches and gardens of Pari Mahal overlooking the Srinagar valley',
   },
   {
@@ -52,7 +52,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '14 min drive',
     description: 'The second largest Mughal garden in Kashmir valley, laid out in 1633 by Asif Khan. Features 12 magnificent stepped terraces, historic chinar trees, and cascading mountain water fountains.',
     highlight: 'Century-old grand chinar trees and cascading fountain channels',
-    image: '/images/destinations/nishat-garden-srinagar.jpg',
+    image: '/images/experience/nishat-garden-srinagar.jpg',
     alt: 'Verdant green lawns and historic water channels of Nishat Garden',
   },
   {
@@ -63,7 +63,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '20 min drive',
     description: 'Built by Mughal Emperor Jahangir for his beloved Empress Nur Jahan in 1619. Renowned for its black marble pavilion, carved water chutes, and serene royal walkways.',
     highlight: 'The Black Marble Pavilion surrounded by natural mountain streams',
-    image: '/images/destinations/shalimar-garden-srinagar.jpg',
+    image: '/images/experience/shalimar-garden-srinagar.jpg',
     alt: 'Lush terraced fountains and historic trees at Shalimar Bagh Srinagar',
   },
   {
@@ -74,7 +74,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '16 min drive',
     description: 'Spread over 80 hectares near the foothills of the Zabarwan Mountains, this tranquil botanical park features rare Himalayan flora, reflective ponds, and quiet shaded walking trails.',
     highlight: 'Peaceful lakeside walking circuits and curated rare Himalayan plants',
-    image: '/images/destinations/botanical-garden-srinagar.jpg',
+    image: '/images/experience/botanical-garden-srinagar.jpg',
     alt: 'Tall evergreen pine trees and manicured gardens in Srinagar',
   },
   

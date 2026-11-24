@@ -195,6 +195,7 @@ export default function FacilitiesSection({
                       {getIcon(item.icon)}
                     </div>
                     <span
+                      className="feature-category-badge"
                       style={{
                         fontSize: '0.68rem',
                         textTransform: 'uppercase',
