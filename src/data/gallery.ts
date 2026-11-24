@@ -107,13 +107,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     src: '/images/gallery/evening-property-illumination.png',
   },
   {
-    id: 'gal-surroundings-1',
-    category: 'Surroundings',
-    title: 'Dal Lake Reflections at Sunset',
-    description: 'The golden hour over Dal Lake, just minutes away from The Aurum.',
-    src: '/images/gallery/dal-lake-sunset-view.webp',
-  },
-  {
     id: 'gal-surroundings-2',
     category: 'Surroundings',
     title: 'Zabarwan Mountain Ridges & Pine Slopes',

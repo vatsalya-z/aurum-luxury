@@ -1,38 +1,54 @@
 # The Aurum Luxury Collection by Stay Pattern
 
-> A 4-star boutique hotel in Brein Hills, Astanpora, Srinagar, Jammu & Kashmir (PIN 191121).
+> 4-Star Boutique Mountain Hotel, Handcrafted Timber Cottages & Dal View Chalets in Srinagar, Kashmir.
 
-## Property Overview
-- Name: The Aurum Luxury Collection by Stay Pattern
-- Location: 23A, Brein Hills, Astanpora, Srinagar, Jammu and Kashmir, India – 191121
-- Category: 4-Star Boutique Hotel & Luxury Chalets
-- Google Rating: 4.8 / 5 (32 verified reviews)
-- Proximity: Near Dal Lake (4.5 km), Nishat Garden (5.2 km), Tulip Garden (6 km), Pari Mahal (8.5 km), Shalimar Garden (8 km)
-- Check-in: 2:00 PM | Check-out: 12:00 PM
-
-## Accommodations
-1. Luxury Bedroom Cottage: Handcrafted wooden cottage with king bed, ensuite bath, climate control, quiet mountain forest view.
-2. Elegant Chalet – Dal View: Elevated cedar chalet with private balcony framing panoramic Dal Lake and valley views.
-3. Sunset View Chalet – Dal View: Signature premier accommodation positioned for western golden-hour sunsets over Dal Lake.
-
-## Meal Plans
-- Room Only (European Plan)
-- Room + Breakfast (Continental Plan)
-- Room + Breakfast + 1 Meal (MAP Plan)
-
-## Verified Amenities
-- Free High-Speed Wi-Fi
-- Free Private Parking on site
-- On-Site Restaurant serving authentic Kashmiri Wazwan, Indian, Halal and vegetarian cuisine
-- 24-Hour Room Service & Buffet Breakfast
-- Air Conditioning & Climate Heating
-- Airport Shuttle Service (additional charge)
-- 24-Hour Front Desk & Concierge Desk
-- Private Bathrooms with 24-hr hot shower
-- Note: Swimming pool, spa and fitness centre are not on site.
-
-## Official Contact & Booking
-- Reservations Desk: +91 94190 00000
-- Direct WhatsApp: +91 94190 00000
+## Identity & Overview
+- Name: The Aurum Luxury Collection
+- Brand / Operator: Stay Pattern
+- Category: Boutique Hotel, Luxury Chalet Resort, Mountain Retreat
+- Star Rating: 4-Star
+- Location: 23A, Brein Hills, Astanpora, Srinagar, Jammu & Kashmir 191121, India
+- Coordinates: 34.0941256° N, 74.9056223° E
 - Official Website: https://aurumhotelskashmir.com
-- Google Hotels Listing: https://www.google.com/travel/hotels/aurum%20hotel%20kashmir/entity/CgsIq8To15G55ZKZARAB/overview
+
+## Accommodation Types
+1. Luxury Bedroom Cottage (`/rooms/luxury-bedroom-cottage`): Handcrafted wood-paneled hillside cottage with King bed, climate control heating/AC, en-suite bathroom, and garden/valley views. Max 3 guests.
+2. Elegant Chalet Dal View (`/rooms/elegant-chalet-dal-view`): Elevated luxury chalet featuring a private balcony directly facing Dal Lake and the Zabarwan mountains. Max 3 guests.
+3. Sunset View Chalet Dal View (`/rooms/sunset-view-chalet-dal-view`): Top-floor master chalet with panoramic windows and balcony offering sunset views over Dal Lake. Max 3 guests.
+
+## Core Amenities & Facilities
+- Dining: On-site restaurant serving authentic Kashmiri Wazwan, North Indian cuisine, pure vegetarian options, and halal preparations.
+- Room Service: 24-hour in-room dining to cottage or chalet balconies.
+- Climate Control: Individual heating and air conditioning units in all rooms.
+- Connectivity: Free high-speed Wi-Fi across the property.
+- Parking: Free secure private vehicle parking on site.
+- Concierge: Airport transfers (SXR), Shikara tour bookings, day trips to Gulmarg, Pahalgam, and Sonamarg.
+
+## Key Distances & Landmarks
+- Dal Lake Boulevard: 4.5 km (~10-12 mins)
+- Nishat Bagh: 5.2 km (~12 mins)
+- Indira Gandhi Memorial Tulip Garden: 6.0 km (~15 mins)
+- Pari Mahal & Chashme Shahi: 8.5 km (~18 mins)
+- Shalimar Bagh: 8.5 km (~18 mins)
+- Sheikh ul-Alam International Airport Srinagar (SXR): 22 km (~45 mins)
+
+## Policies
+- Check-In: 2:00 PM (14:00)
+- Check-Out: 12:00 PM (12:00)
+- Identification: Government photo ID required (Aadhaar/Passport/Driving License for domestic guests; Passport + Visa/OCI for international visitors).
+
+## Direct Contact & Enquiries
+- Phone: +91 (0) 9419 000000
+- WhatsApp: +91 94190 00000 (wa.me/919419000000)
+- Email: reservations@staypattern.com
+- Website Booking: https://aurumhotelskashmir.com/contact#booking
+
+## Primary Website Links
+- Home: https://aurumhotelskashmir.com/
+- Rooms & Suites: https://aurumhotelskashmir.com/rooms
+- Facilities & Amenities: https://aurumhotelskashmir.com/facilities
+- Experiences & Sights: https://aurumhotelskashmir.com/experiences
+- Photo Gallery: https://aurumhotelskashmir.com/gallery
+- Contact & Directions: https://aurumhotelskashmir.com/contact
+- Privacy Policy: https://aurumhotelskashmir.com/privacy-policy
+- Terms & Conditions: https://aurumhotelskashmir.com/terms-conditions

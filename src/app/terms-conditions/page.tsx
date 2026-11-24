@@ -2,13 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { HOTEL_INFO } from '@/data/hotelInfo';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import FAQSection from '@/components/FAQSection';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Terms & Conditions | The Aurum Luxury Collection Srinagar',
-  description: 'Reservation terms, check-in policies, and guest guidelines for The Aurum Luxury Collection by Stay Pattern.',
-};
+  description:
+    'Official reservation terms, check-in policies, and guest guidelines for The Aurum Luxury Collection by Stay Pattern in Brein Hills, Srinagar.',
+  path: '/terms-conditions',
+  keywords: ['The Aurum reservation terms', 'check in policy Srinagar hotel', 'guest guidelines Kashmir hotel'],
+  image: '/images/hero/aurum-luxury-estate-hero.jpg',
+});
 
 export default function TermsConditionsPage() {
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://aurumhotelskashmir.com' },
+    { name: 'Terms & Conditions', url: 'https://aurumhotelskashmir.com/terms-conditions' },
+  ];
+
   return (
     <>
       <section className="banner">
@@ -19,11 +32,7 @@ export default function TermsConditionsPage() {
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <span>Terms & Conditions</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>Terms & Conditions</h1>
           <p>Reservation guidelines, guest policies, and accommodation terms.</p>
         </div>
@@ -48,20 +57,27 @@ export default function TermsConditionsPage() {
 
           <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>3. Occupancy & Children Policy</h3>
           <p style={{ marginBottom: 20 }}>
-            The standard maximum occupancy per room or chalet is 3 guests. Children under 5 years stay complimentary when sharing existing bedding with parents. Extra rollaway beds or bedding for additional occupants are subject to applicable extra-person tariffs.
+            Standard cottage occupancy is 2 adults. Extra adult or child accommodations are subject to room category capacity and extra bedding charges. Children under 5 years stay complimentary when sharing existing bedding.
           </p>
 
-          <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>4. Meal Plans</h3>
-          <p style={{ marginBottom: 20 }}>
-            Meal plans booked (EP - Room Only, CP - Room + Breakfast, MAP - Room + Breakfast + 1 Meal) are applicable exclusively in our on-site restaurant or through room service in designated service hours.
-          </p>
-
-          <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>5. Property Regulations</h3>
+          <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>4. Direct Booking & Tariff Policies</h3>
           <p style={{ marginBottom: 24 }}>
-            In keeping with our peaceful mountain environment in Brein Hills, pets are not permitted on the premises. Loud music or outdoor noise after 10:00 PM is restricted to maintain a quiet atmosphere for all guests.
+            All rates confirmed directly via our reservation desk or WhatsApp desk represent our official promotional tariffs. Tariffs are quoted inclusive of applicable goods and services taxes (GST) unless explicitly noted otherwise.
           </p>
         </div>
       </section>
+
+      <FAQSection
+        page="policies"
+        title="Reservation Guidelines & Lodging Terms FAQ"
+        subtitle="Important information regarding check-in timings, identification, and booking terms."
+      />
+
+      <RelatedPages
+        currentPath="/contact"
+        title="Continue Exploring"
+        subtitle="Review our privacy policy, explore rooms, or contact reservations directly."
+      />
     </>
   );
 }

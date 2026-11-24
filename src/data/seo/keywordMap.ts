@@ -1,0 +1,282 @@
+export interface PageKeywordTarget {
+  path: string;
+  pageName: string;
+  primaryKeyword: string;
+  secondaryKeywords: string[];
+  longTailKeywords: string[];
+  searchIntent: 'Informational' | 'Navigational' | 'Commercial' | 'Transactional' | 'Local';
+  targetAudience: string;
+  relatedQuestions: string[];
+  semanticEntities: string[];
+  internalLinkTargets: string[];
+}
+
+export const KEYWORD_MAP: Record<string, PageKeywordTarget> = {
+  home: {
+    path: '/',
+    pageName: 'Home',
+    primaryKeyword: 'luxury hotel in Srinagar',
+    secondaryKeywords: [
+      'hotel in Brein Hills Srinagar',
+      'luxury chalets in Kashmir',
+      'Dal Lake view luxury hotel',
+      'boutique hotel in Srinagar',
+      'The Aurum Luxury Collection',
+      'best luxury stay in Srinagar',
+    ],
+    longTailKeywords: [
+      'handcrafted wooden cottages with Dal Lake view Srinagar',
+      'quiet luxury hotel near Mughal Gardens Srinagar',
+      'best 4 star boutique hotel in Brein Hills Srinagar',
+      'peaceful mountain view resort in Srinagar Kashmir',
+    ],
+    searchIntent: 'Commercial',
+    targetAudience: 'Discerning couples, honeymooners, and families looking for a peaceful luxury stay overlooking Dal Lake in Srinagar.',
+    relatedQuestions: [
+      'What is the best luxury hotel overlooking Dal Lake in Srinagar?',
+      'Where can I find peaceful chalets in Brein Hills Srinagar?',
+      'How far is The Aurum Luxury Collection from Srinagar Airport and Dal Lake?',
+      'Does The Aurum Srinagar offer dining and climate-controlled cottages?',
+    ],
+    semanticEntities: [
+      'The Aurum Luxury Collection',
+      'Stay Pattern',
+      'Dal Lake',
+      'Brein Hills',
+      'Astanpora',
+      'Srinagar',
+      'Jammu and Kashmir',
+      'Kashmiri Wazwan',
+      'Mughal Gardens',
+      'Chalet Architecture',
+    ],
+    internalLinkTargets: ['/rooms', '/facilities', '/experiences', '/gallery', '/contact'],
+  },
+  rooms: {
+    path: '/rooms',
+    pageName: 'Rooms & Luxury Chalets',
+    primaryKeyword: 'luxury chalets Srinagar',
+    secondaryKeywords: [
+      'Dal View Chalet Srinagar',
+      'luxury cottages in Srinagar',
+      'cottage stay in Kashmir',
+      'wooden chalets Dal Lake view',
+      'hotel rooms in Brein Hills Srinagar',
+    ],
+    longTailKeywords: [
+      'handcrafted timber chalets with panoramic Dal Lake balcony',
+      'luxury bedroom cottage with climate control Srinagar',
+      'sunset view chalet with private balcony in Srinagar',
+    ],
+    searchIntent: 'Transactional',
+    targetAudience: 'Travelers comparing luxury cottage and chalet accommodations in Srinagar with scenic mountain and lake vistas.',
+    relatedQuestions: [
+      'What room types are available at The Aurum Srinagar?',
+      'Are cottages at The Aurum heated for winter travel?',
+      'Do the chalets offer direct views of Dal Lake?',
+      'What is the maximum guest occupancy per cottage?',
+    ],
+    semanticEntities: [
+      'Luxury Bedroom Cottage',
+      'Elegant Chalet Dal View',
+      'Sunset View Chalet Dal View',
+      'Climate Control',
+      'King Size Bed',
+      'Dal Lake Balcony',
+    ],
+    internalLinkTargets: ['/rooms/luxury-bedroom-cottage', '/rooms/elegant-chalet-dal-view', '/rooms/sunset-view-chalet-dal-view', '/facilities', '/contact'],
+  },
+  'room-luxury-cottage': {
+    path: '/rooms/luxury-bedroom-cottage',
+    pageName: 'Luxury Bedroom Cottage',
+    primaryKeyword: 'luxury bedroom cottage Srinagar',
+    secondaryKeywords: [
+      'wooden cottage stay Srinagar',
+      'intimate cottage Brein Hills',
+      'garden view cottage Srinagar',
+      'heated luxury cottage Kashmir',
+    ],
+    longTailKeywords: [
+      'handcrafted wood paneled cottage in Brein Hills Srinagar',
+      'cozy luxury cottage for couples in Srinagar Kashmir',
+    ],
+    searchIntent: 'Transactional',
+    targetAudience: 'Couples and solo travelers seeking an authentic timber-crafted cottage shelter amidst peaceful Brein Hills.',
+    relatedQuestions: [
+      'What amenities are included in the Luxury Bedroom Cottage?',
+      'Does the luxury cottage have high-speed Wi-Fi and heating?',
+      'Can an extra bed be accommodated in the luxury cottage?',
+    ],
+    semanticEntities: ['Handcrafted Deodar Pine Woodwork', 'En-suite Luxury Bath', 'Brein Hills Valley View'],
+    internalLinkTargets: ['/rooms', '/rooms/elegant-chalet-dal-view', '/facilities', '/contact'],
+  },
+  'room-elegant-chalet': {
+    path: '/rooms/elegant-chalet-dal-view',
+    pageName: 'Elegant Chalet Dal View',
+    primaryKeyword: 'Dal view chalet Srinagar',
+    secondaryKeywords: [
+      'Dal Lake view room Srinagar',
+      'luxury chalet Dal Lake balcony',
+      'scenic mountain chalet Srinagar',
+      'honeymoon chalet Dal Lake view',
+    ],
+    longTailKeywords: [
+      'premium chalet with private balcony facing Dal Lake and Zabarwan mountains',
+      'luxury chalet accommodation near Nishat Bagh Srinagar',
+    ],
+    searchIntent: 'Transactional',
+    targetAudience: 'Couples, honeymooners, and discerning travelers desiring elevated views of Dal Lake from their private balcony.',
+    relatedQuestions: [
+      'Does the Elegant Chalet feature a private balcony facing Dal Lake?',
+      'What meal plans are available with the Dal View Chalet?',
+    ],
+    semanticEntities: ['Private Dal Lake Balcony', 'Zabarwan Mountain Range', 'Curated In-Room Dining'],
+    internalLinkTargets: ['/rooms', '/rooms/sunset-view-chalet-dal-view', '/facilities', '/contact'],
+  },
+  'room-sunset-chalet': {
+    path: '/rooms/sunset-view-chalet-dal-view',
+    pageName: 'Sunset View Chalet Dal View',
+    primaryKeyword: 'sunset view chalet Dal Lake',
+    secondaryKeywords: [
+      'golden hour view chalet Srinagar',
+      'panoramic chalet Brein Hills',
+      'luxury suite Dal Lake view',
+      'signature master chalet Srinagar',
+    ],
+    longTailKeywords: [
+      'top floor sunset view chalet overlooking Dal Lake and Srinagar skyline',
+      'luxury master chalet with panoramic glass windows in Srinagar',
+    ],
+    searchIntent: 'Transactional',
+    targetAudience: 'Guests who appreciate breathtaking golden hour sunsets over Dal Lake with unmatched vantage points.',
+    relatedQuestions: [
+      'Why is the Sunset View Chalet the premier accommodation at The Aurum?',
+      'Can we view sunset over Dal Lake directly from the bedroom?',
+    ],
+    semanticEntities: ['Golden Hour Dal Lake Panoramas', 'Signature Master Bedroom', 'Premium In-Room Comforts'],
+    internalLinkTargets: ['/rooms', '/rooms/elegant-chalet-dal-view', '/facilities', '/contact'],
+  },
+  facilities: {
+    path: '/facilities',
+    pageName: 'Hotel Facilities & Amenities',
+    primaryKeyword: 'hotel amenities in Srinagar',
+    secondaryKeywords: [
+      'hotel with restaurant in Srinagar',
+      'Wazwan dining hotel Srinagar',
+      'free parking luxury hotel Srinagar',
+      'climate control hotel Kashmir',
+      'concierge services Srinagar',
+    ],
+    longTailKeywords: [
+      'verified hotel facilities Brein Hills Srinagar with on-site restaurant and parking',
+      'luxury hotel with 24 hour room service and heated rooms Srinagar',
+    ],
+    searchIntent: 'Commercial',
+    targetAudience: 'Travelers verifying hotel conveniences, dining options, parking, heating, and concierge services.',
+    relatedQuestions: [
+      'Does The Aurum Luxury Collection have an on-site restaurant?',
+      'Is private parking available for guest vehicles?',
+      'Are Kashmiri Wazwan meals prepared on request?',
+      'Is high-speed Wi-Fi provided throughout the property?',
+    ],
+    semanticEntities: ['On-Site Dining Hall', 'Kashmiri Wazwan', 'Private Vehicle Parking', '24-Hour Room Service', 'Individual Climate Control'],
+    internalLinkTargets: ['/rooms', '/experiences', '/gallery', '/contact'],
+  },
+  experiences: {
+    path: '/experiences',
+    pageName: 'Experiences & Sights',
+    primaryKeyword: 'places to visit near Brein Hills Srinagar',
+    secondaryKeywords: [
+      'Mughal Gardens Srinagar attractions',
+      'Dal Lake Shikara ride location',
+      'Tulip Garden Srinagar distance',
+      'Pari Mahal Srinagar sightseeing',
+      'things to do in Srinagar Kashmir',
+    ],
+    longTailKeywords: [
+      'curated sightseeing tours and experiences near Brein Hills Srinagar',
+      'distance from The Aurum to Dal Lake Nishat Bagh and Shalimar Bagh',
+    ],
+    searchIntent: 'Informational',
+    targetAudience: 'Guests planning itineraries, excursions, Shikara rides, and visits to Srinagar heritage gardens.',
+    relatedQuestions: [
+      'How far is The Aurum from Nishat Bagh and Shalimar Bagh?',
+      'Can the hotel arrange Shikara rides and airport transfers?',
+      'What are the best seasonal attractions in Srinagar near Brein Hills?',
+    ],
+    semanticEntities: ['Dal Lake', 'Nishat Bagh', 'Shalimar Bagh', 'Indira Gandhi Memorial Tulip Garden', 'Pari Mahal', 'Hari Parbat Fort'],
+    internalLinkTargets: ['/rooms', '/facilities', '/gallery', '/contact'],
+  },
+  gallery: {
+    path: '/gallery',
+    pageName: 'Photo Gallery',
+    primaryKeyword: 'The Aurum Luxury Collection photos',
+    secondaryKeywords: [
+      'Srinagar luxury hotel photos',
+      'Dal View chalets images',
+      'Brein Hills Srinagar property gallery',
+      'wooden cottage pictures Srinagar',
+    ],
+    longTailKeywords: [
+      'authentic property photographs of The Aurum Luxury Collection in Brein Hills Srinagar',
+      'real interior and exterior pictures of Dal View Chalets Srinagar',
+    ],
+    searchIntent: 'Navigational',
+    targetAudience: 'Guests wishing to view authentic, unedited photographs of rooms, grounds, dining, and scenic views.',
+    relatedQuestions: [
+      'Are photographs on The Aurum website authentic and up-to-date?',
+      'Can I see pictures of the Dal View Chalet and bathroom facilities?',
+    ],
+    semanticEntities: ['Authentic Property Photography', 'Estate Architecture', 'Dal Lake Vista Photos'],
+    internalLinkTargets: ['/rooms', '/facilities', '/experiences', '/contact'],
+  },
+  contact: {
+    path: '/contact',
+    pageName: 'Contact Us & Location',
+    primaryKeyword: 'The Aurum Luxury Collection contact number',
+    secondaryKeywords: [
+      'The Aurum Srinagar address',
+      'hotel in Astanpora Brein Hills phone',
+      'The Aurum Google Maps location',
+      'Srinagar luxury hotel booking desk',
+      'The Aurum WhatsApp desk',
+    ],
+    longTailKeywords: [
+      'official reservation phone number and address for The Aurum Luxury Collection Srinagar',
+      'how to reach 23A Brein Hills Astanpora Srinagar from airport',
+    ],
+    searchIntent: 'Local',
+    targetAudience: 'Guests ready to enquire, check live seasonal availability, or get GPS driving directions to the property.',
+    relatedQuestions: [
+      'What is the exact physical address of The Aurum in Srinagar?',
+      'How do I contact the reservation desk via phone or WhatsApp?',
+      'Can I request airport pickup arrangements when contacting the hotel?',
+    ],
+    semanticEntities: ['23A Brein Hills Astanpora', 'Google Maps Coordinates', 'Direct Reservation Desk', 'WhatsApp Concierge'],
+    internalLinkTargets: ['/rooms', '/facilities', '/experiences'],
+  },
+  privacy: {
+    path: '/privacy-policy',
+    pageName: 'Privacy Policy',
+    primaryKeyword: 'The Aurum privacy policy',
+    secondaryKeywords: ['guest data protection Kashmir hotel', 'reservation privacy policy'],
+    longTailKeywords: ['how guest inquiry and booking information is protected at The Aurum Luxury Collection'],
+    searchIntent: 'Informational',
+    targetAudience: 'Visitors seeking information about privacy safeguards and customer data practices.',
+    relatedQuestions: ['How does The Aurum Luxury Collection handle guest contact information?'],
+    semanticEntities: ['Guest Data Protection', 'No-Spam Commitment'],
+    internalLinkTargets: ['/terms-conditions', '/contact'],
+  },
+  terms: {
+    path: '/terms-conditions',
+    pageName: 'Terms & Conditions',
+    primaryKeyword: 'The Aurum reservation terms',
+    secondaryKeywords: ['check in policy Srinagar hotel', 'guest guidelines Kashmir hotel'],
+    longTailKeywords: ['official check in check out and guest identification terms at The Aurum Srinagar'],
+    searchIntent: 'Informational',
+    targetAudience: 'Confirmed guests and prospective travelers reviewing lodging terms, identity requirements, and timings.',
+    relatedQuestions: ['What are the check-in and check-out policies at The Aurum Srinagar?'],
+    semanticEntities: ['Check-in 14:00', 'Check-out 12:00', 'Government ID Requirement'],
+    internalLinkTargets: ['/privacy-policy', '/contact'],
+  },
+};

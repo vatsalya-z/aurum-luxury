@@ -80,19 +80,18 @@ The Aurum Luxury Collection, Srinagar
 👤 Guest Details:
 • Name: ${data.guestName}
 • Phone: ${data.phone}
-• Email: ${data.email}
+• Email:${data.email}
 
 🏨 Stay Reservation:
-• Check-In:${data.checkIn} (${formatDatePretty(data.checkIn)})
+• Check-In: ${data.checkIn} (${formatDatePretty(data.checkIn)})
 • Check-Out: ${data.checkOut} (${formatDatePretty(data.checkOut)})
 • Total Stay: ${nights} Night${nights > 1 ? 's' : ''}
 • Room / Suite: ${data.preferredRoom || 'Luxury Bedroom Cottage'}
 • Rooms Count: ${data.roomsCount} Room${Number(data.roomsCount) > 1 ? 's' : ''}
-• Guests:${data.adults} Adult${Number(data.adults) > 1 ? 's' : ''}${Number(data.children) > 0 ? `, ${data.children} Child${Number(data.children) > 1 ? 'ren' : 's'}` : ''}
-• Meal Plan:${data.mealPlan}
+• Guests: ${data.adults} Adult${Number(data.adults) > 1 ? 's' : ''}${Number(data.children) > 0 ? `, ${data.children} Child${Number(data.children) > 1 ? 'ren' : ''}` : ''}
+• Meal Plan: ${data.mealPlan}
 
 📝 Special Requests / Notes:
-
 ${data.specialRequests && data.specialRequests.trim() ? data.specialRequests.trim() : 'None'}
 ━━━━━━━━━━━━━━━━━━━━━━━
 _Please confirm room availability and current best promotional rates._`;
@@ -131,47 +130,25 @@ _Please confirm room availability and current best promotional rates._`;
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/enquire', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || 'Failed to submit enquiry.');
-      }
-
-      const finalWaUrl = data.whatsappUrl || buildWhatsAppUrl(formData, data.enquiryId);
+      const randomCode = Math.random().toString(36).substring(2, 7).toUpperCase();
+      const enquiryId = `AURUM-${new Date().getFullYear()}-${randomCode}`;
+      const whatsappUrl = buildWhatsAppUrl(formData, enquiryId);
 
       setSubmittedData({
-        enquiryId: data.enquiryId,
-        whatsappUrl: finalWaUrl,
+        enquiryId,
+        whatsappUrl,
       });
 
       if (onSuccess) {
-        onSuccess(data.enquiryId, finalWaUrl);
+        onSuccess(enquiryId, whatsappUrl);
       }
 
-      // Automatically open WhatsApp so all enquiry data reflects immediately
-      if (typeof window !== 'undefined' && finalWaUrl) {
-        window.open(finalWaUrl, '_blank');
+      // Directly redirect to WhatsApp with all filled details
+      if (typeof window !== 'undefined' && whatsappUrl) {
+        window.location.href = whatsappUrl;
       }
     } catch (err: any) {
-      // Even if network blips, preserve complete data and allow WhatsApp dispatch
-      const randomCode = Math.random().toString(36).substring(2, 7).toUpperCase();
-      const fallbackId = `AURUM-${new Date().getFullYear()}-${randomCode}`;
-      const fallbackWaUrl = buildWhatsAppUrl(formData, fallbackId);
-
-      setSubmittedData({
-        enquiryId: fallbackId,
-        whatsappUrl: fallbackWaUrl,
-      });
-
-      if (typeof window !== 'undefined' && fallbackWaUrl) {
-        window.open(fallbackWaUrl, '_blank');
-      }
+      setErrorMsg('An unexpected error occurred. Please try contacting us directly.');
     } finally {
       setIsLoading(false);
     }
@@ -180,14 +157,14 @@ _Please confirm room availability and current best promotional rates._`;
   if (submittedData) {
     return (
       <div className="success-card">
-        <div className="success-icon">
-          <CheckCircle style={{ width: 36, height: 36 }} />
+        <div className="success-icon" style={{ background: '#25D366', color: '#fff' }}>
+          <FaWhatsapp style={{ width: 32, height: 32 }} />
         </div>
         <h3 style={{ fontSize: '1.6rem', color: 'var(--navy)', marginBottom: 8 }}>
-          Stay Query Prepared
+          Redirecting to WhatsApp...
         </h3>
         <p style={{ color: 'var(--muted)', fontSize: '0.98rem', maxWidth: 520, margin: '0 auto 12px' }}>
-          Thank you, <strong>{formData.guestName}</strong>. Your reservation enquiry has been compiled with all your stay details.
+          Thank you, <strong>{formData.guestName}</strong>. Your reservation enquiry has been compiled and you are being redirected to WhatsApp now.
         </p>
 
         <div className="success-id">
@@ -210,7 +187,7 @@ _Please confirm room availability and current best promotional rates._`;
           }}
         >
           <div style={{ fontWeight: 700, marginBottom: 8, color: 'var(--gold-dark)', borderBottom: '1px solid rgba(198, 168, 105, 0.2)', paddingBottom: 4 }}>
-            Enquiry Details Reflected on WhatsApp:
+            Details Transferred to WhatsApp:
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '6px 12px' }}>
             <div><strong>Guest:</strong> {formData.guestName}</div>
@@ -230,14 +207,12 @@ _Please confirm room availability and current best promotional rates._`;
         </div>
 
         <p style={{ fontSize: '0.88rem', color: 'var(--muted)', marginBottom: 20 }}>
-          WhatsApp will open with your complete booking query. If it did not open automatically, tap the button below:
+          If WhatsApp did not open automatically, tap the button below:
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
           <a
             href={submittedData.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="btn btn-wa"
             style={{
               padding: '14px 28px',
@@ -253,14 +228,14 @@ _Please confirm room availability and current best promotional rates._`;
             }}
           >
             <FaWhatsapp style={{ width: 22, height: 22 }} />
-            <span>Send Details on WhatsApp</span>
+            <span>Open in WhatsApp</span>
           </a>
           <button
             type="button"
             onClick={() => setSubmittedData(null)}
             className="btn btn-line btn-sm"
           >
-            Modify or Submit Another Enquiry
+            Modify Details / Edit Form
           </button>
         </div>
       </div>

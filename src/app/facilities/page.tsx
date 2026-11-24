@@ -4,37 +4,37 @@ import { Metadata } from 'next';
 import FacilitiesSection from '@/components/FacilitiesSection';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import JsonLd from '@/components/JsonLd';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Facilities & Verified Amenities | The Aurum Luxury Collection Srinagar',
   description:
-    'Discover our verified hotel amenities in Brein Hills Srinagar: on-site restaurant, 24-hr room service, free high-speed Wi-Fi, private parking, climate control, and concierge.',
-};
+    'Discover verified hotel amenities in Brein Hills Srinagar: on-site Kashmiri Wazwan restaurant, 24-hr room service, free high-speed Wi-Fi, private parking, and climate control.',
+  path: '/facilities',
+  keywords: KEYWORD_MAP.facilities.secondaryKeywords,
+  image: '/images/facilities/dining-hall-wazwan.png',
+});
 
 export default function FacilitiesPage() {
   const breadcrumbs = [
     { name: 'Home', url: 'https://aurumhotelskashmir.com' },
-    { name: 'Facilities', url: 'https://aurumhotelskashmir.com/facilities' },
+    { name: 'Facilities & Amenities', url: 'https://aurumhotelskashmir.com/facilities' },
   ];
 
   return (
     <>
-      <JsonLd type="BreadcrumbList" data={breadcrumbs} />
-
       <section className="banner">
         <img
           src="/images/facilities/dining-hall-wazwan.png"
-          alt="Dining Hall at The Aurum Srinagar"
+          alt="Dining Hall at The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <span>Facilities</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>Hotel Facilities & Amenities</h1>
           <p>
             Thoughtfully curated hospitality services designed to provide effortless comfort,
@@ -58,41 +58,38 @@ export default function FacilitiesPage() {
               boxShadow: 'var(--shadow)',
             }}
           >
-            <span className="eyebrow">Verified Property Information</span>
-            <h2 style={{ fontSize: '1.65rem', marginBottom: 16 }}>
-              Hospitality Standards & Property Policies
+            <h2 style={{ fontSize: '1.5rem', color: 'var(--navy)', marginBottom: 12 }}>
+              Our Commitment to Verified Services
             </h2>
-            <div className="policy-grid">
-              <div>
-                <strong style={{ color: 'var(--navy)', display: 'block', marginBottom: 6 }}>
-                  Verified On-Site Services
-                </strong>
-                <p style={{ fontSize: '0.9rem' }}>
-                  All published facilities—including our multi-cuisine restaurant, 24-hr reception, free Wi-Fi, secure parking, and concierge assistance—are operating and verified per official hotel documentation.
-                </p>
-              </div>
-              <div>
-                <strong style={{ color: 'var(--navy)', display: 'block', marginBottom: 6 }}>
-                  Facility Notes
-                </strong>
-                <p style={{ fontSize: '0.9rem' }}>
-                  Please note that in keeping with our mountain sanctuary setting, swimming pools, full-service spas, and fitness gym centres are not featured on the property.
-                </p>
-              </div>
-              <div>
-                <strong style={{ color: 'var(--navy)', display: 'block', marginBottom: 6 }}>
-                  Airport & Valley Transfers
-                </strong>
-                <p style={{ fontSize: '0.9rem' }}>
-                  Pickups and drops to Sheikh ul-Alam International Airport Srinagar (SXR) or private day excursions can be reserved in advance through our concierge desk.
-                </p>
-              </div>
+            <p style={{ color: 'var(--muted)', lineHeight: 1.7, marginBottom: 20 }}>
+              At The Aurum Luxury Collection, every facility listed is fully operational and maintained to premier boutique standards.
+              In maintaining an authentic, quiet mountain sanctuary in Brein Hills, we do not operate a commercial gym, swimming pool,
+              or spa. Our dedicated team is committed to personal hospitality, exceptional regional dining, and peaceful scenic stays.
+            </p>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <Link href="/rooms" className="btn btn-gold btn-sm">
+                View Rooms & Suites
+              </Link>
+              <Link href="/contact" className="btn btn-line btn-sm">
+                Contact Concierge Desk
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <FAQSection />
+      {/* Internal Linking Silo */}
+      <RelatedPages
+        currentPath="/facilities"
+        title="Explore Experiences & Accommodations"
+        subtitle="Discover nearby Srinagar attractions and explore our handcrafted cottages."
+      />
+
+      <FAQSection
+        page="facilities"
+        title="Hotel Facilities & Amenities FAQ"
+        subtitle="Details about on-site dining, Wi-Fi, private parking, and concierge services."
+      />
 
       <CTASection variant="facilities" />
     </>

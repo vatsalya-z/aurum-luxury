@@ -12,6 +12,8 @@ import Gallery from '@/components/Gallery';
 import Reviews from '@/components/Reviews';
 import LocationSection from '@/components/LocationSection';
 import CTASection from '@/components/CTASection';
+import FAQSection from '@/components/FAQSection';
+import RelatedPages from '@/components/seo/RelatedPages';
 import { useBooking } from '@/components/ClientLayout';
 
 export default function HomePage() {
@@ -46,10 +48,20 @@ export default function HomePage() {
       {/* 9. Trusted by Discerning Guests (Google Reviews & Rating) */}
       <Reviews />
 
-      {/* 10. Plan Your Escape (Coordinates, Contact & Map) */}
+      {/* 10. Frequently Asked Questions (AEO & Answer Engines) */}
+      <FAQSection limit={6} />
+
+      {/* 11. Contextual Internal Linking */}
+      <RelatedPages
+        currentPath="/"
+        title="Explore The Aurum Collection"
+        subtitle="Navigate through our handcrafted chalets, dining options, and Srinagar excursions."
+      />
+
+      {/* 12. Plan Your Escape (Coordinates, Contact & Map) */}
       <LocationSection />
 
-      {/* 12. Final Call to Action */}
+      {/* 13. Final Call to Action */}
       <CTASection onOpenBooking={() => openBooking()} />
     </>
   );

@@ -1,31 +1,32 @@
 import { MetadataRoute } from 'next';
 import { ROOMS } from '@/data/rooms';
+import { SITE_URL } from '@/lib/seo/canonical';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aurumhotelskashmir.com';
+  const currentDate = new Date();
 
-  const routes = [
-    '',
-    '/rooms',
-    '/facilities',
-    '/gallery',
-    '/experiences',
-    '/contact',
-    '/privacy-policy',
-    '/terms-conditions',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.8,
+  const coreRoutes = [
+    { route: '', priority: 1.0, changeFrequency: 'weekly' as const },
+    { route: '/rooms', priority: 0.9, changeFrequency: 'weekly' as const },
+    { route: '/facilities', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/experiences', priority: 0.8, changeFrequency: 'weekly' as const },
+    { route: '/contact', priority: 0.85, changeFrequency: 'weekly' as const },
+    { route: '/gallery', priority: 0.7, changeFrequency: 'weekly' as const },
+    { route: '/privacy-policy', priority: 0.3, changeFrequency: 'monthly' as const },
+    { route: '/terms-conditions', priority: 0.3, changeFrequency: 'monthly' as const },
+  ].map(({ route, priority, changeFrequency }) => ({
+    url: `${SITE_URL}${route}`,
+    lastModified: currentDate,
+    changeFrequency,
+    priority,
   }));
 
   const roomRoutes = ROOMS.map((room) => ({
-    url: `${baseUrl}/rooms/${room.slug}`,
-    lastModified: new Date(),
+    url: `${SITE_URL}/rooms/${room.slug}`,
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
 
-  return [...routes, ...roomRoutes];
+  return [...coreRoutes, ...roomRoutes];
 }

@@ -4,13 +4,19 @@ import { Metadata } from 'next';
 import Gallery from '@/components/Gallery';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import JsonLd from '@/components/JsonLd';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Photo Gallery | The Aurum Luxury Collection Srinagar',
   description:
-    'Browse verified property photographs of The Aurum Luxury Collection: luxury cottages, Dal View chalets, dining hall, and panoramic Brein Hills views.',
-};
+    'Browse verified property photographs of The Aurum Luxury Collection: handcrafted luxury cottages, panoramic Dal View chalets, dining hall, and Brein Hills views.',
+  path: '/gallery',
+  keywords: KEYWORD_MAP.gallery.secondaryKeywords,
+  image: '/images/hero/aurum-estate-brein-hills.png',
+});
 
 export default function GalleryPage() {
   const breadcrumbs = [
@@ -20,8 +26,6 @@ export default function GalleryPage() {
 
   return (
     <>
-      <JsonLd type="BreadcrumbList" data={breadcrumbs} />
-
       <section className="banner banner-full-height gallery-hero">
         <img
           src="/images/hero/aurum-estate-brein-hills.png"
@@ -30,11 +34,7 @@ export default function GalleryPage() {
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <span>Gallery</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>Photo Gallery</h1>
           <p>
             Experience The Aurum Luxury Collection through authentic property photography.
@@ -51,7 +51,18 @@ export default function GalleryPage() {
 
       <Gallery showHeading={false} showFilters={true} redirectToGallery={false} showAllInitial={true} />
 
-      <FAQSection />
+      {/* Internal Linking Silo */}
+      <RelatedPages
+        currentPath="/gallery"
+        title="Explore Rooms & Services"
+        subtitle="Compare our accommodation layouts and discover our Kashmiri hospitality services."
+      />
+
+      <FAQSection
+        page="gallery"
+        title="Photography & Estate Aesthetics FAQ"
+        subtitle="Frequently asked questions about our property photography, seasonal appearances, and views."
+      />
 
       <CTASection variant="gallery" />
     </>

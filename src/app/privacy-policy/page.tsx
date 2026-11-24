@@ -2,13 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { HOTEL_INFO } from '@/data/hotelInfo';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import FAQSection from '@/components/FAQSection';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Privacy Policy | The Aurum Luxury Collection Srinagar',
-  description: 'Privacy policy and guest data handling practices for The Aurum Luxury Collection by Stay Pattern.',
-};
+  description:
+    'Privacy policy, guest data handling practices, and reservation privacy guidelines for The Aurum Luxury Collection by Stay Pattern in Srinagar, Kashmir.',
+  path: '/privacy-policy',
+  keywords: ['The Aurum privacy policy', 'guest data protection Kashmir hotel'],
+  image: '/images/hero/aurum-luxury-estate-hero.jpg',
+});
 
 export default function PrivacyPolicyPage() {
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://aurumhotelskashmir.com' },
+    { name: 'Privacy Policy', url: 'https://aurumhotelskashmir.com/privacy-policy' },
+  ];
+
   return (
     <>
       <section className="banner">
@@ -19,11 +32,7 @@ export default function PrivacyPolicyPage() {
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <span>Privacy Policy</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>Privacy Policy</h1>
           <p>How we safeguard guest privacy and handle reservation information.</p>
         </div>
@@ -48,30 +57,35 @@ export default function PrivacyPolicyPage() {
 
           <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>2. Use of Information</h3>
           <p style={{ marginBottom: 20 }}>
-            Your information is used strictly for hospitality purposes:
+            Guest information is used strictly to process reservation inquiries, communicate room availability, coordinate airport transfers, and personalize your hospitality experience during your stay in Srinagar.
           </p>
-          <ul style={{ listStyleType: 'disc', paddingLeft: 24, marginBottom: 24, color: 'var(--muted)', lineHeight: 1.8 }}>
-            <li>Processing room availability checks, rate quotations, and booking confirmations.</li>
-            <li>Direct communication via telephone, email, or WhatsApp regarding your stay.</li>
-            <li>Arranging verified concierge services such as airport transfers or local tours upon request.</li>
-            <li>Compliance with local regulatory lodging registration requirements in Srinagar, Jammu & Kashmir.</li>
-          </ul>
 
-          <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>3. Data Protection</h3>
-          <p style={{ marginBottom: 24 }}>
-            We implement industry-standard physical, electronic, and administrative safeguards to secure personal information against unauthorized access, loss, or disclosure. We do not sell, rent, or trade your personal information to third parties.
+          <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>3. Data Protection & Non-Disclosure</h3>
+          <p style={{ marginBottom: 20 }}>
+            We do not sell, rent, or trade guest personal information with third-party marketing companies. Data is shared exclusively with authorized hotel staff and verified operational partners (such as private transfer drivers) strictly to fulfill your requested travel arrangements.
           </p>
 
           <h3 style={{ fontSize: '1.4rem', marginTop: 32, marginBottom: 12 }}>4. Contact Concerning Privacy</h3>
           <p style={{ marginBottom: 24 }}>
-            If you have questions regarding this policy or wish to review, update, or request the deletion of your personal contact records, please contact our administration at:
-            <br />
-            <strong>Email:</strong> {HOTEL_INFO.contact.email}
-            <br />
-            <strong>Postal:</strong> {HOTEL_INFO.address.full}
+            For questions or requests regarding your personal information, please reach out directly to our privacy desk at{' '}
+            <a href={`mailto:${HOTEL_INFO.contact.email}`} style={{ color: 'var(--gold-dark)', fontWeight: 600 }}>
+              {HOTEL_INFO.contact.email}
+            </a>.
           </p>
         </div>
       </section>
+
+      <FAQSection
+        page="policies"
+        title="Privacy & Data Guidelines FAQ"
+        subtitle="Common questions regarding guest information security and booking communications."
+      />
+
+      <RelatedPages
+        currentPath="/contact"
+        title="Explore The Aurum"
+        subtitle="Review our guest terms, rooms, or connect directly with our reservations team."
+      />
     </>
   );
 }

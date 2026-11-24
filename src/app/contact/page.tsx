@@ -9,11 +9,19 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import JsonLd from '@/components/JsonLd';
 
-export const metadata: Metadata = {
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+import { KEYWORD_MAP } from '@/data/seo/keywordMap';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Contact Us & Location | The Aurum Luxury Collection Srinagar',
   description:
     'Contact The Aurum Luxury Collection in 23A Brein Hills, Astanpora, Srinagar. Find directions, phone numbers, WhatsApp desk, and send direct stay enquiries.',
-};
+  path: '/contact',
+  keywords: KEYWORD_MAP.contact.secondaryKeywords,
+  image: '/images/hero/aurum-estate-brein-hills.png',
+});
 
 export default function ContactPage() {
   const breadcrumbs = [
@@ -23,8 +31,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <JsonLd type="BreadcrumbList" data={breadcrumbs} />
-
       <section className="banner">
         <img
           src="/images/hero/aurum-estate-brein-hills.png"
@@ -33,11 +39,7 @@ export default function ContactPage() {
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <span>Contact Us</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>Contact & Location</h1>
           <p>
             We are here to assist with your room selections, travel arrangements,
@@ -228,7 +230,18 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <FAQSection />
+      {/* Internal Linking Silo */}
+      <RelatedPages
+        currentPath="/contact"
+        title="Explore The Aurum Retreat"
+        subtitle="Discover our rooms, verified facilities, and curated Srinagar sightseeing spots."
+      />
+
+      <FAQSection
+        page="contact"
+        title="Location & Reservation Assistance FAQ"
+        subtitle="Answers about reaching Brein Hills, Google Maps directions, and 24/7 concierge contact."
+      />
 
       <CTASection variant="contact" />
     </>

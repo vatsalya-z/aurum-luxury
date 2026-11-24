@@ -13,6 +13,9 @@ import RoomCard from '@/components/RoomCard';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import RelatedPages from '@/components/seo/RelatedPages';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import RoomGalleryClient from './RoomGalleryClient';
 
 interface RoomPageProps {
@@ -29,15 +32,19 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
   const room = ROOMS.find((r) => r.slug === params.slug);
   if (!room) return { title: 'Room Not Found' };
 
-  return {
+  return buildPageMetadata({
     title: `${room.name} | The Aurum Luxury Collection Srinagar`,
-    description: room.shortDescription,
-    openGraph: {
-      title: `${room.name} | The Aurum Luxury Collection`,
-      description: room.shortDescription,
-      images: [{ url: room.images[0].src }],
-    },
-  };
+    description: `${room.shortDescription} Handcrafted woodwork, individual climate control, and scenic vistas in Brein Hills, Srinagar.`,
+    path: `/rooms/${room.slug}`,
+    keywords: [
+      room.name,
+      `${room.name} Srinagar`,
+      'Dal View Chalet Srinagar',
+      'Brein Hills luxury stay',
+      'Kashmir chalet booking',
+    ],
+    image: room.images[0]?.src || '/images/hero/aurum-estate-brein-hills.png',
+  });
 }
 
 export default function RoomDetailPage({ params }: RoomPageProps) {
@@ -54,24 +61,19 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
 
   return (
     <>
-      <JsonLd type="BreadcrumbList" data={breadcrumbs} />
+      {/* Schema.org HotelRoom and Offer Structured Data */}
+      <JsonLd type="Room" data={room} />
 
       {/* Banner */}
       <section className="banner">
         <img
           src={room.images[0].src}
-          alt={room.name}
+          alt={`${room.name} at The Aurum Luxury Collection Srinagar`}
           className="banner-bg"
         />
         <div className="banner-overlay" />
         <div className="wrap">
-          <nav className="breadcrumbs" aria-label="Breadcrumbs">
-            <Link href="/">Home</Link>
-            <span className="sep">/</span>
-            <Link href="/rooms">Rooms & Suites</Link>
-            <span className="sep">/</span>
-            <span>{room.name}</span>
-          </nav>
+          <Breadcrumbs items={breadcrumbs} />
           <h1>{room.name}</h1>
           <p>{room.tagline}</p>
         </div>
@@ -106,156 +108,91 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
                 </div>
                 <div>
                   <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                    Outlook & View
+                    Balcony & View
                   </span>
                   <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
                     {room.view}
                   </strong>
                 </div>
-                {room.sizeSqFt && (
-                  <div>
-                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                      Floor Space
-                    </span>
-                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                      ≈ {room.sizeSqFt} sq. ft
-                    </strong>
-                  </div>
-                )}
+                <div>
+                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                    Accommodations
+                  </span>
+                  <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
+                    {room.category}
+                  </strong>
+                </div>
               </div>
 
-              {/* Full Description */}
-              <div style={{ marginBottom: 40 }}>
-                <h2 style={{ fontSize: '1.85rem', marginBottom: 16 }}>
-                  About This Accommodation
+              {/* Narrative Description */}
+              <div style={{ marginTop: 40, lineHeight: 1.8, color: 'var(--muted)', fontSize: '1.02rem' }}>
+                <h2 style={{ fontSize: '1.8rem', color: 'var(--navy)', marginBottom: 16 }}>
+                  Residence Architecture & Character
                 </h2>
-                {room.fullDescription.map((p, idx) => (
-                  <p key={idx} style={{ marginBottom: 16 }}>
-                    {p}
-                  </p>
+                {room.fullDescription.map((paragraph, idx) => (
+                  <p key={idx} style={{ marginBottom: 18 }}>{paragraph}</p>
                 ))}
               </div>
 
-              {/* Key Highlights */}
-              <div style={{ marginBottom: 40 }}>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: 16 }}>
-                  Signature Features
+              {/* Highlights List */}
+              <div style={{ marginTop: 36 }}>
+                <h3 style={{ fontSize: '1.3rem', color: 'var(--navy)', marginBottom: 16 }}>
+                  Key Highlights
                 </h3>
-                <ul className="ticks" style={{ margin: 0 }}>
-                  {room.highlights.map((h, idx) => (
-                    <li key={idx}>
-                      <Check />
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
+                  {room.highlights.map((h, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: '0.92rem', color: 'var(--navy)' }}>
+                      <Check style={{ width: 16, height: 16, color: 'var(--gold)', flexShrink: 0 }} />
                       <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* In-Room Amenities Grid */}
-              <div style={{ marginBottom: 40 }}>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: 16 }}>
-                  Room Facilities & Amenities
-                </h3>
-                <div className="room-amenities-grid">
-                  {room.amenities.map((a, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 12,
-                        padding: '10px 14px',
-                        background: '#fff',
-                        border: '1px solid var(--line)',
-                        borderRadius: 'var(--radius-sm)',
-                        fontSize: '0.92rem',
-                        fontWeight: 500,
-                        color: 'var(--navy)',
-                      }}
-                    >
-                      <Sparkles style={{ width: 16, height: 16, color: 'var(--gold)' }} />
-                      <span>{a.name}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Available Meal Plans */}
-              <div style={{ marginBottom: 40 }}>
-                <h3 style={{ fontSize: '1.45rem', marginBottom: 16 }}>
-                  Available Meal Plan Options
+              {/* Verified Amenities */}
+              <div style={{ marginTop: 48 }}>
+                <h3 style={{ fontSize: '1.3rem', color: 'var(--navy)', marginBottom: 20 }}>
+                  In-Room Amenities & Finishes
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  {room.mealPlans.map((mp) => (
-                    <div
-                      key={mp.id}
-                      style={{
-                        padding: '18px 20px',
-                        borderRadius: 'var(--radius-sm)',
-                        background: '#fff',
-                        border: '1px solid var(--line)',
-                        borderLeft: '4px solid var(--gold)',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                        <strong style={{ fontSize: '1.05rem', color: 'var(--navy)' }}>
-                          {mp.name}
-                        </strong>
-                        {mp.badge && (
-                          <span
-                            style={{
-                              fontSize: '0.72rem',
-                              background: 'var(--gold)',
-                              color: 'var(--navy-3)',
-                              padding: '2px 8px',
-                              borderRadius: 3,
-                              fontWeight: 600,
-                              textTransform: 'uppercase',
-                              letterSpacing: '0.06em',
-                            }}
-                          >
-                            {mp.badge}
-                          </span>
-                        )}
-                      </div>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--muted)', margin: 0 }}>
-                        {mp.description}
-                      </p>
+                <div className="amenities-grid-rich">
+                  {room.amenities.map((amenity, idx) => (
+                    <div key={idx} className="amenity-chip">
+                      <Sparkles style={{ width: 15, height: 15, color: 'var(--gold)' }} />
+                      <span>{amenity.name}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Direct Booking Form */}
-            <div style={{ position: 'sticky', top: '100px' }}>
+            {/* Right Column: Direct Booking Widget */}
+            <div id="booking">
               <div
                 style={{
-                  background: '#fff',
+                  background: '#ffffff',
                   border: '1px solid var(--line)',
                   borderRadius: 'var(--radius)',
-                  boxShadow: 'var(--shadow-lg)',
-                  overflow: 'hidden',
+                  boxShadow: 'var(--shadow)',
+                  padding: '32px 28px',
+                  position: 'sticky',
+                  top: 100,
                 }}
               >
-                <div style={{ background: 'var(--navy)', color: '#fff', padding: '24px 28px' }}>
-                  <span style={{ fontSize: '0.74rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold-soft)' }}>
-                    Direct Enquiry
+                <div style={{ borderBottom: '1px solid var(--line)', paddingBottom: 16, marginBottom: 24 }}>
+                  <span style={{ fontSize: '0.74rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-dark)', fontWeight: 600 }}>
+                    Direct Reservation Desk
                   </span>
-                  <h3 style={{ color: '#fff', fontSize: '1.4rem', marginTop: 4 }}>
+                  <h3 style={{ fontSize: '1.5rem', margin: '4px 0 6px', color: 'var(--navy)' }}>
                     Reserve {room.name}
                   </h3>
-                  <p style={{ color: '#d6dbe6', fontSize: '0.86rem', marginTop: 4 }}>
-                    {room.rateDisplay} · No advance payment required for inquiry
+                  <p style={{ fontSize: '0.86rem', color: 'var(--muted)', margin: 0 }}>
+                    Select your travel dates for immediate assistance via WhatsApp.
                   </p>
                 </div>
 
-                <div style={{ padding: '24px 28px' }}>
-                  <BookingForm initialRoom={room.name} isInline={true} />
-                </div>
+                <BookingForm initialRoom={room.name} isInline={true} />
               </div>
 
-              {/* Direct WhatsApp Callout */}
               <div
                 style={{
                   marginTop: 20,
@@ -293,7 +230,18 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
         </div>
       </section>
 
-      <FAQSection />
+      {/* Internal Linking Silo */}
+      <RelatedPages
+        currentPath="/rooms"
+        title="Continue Planning Your Srinagar Retreat"
+        subtitle="Explore dining options, nearby attractions, and direct reservation assistance."
+      />
+
+      <FAQSection
+        page="rooms"
+        title="Residence Accommodation FAQ"
+        subtitle="Helpful details regarding in-room comforts, climate control, and reservations."
+      />
 
       <CTASection variant="room-detail" roomName={room.name} bgImage={room.images[0]?.src} />
     </>

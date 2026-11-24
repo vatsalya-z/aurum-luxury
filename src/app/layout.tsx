@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import JsonLd from '@/components/JsonLd';
 import { HOTEL_INFO } from '@/data/hotelInfo';
+import { SITE_URL } from '@/lib/seo/canonical';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -12,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aurumhotelskashmir.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${HOTEL_INFO.fullName} | Luxury Hotel in Srinagar`,
     template: `%s | ${HOTEL_INFO.brand}`,
@@ -34,14 +35,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://aurumhotelskashmir.com',
+    url: SITE_URL,
     title: `${HOTEL_INFO.fullName} | Luxury Hotel in Srinagar`,
     description:
       'Discover an exceptional stay in Brein Hills, Astanpora. Handcrafted cottages, panoramic Dal Lake views, and refined Kashmiri hospitality.',
     siteName: HOTEL_INFO.fullName,
     images: [
       {
-        url: '/images/hero/aurum-estate-brein-hills.png',
+        url: `${SITE_URL}/images/hero/aurum-estate-brein-hills.png`,
         width: 1200,
         height: 630,
         alt: 'The Aurum Luxury Collection property nestled in Brein Hills Srinagar',
@@ -54,11 +55,11 @@ export const metadata: Metadata = {
     description:
       'Discover an exceptional stay in Brein Hills, Astanpora. Handcrafted cottages, panoramic Dal Lake views, and refined Kashmiri hospitality.',
     images: [
-      '/images/hero/aurum-estate-brein-hills.png',
+      `${SITE_URL}/images/hero/aurum-estate-brein-hills.png`,
     ],
   },
   alternates: {
-    canonical: 'https://aurumhotelskashmir.com',
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -69,6 +70,12 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
     },
   },
 };
@@ -84,7 +91,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
+        {/* Core Global Structured Data */}
         <JsonLd type="Hotel" />
+        <JsonLd type="WebSite" />
+        <JsonLd type="Organization" />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

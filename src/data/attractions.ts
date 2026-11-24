@@ -19,7 +19,7 @@ export const ATTRACTIONS: Attraction[] = [
     travelTime: '12 min drive',
     description: 'The iconic jewel of Srinagar. Experience tranquil Shikara rides, vibrant floating vegetable markets, and traditional wooden houseboats framed by snow-dusted mountains.',
     highlight: 'Sunset Shikara cruises & floating flower bazaars',
-    image: '/images/gallery/dal-lake-sunset-view.webp',
+    image: '/images/destinations/dal-lake-shikara.jpg',
     alt: 'Traditional Shikara boats resting peacefully on the glassy waters of Dal Lake Srinagar',
   },
   {
