@@ -1098,34 +1098,34 @@ p {
   }
 }
 
-/* Mobile Viewport */
-@media (max-width: 639px) {
+/* Mobile Viewport - FloatingBookingBar Hidden on Mobile */
+@media (max-width: 768px) {
+  .trust-booking-wrapper,
+  .floating-booking-bar {
+    display: none !important;
+  }
   .trust-bar {
     padding-top: 32px;
-    padding-bottom: 0;
+    padding-bottom: 32px !important;
   }
-  .trust-booking-wrapper {
-    margin: 24px auto -32px;
-    padding: 0 8px;
+  .trust-bar + section,
+  .trust-bar + #about {
+    padding-top: clamp(48px, 8vw, 76px) !important;
   }
-  .booking-bar-form {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 10px;
-    border-radius: 16px;
+}
+
+@media (max-width: 639px) {
+  .trust-booking-wrapper,
+  .floating-booking-bar {
+    display: none !important;
   }
-  .bar-dest-badge {
-    grid-column: span 2;
-    display: flex;
-    padding: 10px 14px;
-    border-radius: 12px;
+  .trust-bar {
+    padding-top: 32px;
+    padding-bottom: 32px !important;
   }
-  .bar-input-group:nth-of-type(3) {
-    grid-column: span 2;
-  }
-  .bar-submit-btn {
-    grid-column: span 2;
-    width: 100% !important;
+  .trust-bar + section,
+  .trust-bar + #about {
+    padding-top: clamp(48px, 8vw, 76px) !important;
   }
 }
 

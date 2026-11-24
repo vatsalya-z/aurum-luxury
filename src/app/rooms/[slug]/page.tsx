@@ -10,6 +10,8 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
+import FadeIn from '@/components/animations/FadeIn';
+import { ScrollReveal, ScrollRevealItem } from '@/components/animations/ScrollReveal';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import RoomGalleryClient from './RoomGalleryClient';
 
@@ -66,7 +68,7 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
           alt={`${room.name} at The Aurum Luxury Collection Srinagar`}
           className="banner-bg"
         />
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           {room.slug === 'sunset-view-chalet-dal-view' && (
             <div
@@ -112,7 +114,7 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
           )}
           <h1>{room.name}</h1>
           <p>{room.tagline}</p>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Main Details Section */}
@@ -125,40 +127,42 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
               <RoomGalleryClient images={room.images} roomName={room.name} />
 
               {/* Quick Specs Bar */}
-              <div className="room-specs-grid">
-                <div>
-                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                    Occupancy
-                  </span>
-                  <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                    Up to {room.maxGuests} Guests
-                  </strong>
+              <FadeIn direction="up" delay={0.1}>
+                <div className="room-specs-grid">
+                  <div>
+                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                      Occupancy
+                    </span>
+                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
+                      Up to {room.maxGuests} Guests
+                    </strong>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                      Bed Arrangement
+                    </span>
+                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
+                      {room.bedType}
+                    </strong>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                      Balcony & View
+                    </span>
+                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
+                      {room.view}
+                    </strong>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                      Accommodations
+                    </span>
+                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
+                      {room.category}
+                    </strong>
+                  </div>
                 </div>
-                <div>
-                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                    Bed Arrangement
-                  </span>
-                  <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                    {room.bedType}
-                  </strong>
-                </div>
-                <div>
-                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                    Balcony & View
-                  </span>
-                  <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                    {room.view}
-                  </strong>
-                </div>
-                <div>
-                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                    Accommodations
-                  </span>
-                  <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                    {room.category}
-                  </strong>
-                </div>
-              </div>
+              </FadeIn>
 
               {/* Exclusive Dal Lake Sunset View Spotlight */}
               {room.slug === 'sunset-view-chalet-dal-view' && (
@@ -589,17 +593,21 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
 
           {/* Similar Room Recommendations */}
           <div style={{ marginTop: 80, borderTop: '1px solid var(--line)', paddingTop: 60 }}>
-            <div className="head start">
-              <span className="eyebrow">Other Living Options</span>
-              <h2>You May Also Like</h2>
-              <p>Explore other room and chalet configurations at The Aurum Luxury Collection.</p>
-            </div>
+            <FadeIn direction="up">
+              <div className="head start">
+                <span className="eyebrow">Other Living Options</span>
+                <h2>You May Also Like</h2>
+                <p>Explore other room and chalet configurations at The Aurum Luxury Collection.</p>
+              </div>
+            </FadeIn>
 
-            <div className="similar-rooms-grid">
+            <ScrollReveal className="similar-rooms-grid" staggerChildren={0.15}>
               {similarRooms.map((sr) => (
-                <RoomCard key={sr.id} room={sr} />
+                <ScrollRevealItem key={sr.id} direction="up" distance={24}>
+                  <RoomCard room={sr} />
+                </ScrollRevealItem>
               ))}
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

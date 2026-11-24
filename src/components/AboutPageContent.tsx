@@ -12,21 +12,23 @@ import {
   FaUtensils,
   FaClock,
   FaShieldHalved,
-  FaCarSide,
   FaMapLocationDot,
   FaStar,
   FaArrowRight,
-  FaCalendarCheck,
 } from 'react-icons/fa6';
 import { HiSparkles } from 'react-icons/hi2';
+import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import Reviews from '@/components/Reviews';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export default function AboutPageContent() {
+  const reducedMotion = useReducedMotion();
+
   const breadcrumbs = [
     { name: 'Home', url: 'https://aurumhotelskashmir.com' },
     { name: 'About Us', url: 'https://aurumhotelskashmir.com/about' },
@@ -66,7 +68,7 @@ export default function AboutPageContent() {
     },
   ];
 
-  // 4 Stay Experience Showcase Cards
+  // 3 Stay Experience Showcase Cards
   const stayExperiences = [
     {
       category: 'Property Atmosphere',
@@ -162,8 +164,7 @@ export default function AboutPageContent() {
   return (
     <div className="about-page">
       {/* ========================================================
-          HERO SECTION: Full-Width, EXACTLY ONE High-Res Image,
-          Centered Heading, Centered Supporting Text, Centered CTA
+          HERO SECTION: Full-Width, Slow Zoom, Centered Heading & CTA
           ======================================================== */}
       <section
         className="about-hero"
@@ -179,10 +180,12 @@ export default function AboutPageContent() {
           backgroundColor: 'var(--navy)',
         }}
       >
-        {/* Exactly ONE Hero Image */}
-        <img
+        <motion.img
           src="/images/hero/aurum-luxury-estate-hero.jpg"
           alt="The Aurum Luxury Collection mountain estate in Brein Hills Srinagar"
+          initial={reducedMotion ? {} : { scale: 1 }}
+          animate={reducedMotion ? {} : { scale: 1.05 }}
+          transition={{ duration: 7, ease: 'easeOut' }}
           style={{
             position: 'absolute',
             top: 0,
@@ -194,7 +197,6 @@ export default function AboutPageContent() {
             filter: 'brightness(0.85)',
           }}
         />
-
 
         {/* Centered Hero Content */}
         <div className="container relative" style={{ zIndex: 10, maxWidth: 960 }}>
@@ -252,17 +254,22 @@ export default function AboutPageContent() {
 
             {/* Centered CTA Button */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <a href="#story" className="btn btn-gold btn-lg">
-                <span>Explore Our Experience</span>
-                <FaArrowRight size={14} />
-              </a>
+              <motion.div
+                whileHover={reducedMotion ? {} : { scale: 1.04 }}
+                whileTap={reducedMotion ? {} : { scale: 0.96 }}
+              >
+                <a href="#story" className="btn btn-gold btn-lg">
+                  <span>Explore Our Experience</span>
+                  <FaArrowRight size={14} />
+                </a>
+              </motion.div>
             </div>
           </FadeIn>
         </div>
       </section>
 
       {/* ========================================================
-          SECTION 1: OUR STORY (Clean Text + Image Layout, Centered Head)
+          SECTION 1: OUR STORY (Alternating Left & Right Reveals)
           ======================================================== */}
       <section id="story" className="section-padding bg-ivory" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
@@ -290,7 +297,7 @@ export default function AboutPageContent() {
               alignItems: 'center',
             }}
           >
-            {/* Left Column: Story Narrative */}
+            {/* Left Column: Story Narrative (Slide from Left) */}
             <FadeIn direction="right">
               <div>
                 <span
@@ -384,7 +391,7 @@ export default function AboutPageContent() {
               </div>
             </FadeIn>
 
-            {/* Right Column: Framed Visual with Floating Highlight */}
+            {/* Right Column: Framed Visual with Floating Highlight (Slide from Right) */}
             <FadeIn direction="left">
               <div
                 className="about-img-frame"
@@ -395,6 +402,7 @@ export default function AboutPageContent() {
                   border: '1px solid var(--beige-2)',
                   borderRadius: 'var(--radius)',
                   boxShadow: 'var(--shadow-lg)',
+                  overflow: 'hidden',
                 }}
               >
                 <div
@@ -405,7 +413,7 @@ export default function AboutPageContent() {
                     borderRadius: 'var(--radius-sm)',
                   }}
                 >
-                  <img
+                  <motion.img
                     src="/images/gallery/aurum-courtyard-chalets-dusk.jpg"
                     alt="The Aurum Luxury Collection chalets at twilight in Brein Hills Srinagar"
                     style={{
@@ -415,11 +423,13 @@ export default function AboutPageContent() {
                       display: 'block',
                     }}
                     loading="lazy"
+                    whileHover={reducedMotion ? {} : { scale: 1.06 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   />
                 </div>
 
                 {/* Floating Highlight Badge */}
-                <div
+                <motion.div
                   className="about-floating-card"
                   style={{
                     position: 'absolute',
@@ -434,6 +444,7 @@ export default function AboutPageContent() {
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.35)',
                   }}
+                  whileHover={reducedMotion ? {} : { y: -4, scale: 1.02 }}
                 >
                   <span
                     style={{
@@ -462,7 +473,7 @@ export default function AboutPageContent() {
                   <p style={{ fontSize: '0.82rem', color: '#c4cddc', margin: 0, lineHeight: 1.5 }}>
                     Quiet alpine serenity with panoramic views across Dal Lake and the Zabarwan peaks.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </FadeIn>
           </div>
@@ -470,7 +481,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* ========================================================
-          SECTION 2: OUR PHILOSOPHY (Centered Heading + 5 Value Cards)
+          SECTION 2: OUR PHILOSOPHY (Staggered Value Cards)
           ======================================================== */}
       <section className="section-padding bg-pine-luxury relative" style={{ backgroundColor: 'var(--navy)' }}>
         <div className="forest-pattern absolute inset-0 opacity-10 pointer-events-none" />
@@ -491,7 +502,7 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          {/* 5 Philosophy Cards Grid */}
+          {/* 5 Philosophy Cards Staggered Grid */}
           <ScrollReveal
             className="grid"
             staggerChildren={0.1}
@@ -502,66 +513,69 @@ export default function AboutPageContent() {
             }}
           >
             {philosophies.map((item, idx) => (
-              <ScrollRevealItem
-                key={idx}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.04)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: 'var(--radius)',
-                  padding: '32px 28px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  transition: 'all 0.35s ease',
-                }}
-              >
-                <div>
-                  <div
-                    style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'linear-gradient(135deg, rgba(198, 168, 105, 0.24), rgba(198, 168, 105, 0.08))',
-                      border: '1px solid rgba(198, 168, 105, 0.35)',
-                      color: 'var(--gold)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 20,
-                    }}
-                  >
-                    {item.icon}
+              <ScrollRevealItem key={idx} direction="up" distance={24}>
+                <motion.div
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 'var(--radius)',
+                    padding: '32px 28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    height: '100%',
+                  }}
+                  whileHover={reducedMotion ? {} : { y: -6, backgroundColor: 'rgba(255, 255, 255, 0.07)' }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        width: 52,
+                        height: 52,
+                        borderRadius: 'var(--radius-sm)',
+                        background: 'linear-gradient(135deg, rgba(198, 168, 105, 0.24), rgba(198, 168, 105, 0.08))',
+                        border: '1px solid rgba(198, 168, 105, 0.35)',
+                        color: 'var(--gold)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: 20,
+                      }}
+                    >
+                      {item.icon}
+                    </div>
+
+                    <span
+                      style={{
+                        fontSize: '0.72rem',
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: 'var(--gold-soft)',
+                        fontWeight: 700,
+                        display: 'block',
+                        marginBottom: 6,
+                      }}
+                    >
+                      {item.tagline}
+                    </span>
+
+                    <h3
+                      style={{
+                        color: '#fff',
+                        fontSize: '1.28rem',
+                        fontFamily: 'var(--serif)',
+                        marginBottom: 12,
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p style={{ color: '#b9c2d3', fontSize: '0.92rem', lineHeight: 1.65, margin: 0 }}>
+                      {item.desc}
+                    </p>
                   </div>
-
-                  <span
-                    style={{
-                      fontSize: '0.72rem',
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      color: 'var(--gold-soft)',
-                      fontWeight: 700,
-                      display: 'block',
-                      marginBottom: 6,
-                    }}
-                  >
-                    {item.tagline}
-                  </span>
-
-                  <h3
-                    style={{
-                      color: '#fff',
-                      fontSize: '1.28rem',
-                      fontFamily: 'var(--serif)',
-                      marginBottom: 12,
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-
-                  <p style={{ color: '#b9c2d3', fontSize: '0.92rem', lineHeight: 1.65, margin: 0 }}>
-                    {item.desc}
-                  </p>
-                </div>
+                </motion.div>
               </ScrollRevealItem>
             ))}
           </ScrollReveal>
@@ -569,7 +583,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* ========================================================
-          SECTION 3: THE STAY EXPERIENCE (Centered Heading + 4 Cards)
+          SECTION 3: THE STAY EXPERIENCE (Staggered Cards + Image Hover)
           ======================================================== */}
       <section className="section-padding bg-ivory" style={{ backgroundColor: 'var(--beige)' }}>
         <div className="container">
@@ -586,8 +600,9 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          {/* 4 Showcase Cards (2x2 Grid) */}
-          <div
+          {/* Showcase Cards Staggered Grid */}
+          <ScrollReveal
+            staggerChildren={0.12}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -595,8 +610,8 @@ export default function AboutPageContent() {
             }}
           >
             {stayExperiences.map((exp, idx) => (
-              <FadeIn key={idx} direction="up" delay={idx * 0.1}>
-                <div
+              <ScrollRevealItem key={idx} direction="up" distance={28} style={{ display: 'flex', flexDirection: 'column' }}>
+                <motion.div
                   style={{
                     background: '#fff',
                     border: '1px solid var(--line)',
@@ -606,12 +621,13 @@ export default function AboutPageContent() {
                     display: 'flex',
                     flexDirection: 'column',
                     height: '100%',
-                    transition: 'all 0.35s ease',
                   }}
+                  whileHover={reducedMotion ? {} : { y: -6 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {/* Card Visual */}
+                  {/* Card Visual with Zoom on Hover */}
                   <div style={{ position: 'relative', height: 260, overflow: 'hidden' }}>
-                    <img
+                    <motion.img
                       src={exp.image}
                       alt={exp.alt}
                       style={{
@@ -619,9 +635,10 @@ export default function AboutPageContent() {
                         height: '100%',
                         objectFit: 'cover',
                         display: 'block',
-                        transition: 'transform 0.6s ease',
                       }}
                       loading="lazy"
+                      whileHover={reducedMotion ? {} : { scale: 1.08 }}
+                      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     />
                     <div
                       style={{
@@ -662,15 +679,15 @@ export default function AboutPageContent() {
                       </p>
                     </div>
                   </div>
-                </div>
-              </FadeIn>
+                </motion.div>
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ========================================================
-          SECTION 4: OUR COMMITMENT TO GUESTS (Centered Heading + 4 Cards)
+          SECTION 4: OUR COMMITMENT TO GUESTS (Staggered Cards)
           ======================================================== */}
       <section className="section-padding bg-ivory" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
@@ -687,8 +704,9 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          {/* 4 Commitments Grid */}
-          <div
+          {/* 4 Commitments Staggered Grid */}
+          <ScrollReveal
+            staggerChildren={0.08}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
@@ -696,8 +714,8 @@ export default function AboutPageContent() {
             }}
           >
             {commitments.map((item, idx) => (
-              <FadeIn key={idx} direction="up" delay={idx * 0.08}>
-                <div
+              <ScrollRevealItem key={idx} direction="up" distance={20}>
+                <motion.div
                   style={{
                     background: 'var(--beige)',
                     border: '1px solid var(--line)',
@@ -706,8 +724,9 @@ export default function AboutPageContent() {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    transition: 'all 0.3s ease',
                   }}
+                  whileHover={reducedMotion ? {} : { y: -5 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div
                     style={{
@@ -740,15 +759,15 @@ export default function AboutPageContent() {
                   <p style={{ color: 'var(--muted)', fontSize: '0.9rem', lineHeight: 1.65, margin: 0 }}>
                     {item.desc}
                   </p>
-                </div>
-              </FadeIn>
+                </motion.div>
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ========================================================
-          SECTION 5: WHY CHOOSE THE AURUM? (Centered Heading + 6 Cards)
+          SECTION 5: WHY CHOOSE THE AURUM? (Staggered Advantages)
           ======================================================== */}
       <section className="section-padding bg-pine-luxury relative" style={{ backgroundColor: 'var(--navy)' }}>
         <div className="forest-pattern absolute inset-0 opacity-10 pointer-events-none" />
@@ -769,8 +788,9 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          {/* 6 Advantage Cards (3x2 Grid) */}
-          <div
+          {/* 6 Advantage Cards Staggered Grid */}
+          <ScrollReveal
+            staggerChildren={0.08}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -778,8 +798,8 @@ export default function AboutPageContent() {
             }}
           >
             {whyChooseUs.map((benefit, idx) => (
-              <FadeIn key={idx} direction="up" delay={idx * 0.08}>
-                <div
+              <ScrollRevealItem key={idx} direction="up" distance={24}>
+                <motion.div
                   style={{
                     background: 'rgba(255, 255, 255, 0.03)',
                     border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -788,8 +808,9 @@ export default function AboutPageContent() {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    transition: 'all 0.3s ease',
                   }}
+                  whileHover={reducedMotion ? {} : { y: -6, backgroundColor: 'rgba(255, 255, 255, 0.06)' }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div
                     style={{
@@ -822,10 +843,10 @@ export default function AboutPageContent() {
                   <p style={{ color: '#b9c2d3', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
                     {benefit.desc}
                   </p>
-                </div>
-              </FadeIn>
+                </motion.div>
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -839,7 +860,7 @@ export default function AboutPageContent() {
       </section>
 
       {/* ========================================================
-          SECTION 7: LOCATION & DESTINATION (Centered Heading + Sights Grid + Centered CTA)
+          SECTION 7: LOCATION & DESTINATION (Sights Grid + Centered CTA)
           ======================================================== */}
       <section className="section-padding bg-ivory" style={{ backgroundColor: 'var(--beige)' }}>
         <div className="container">
@@ -856,8 +877,9 @@ export default function AboutPageContent() {
             </div>
           </FadeIn>
 
-          {/* Sights Distance Grid */}
-          <div
+          {/* Sights Distance Grid with Staggered Entrance */}
+          <ScrollReveal
+            staggerChildren={0.06}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -866,8 +888,8 @@ export default function AboutPageContent() {
             }}
           >
             {destinations.map((dest, idx) => (
-              <FadeIn key={idx} direction="up" delay={idx * 0.06}>
-                <div
+              <ScrollRevealItem key={idx} direction="up" distance={20}>
+                <motion.div
                   style={{
                     background: '#fff',
                     border: '1px solid var(--line)',
@@ -878,6 +900,8 @@ export default function AboutPageContent() {
                     alignItems: 'flex-start',
                     gap: 16,
                   }}
+                  whileHover={reducedMotion ? {} : { y: -4 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <div
                     style={{
@@ -915,21 +939,27 @@ export default function AboutPageContent() {
                       {dest.desc}
                     </p>
                   </div>
-                </div>
-              </FadeIn>
+                </motion.div>
+              </ScrollRevealItem>
             ))}
-          </div>
+          </ScrollReveal>
 
           {/* Centered Location CTA */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Link href="/contact" className="btn btn-navy">
-              <FaCompass size={14} />
-              <span>Get Directions & View Interactive Map</span>
-            </Link>
-          </div>
+          <FadeIn direction="up" delay={0.2}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <motion.div
+                whileHover={reducedMotion ? {} : { scale: 1.04 }}
+                whileTap={reducedMotion ? {} : { scale: 0.96 }}
+              >
+                <Link href="/contact" className="btn btn-navy">
+                  <FaCompass size={14} />
+                  <span>Get Directions & View Interactive Map</span>
+                </Link>
+              </motion.div>
+            </div>
+          </FadeIn>
         </div>
       </section>
-
 
       {/* ========================================================
           INTERNAL LINKING SILO (Related Pages Ribbon)

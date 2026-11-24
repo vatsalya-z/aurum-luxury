@@ -1,37 +1,34 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type ViewportOptions } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { luxuryEase } from './variants';
 
-interface FadeInProps {
+export interface FadeInProps {
   children: React.ReactNode;
   delay?: number;
   duration?: number;
+  distance?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   className?: string;
   style?: React.CSSProperties;
   once?: boolean;
+  amount?: ViewportOptions['amount'];
 }
 
 export function FadeIn({
   children,
   delay = 0,
-  duration = 0.65,
+  duration = 0.7,
+  distance = 32,
   direction = 'up',
   className,
   style,
   once = true,
+  amount = 0.15,
 }: FadeInProps) {
   const reducedMotion = useReducedMotion();
-
-  const directionMap = {
-    up: { y: 28 },
-    down: { y: -28 },
-    left: { x: 32 },
-    right: { x: -32 },
-    none: {},
-  };
 
   if (reducedMotion) {
     return (
@@ -41,12 +38,22 @@ export function FadeIn({
     );
   }
 
+  const directionMap = {
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { x: distance, y: 0 },
+    right: { x: -distance, y: 0 },
+    none: { x: 0, y: 0 },
+  };
+
+  const initialOffset = directionMap[direction] || directionMap.up;
+
   return (
     <motion.div
-      initial={{ opacity: 0, ...directionMap[direction] }}
+      initial={{ opacity: 0, ...initialOffset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: '-40px' }}
-      transition={{ duration, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      viewport={{ once, margin: '-40px', amount }}
+      transition={{ duration, delay, ease: luxuryEase }}
       className={className}
       style={style}
     >

@@ -3,10 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ROOMS } from '@/data/rooms';
 import RoomCard from './RoomCard';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface RoomsSectionProps {
   onEnquire?: (roomName?: string) => void;
@@ -19,6 +21,8 @@ export default function RoomsSection({
   title = 'Elite',
   subtitle = 'Experience the pinnacle of hillside luxury. Each cottage and chalet is crafted with native Kashmiri timbers, plush bedding, and serene views.',
 }: RoomsSectionProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section id="rooms" className="section-padding bg-pine-luxury relative overflow-hidden" style={{ backgroundColor: 'var(--navy)' }}>
       <div className="forest-pattern absolute inset-0 opacity-10 pointer-events-none" />
@@ -34,7 +38,7 @@ export default function RoomsSection({
       />
 
       <div className="container relative" style={{ zIndex: 10 }}>
-        {/* Shawinn-style Section Header */}
+        {/* Shawinn-style Section Header (Bottom-to-Top Reveal) */}
         <FadeIn direction="up">
           <div
             className="rooms-header-flex"
@@ -56,10 +60,10 @@ export default function RoomsSection({
           </div>
         </FadeIn>
 
-        {/* 3-Column Luxury Rooms Grid */}
+        {/* 3-Column Luxury Rooms Grid with Staggered Entrance */}
         <ScrollReveal className="rooms-grid" staggerChildren={0.15}>
           {ROOMS.map((room) => (
-            <ScrollRevealItem key={room.id} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <ScrollRevealItem key={room.id} direction="up" distance={30} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
               <RoomCard
                 room={room}
                 onEnquire={onEnquire}
@@ -71,14 +75,20 @@ export default function RoomsSection({
         {/* View All Rooms Button Below Section */}
         <FadeIn direction="up" delay={0.15}>
           <div style={{ marginTop: 44, textAlign: 'center' }}>
-            <Link
-              href="/rooms"
-              className="btn btn-outline-gold"
-              style={{ padding: '0.9rem 2.4rem', fontSize: '0.82rem', letterSpacing: '0.14em' }}
+            <motion.div
+              style={{ display: 'inline-block' }}
+              whileHover={reducedMotion ? {} : { scale: 1.04 }}
+              whileTap={reducedMotion ? {} : { scale: 0.96 }}
             >
-              <span>View All Rooms</span>
-              <ArrowRight style={{ width: 14, height: 14 }} />
-            </Link>
+              <Link
+                href="/rooms"
+                className="btn btn-outline-gold"
+                style={{ padding: '0.9rem 2.4rem', fontSize: '0.82rem', letterSpacing: '0.14em' }}
+              >
+                <span>View All Rooms</span>
+                <ArrowRight style={{ width: 14, height: 14 }} />
+              </Link>
+            </motion.div>
           </div>
         </FadeIn>
 

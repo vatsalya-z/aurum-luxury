@@ -5,6 +5,7 @@ import { HOTEL_INFO } from '@/data/hotelInfo';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FAQSection from '@/components/FAQSection';
+import FadeIn from '@/components/animations/FadeIn';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -30,15 +31,15 @@ export default function TermsConditionsPage() {
           alt="The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Terms & Conditions</h1>
           <p>Reservation guidelines, guest policies, and accommodation terms.</p>
-        </div>
+        </FadeIn>
       </section>
 
       <section className="section">
-        <div className="wrap" style={{ maxWidth: 840 }}>
+        <FadeIn direction="up" className="wrap" style={{ maxWidth: 840 }}>
           <h2 style={{ fontSize: '1.8rem', marginBottom: 16 }}>Reservation & Stay Terms</h2>
           <p style={{ marginBottom: 24 }}>
             Welcome to The Aurum Luxury Collection by Stay Pattern. By making an inquiry or booking a stay at our property located at 23A, Brein Hills, Astanpora, Srinagar, Jammu & Kashmir, you agree to adhere to the following terms and lodging guidelines.
@@ -63,7 +64,7 @@ export default function TermsConditionsPage() {
           <p style={{ marginBottom: 24 }}>
             All rates confirmed directly via our reservation desk or WhatsApp desk represent our official promotional tariffs. Tariffs are quoted inclusive of applicable goods and services taxes (GST) unless explicitly noted otherwise.
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       <FAQSection

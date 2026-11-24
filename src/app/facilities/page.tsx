@@ -6,6 +6,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
+import FadeIn from '@/components/animations/FadeIn';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
@@ -32,14 +33,14 @@ export default function FacilitiesPage() {
           alt="Dining Hall at The Aurum Luxury Collection Srinagar"
           className="banner-bg"
         />
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Hotel Facilities & Amenities</h1>
           <p>
             Thoughtfully curated hospitality services designed to provide effortless comfort,
             exquisite dining, and personalized care during your Kashmir holiday.
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Facilities Grid */}
@@ -47,7 +48,7 @@ export default function FacilitiesPage() {
 
       {/* Policy Transparency Notice */}
       <section className="section alt">
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <div
             style={{
               background: '#fff',
@@ -74,7 +75,7 @@ export default function FacilitiesPage() {
               </Link>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* Internal Linking Silo */}

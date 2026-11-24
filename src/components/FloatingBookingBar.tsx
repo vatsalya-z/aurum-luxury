@@ -2,7 +2,9 @@
 
 import React, { useState } from 'react';
 import { MapPin, CalendarDays, Users, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ROOMS } from '@/data/rooms';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface FloatingBookingBarProps {
   onOpenBooking: (roomName?: string) => void;
@@ -20,6 +22,7 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
   const [checkIn, setCheckIn] = useState(formatDate(tomorrow));
   const [checkOut, setCheckOut] = useState(formatDate(dayAfter));
   const [room, setRoom] = useState(ROOMS[0].name);
+  const reducedMotion = useReducedMotion();
 
   const handleQuickBook = (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,13 +103,15 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
         </div>
 
         {/* Action Button */}
-        <button
+        <motion.button
           type="submit"
           className="btn btn-gold bar-submit-btn"
+          whileHover={reducedMotion ? {} : { scale: 1.03 }}
+          whileTap={reducedMotion ? {} : { scale: 0.97 }}
         >
           <span>Check Rates</span>
           <ArrowRight style={{ width: 14, height: 14 }} />
-        </button>
+        </motion.button>
       </form>
     </div>
   );

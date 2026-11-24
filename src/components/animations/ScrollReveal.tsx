@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants, type ViewportOptions } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { luxuryEase, staggerContainer } from './variants';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -10,6 +11,8 @@ interface ScrollRevealProps {
   style?: React.CSSProperties;
   staggerChildren?: number;
   delayChildren?: number;
+  once?: boolean;
+  amount?: ViewportOptions['amount'];
 }
 
 export function ScrollReveal({
@@ -18,6 +21,8 @@ export function ScrollReveal({
   style,
   staggerChildren = 0.1,
   delayChildren = 0.05,
+  once = true,
+  amount = 0.1,
 }: ScrollRevealProps) {
   const reducedMotion = useReducedMotion();
 
@@ -29,20 +34,12 @@ export function ScrollReveal({
     );
   }
 
-  const variants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren, delayChildren },
-    },
-  };
-
   return (
     <motion.div
-      variants={variants}
+      variants={staggerContainer(staggerChildren, delayChildren)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once, margin: '-40px', amount }}
       className={className}
       style={style}
     >
@@ -51,15 +48,23 @@ export function ScrollReveal({
   );
 }
 
+export interface ScrollRevealItemProps {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'none';
+  distance?: number;
+  duration?: number;
+}
+
 export function ScrollRevealItem({
   children,
   className,
   style,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
+  direction = 'up',
+  distance = 28,
+  duration = 0.65,
+}: ScrollRevealItemProps) {
   const reducedMotion = useReducedMotion();
 
   if (reducedMotion) {
@@ -70,13 +75,25 @@ export function ScrollRevealItem({
     );
   }
 
+  const directionMap = {
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { x: distance, y: 0 },
+    right: { x: -distance, y: 0 },
+    scale: { scale: 0.94 },
+    none: {},
+  };
+
+  const initialProps = directionMap[direction] || directionMap.up;
+
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24, scale: 0.98 },
+    hidden: { opacity: 0, ...initialProps },
     visible: {
       opacity: 1,
+      x: 0,
       y: 0,
       scale: 1,
-      transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
+      transition: { duration, ease: luxuryEase },
     },
   };
 

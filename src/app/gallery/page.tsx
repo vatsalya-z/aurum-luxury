@@ -6,6 +6,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
+import FadeIn from '@/components/animations/FadeIn';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
@@ -32,7 +33,7 @@ export default function GalleryPage() {
           alt="The Aurum Luxury Collection Exterior Srinagar"
           className="banner-bg"
         />
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Photo Gallery</h1>
           <p>
@@ -45,7 +46,7 @@ export default function GalleryPage() {
               <span className="scroll-arrow-down" aria-hidden="true">↓</span>
             </a>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       <Gallery showHeading={false} showFilters={true} redirectToGallery={false} showAllInitial={true} />

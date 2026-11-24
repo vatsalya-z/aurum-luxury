@@ -2,7 +2,9 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import FadeIn from './animations/FadeIn';
+import AccordionContent from './animations/AccordionContent';
 import { PAGE_FAQS, ALL_FAQS, FAQData } from '@/data/seo/faqsData';
 import JsonLd from './JsonLd';
 
@@ -81,24 +83,20 @@ export default function FAQSection({
                   <span style={{ fontWeight: 600, fontSize: '1.02rem', color: 'var(--navy)', textAlign: 'left' }}>
                     {faq.question}
                   </span>
-                  <ChevronDown
-                    style={{
-                      width: 20,
-                      height: 20,
-                      transform: isOpen ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.25s ease',
-                      flexShrink: 0,
-                    }}
-                  />
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}
+                  >
+                    <ChevronDown style={{ width: 20, height: 20 }} />
+                  </motion.div>
                 </button>
 
-                {isOpen && (
-                  <div className="faq-content">
-                    <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.94rem' }}>
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
+                <AccordionContent isOpen={isOpen} className="faq-content">
+                  <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.94rem' }}>
+                    {faq.answer}
+                  </p>
+                </AccordionContent>
               </div>
             );
           })}

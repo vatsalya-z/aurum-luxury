@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface RoomGalleryClientProps {
   images: {
@@ -13,6 +15,7 @@ interface RoomGalleryClientProps {
 
 export default function RoomGalleryClient({ images, roomName }: RoomGalleryClientProps) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const reducedMotion = useReducedMotion();
 
   const prevPhoto = () => {
     setActiveIdx((prev) => (prev - 1 + images.length) % images.length);
@@ -26,7 +29,7 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
 
   return (
     <div>
-      {/* Featured Main Image */}
+      {/* Featured Main Image with Smooth Fade on Change */}
       <div
         style={{
           position: 'relative',
@@ -37,16 +40,25 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
           boxShadow: 'var(--shadow)',
         }}
       >
-        <img
-          src={current.src}
-          alt={current.alt}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={activeIdx}
+            src={current.src}
+            alt={current.alt}
+            initial={reducedMotion ? {} : { opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={reducedMotion ? {} : { opacity: 0 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </AnimatePresence>
 
-        {/* Carousel buttons */}
-        <button
+        {/* Carousel buttons with hover interactions */}
+        <motion.button
           onClick={prevPhoto}
           aria-label="Previous photograph"
+          whileHover={reducedMotion ? {} : { scale: 1.12, backgroundColor: 'rgba(14, 30, 56, 0.9)' }}
+          whileTap={reducedMotion ? {} : { scale: 0.9 }}
           style={{
             position: 'absolute',
             left: 14,
@@ -61,14 +73,17 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
             alignItems: 'center',
             justifyContent: 'center',
             border: '1px solid rgba(255, 255, 255, 0.25)',
+            cursor: 'pointer',
           }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
+        </motion.button>
 
-        <button
+        <motion.button
           onClick={nextPhoto}
           aria-label="Next photograph"
+          whileHover={reducedMotion ? {} : { scale: 1.12, backgroundColor: 'rgba(14, 30, 56, 0.9)' }}
+          whileTap={reducedMotion ? {} : { scale: 0.9 }}
           style={{
             position: 'absolute',
             right: 14,
@@ -83,10 +98,11 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
             alignItems: 'center',
             justifyContent: 'center',
             border: '1px solid rgba(255, 255, 255, 0.25)',
+            cursor: 'pointer',
           }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
+        </motion.button>
 
         {/* Caption Bar */}
         {current.caption && (
@@ -118,10 +134,12 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
         }}
       >
         {images.map((img, i) => (
-          <button
+          <motion.button
             key={i}
             onClick={() => setActiveIdx(i)}
             aria-label={`Show photo ${i + 1}`}
+            whileHover={reducedMotion ? {} : { scale: 1.04 }}
+            whileTap={reducedMotion ? {} : { scale: 0.96 }}
             style={{
               borderRadius: 'var(--radius-sm)',
               overflow: 'hidden',
@@ -139,7 +157,7 @@ export default function RoomGalleryClient({ images, roomName }: RoomGalleryClien
               alt={img.alt}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-          </button>
+          </motion.button>
         ))}
       </div>
     </div>

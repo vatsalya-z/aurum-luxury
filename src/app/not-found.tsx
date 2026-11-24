@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Home, Compass, Phone, ArrowRight } from 'lucide-react';
+import FadeIn from '@/components/animations/FadeIn';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function NotFound() {
         alt="The Aurum Luxury Collection Estate"
         className="banner-bg"
       />
-      <div className="wrap" style={{ textAlign: 'center', position: 'relative', zIndex: 2, maxWidth: 680 }}>
+      <FadeIn direction="up" className="wrap" style={{ textAlign: 'center', position: 'relative', zIndex: 2, maxWidth: 680 }}>
         <span
           style={{
             display: 'inline-block',
@@ -71,7 +72,7 @@ export default function NotFound() {
             {HOTEL_INFO.contact.phoneDisplay}
           </a>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

@@ -4,9 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import { useBooking } from './ClientLayout';
 import FadeIn from './animations/FadeIn';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { luxuryEase } from './animations/variants';
 
 export type CTAVariant =
   | 'home'
@@ -43,6 +46,7 @@ export default function CTASection({
   onOpenBooking,
 }: CTASectionProps) {
   const { openBooking } = useBooking();
+  const reducedMotion = useReducedMotion();
 
   const handleBooking = () => {
     if (onOpenBooking) {
@@ -142,12 +146,16 @@ export default function CTASection({
   const isSecondaryWa = current.isSecondaryWhatsApp;
 
   return (
-    <section className={`cta cta-${variant}`}>
-      <img
+    <section className={`cta cta-${variant}`} style={{ overflow: 'hidden' }}>
+      <motion.img
         src={displayBg}
         alt={`The Aurum Luxury Collection - ${displayHeading}`}
         className="cta-bg"
         loading="lazy"
+        initial={reducedMotion ? {} : { scale: 1 }}
+        whileInView={reducedMotion ? {} : { scale: 1.05 }}
+        viewport={{ once: true }}
+        transition={{ duration: 7, ease: 'easeOut' }}
       />
       <div className="cta-overlay" />
 
@@ -159,29 +167,41 @@ export default function CTASection({
         <p>{displaySubtitle}</p>
 
         <div className="actions">
-          <button
+          <motion.button
             onClick={handleBooking}
             className="btn btn-gold btn-lg"
+            whileHover={reducedMotion ? {} : { scale: 1.03 }}
+            whileTap={reducedMotion ? {} : { scale: 0.97 }}
+            transition={{ duration: 0.2 }}
           >
             <Calendar style={{ width: 16, height: 16 }} />
             <span>{displayPrimary}</span>
-          </button>
+          </motion.button>
 
           {isSecondaryWa ? (
-            <a
+            <motion.a
               href={displaySecondaryLink}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-wa btn-lg"
+              whileHover={reducedMotion ? {} : { scale: 1.03 }}
+              whileTap={reducedMotion ? {} : { scale: 0.97 }}
+              transition={{ duration: 0.2 }}
             >
               <FaWhatsapp style={{ width: 17, height: 17 }} />
               <span>{displaySecondary}</span>
-            </a>
+            </motion.a>
           ) : (
-            <Link href={displaySecondaryLink} className="btn btn-line-white btn-lg">
-              <span>{displaySecondary}</span>
-              <ArrowRight style={{ width: 16, height: 16 }} />
-            </Link>
+            <motion.div
+              whileHover={reducedMotion ? {} : { scale: 1.03 }}
+              whileTap={reducedMotion ? {} : { scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link href={displaySecondaryLink} className="btn btn-line-white btn-lg">
+                <span>{displaySecondary}</span>
+                <ArrowRight style={{ width: 16, height: 16 }} />
+              </Link>
+            </motion.div>
           )}
         </div>
       </FadeIn>

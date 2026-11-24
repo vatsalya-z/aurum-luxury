@@ -1,9 +1,13 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { MapPin, Mail, ArrowUpRight } from 'lucide-react';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import { ROOMS } from '@/data/rooms';
+import FadeIn from './animations/FadeIn';
+import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,9 +17,9 @@ export default function Footer() {
       <div className="forest-pattern absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" />
 
       <div className="container relative" style={{ zIndex: 10 }}>
-        <div className="cols">
+        <ScrollReveal className="cols" staggerChildren={0.1}>
           {/* Column 1: Brand Logo & Mission (Footer About Us) */}
-          <div className="footer-about">
+          <ScrollRevealItem className="footer-about">
             <Link href="/" className="brand" style={{ marginBottom: 20 }}>
               <span className="brand-mark">A</span>
               <div className="brand-info">
@@ -48,10 +52,10 @@ export default function Footer() {
                 <ArrowUpRight style={{ width: 14, height: 14 }} />
               </a>
             </div>
-          </div>
+          </ScrollRevealItem>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <ScrollRevealItem>
             <h4>Quick Links</h4>
             <ul>
               <li><Link href="/">Home</Link></li>
@@ -60,10 +64,10 @@ export default function Footer() {
               <li><Link href="/facilities">Exceptional Comforts</Link></li>
               <li><Link href="/gallery">Capturing Memories</Link></li>
             </ul>
-          </div>
+          </ScrollRevealItem>
 
           {/* Column 3: Discover & Experiences */}
-          <div>
+          <ScrollRevealItem>
             <h4>Discover</h4>
             <ul>
               <li><Link href="/experiences">Srinagar Escapes</Link></li>
@@ -72,10 +76,10 @@ export default function Footer() {
               <li><Link href="/contact">Contact Us</Link></li>
               <li><Link href="/contact#booking">Direct Stay Enquiry</Link></li>
             </ul>
-          </div>
+          </ScrollRevealItem>
 
           {/* Column 4: Elite Residences */}
-          <div>
+          <ScrollRevealItem>
             <h4>Accommodations</h4>
             <ul>
               {ROOMS.map((room) => (
@@ -85,10 +89,10 @@ export default function Footer() {
               ))}
               <li><Link href="/rooms">All Chalets & Cottages</Link></li>
             </ul>
-          </div>
+          </ScrollRevealItem>
 
-          {/* Column 4: Coordinates & Reservation Desk */}
-          <div>
+          {/* Column 5: Coordinates & Reservation Desk */}
+          <ScrollRevealItem>
             <h4>Coordinates</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: '0.92rem', color: '#b9c2d3' }}>
               <div style={{ display: 'flex', gap: 10 }}>
@@ -117,37 +121,39 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-          </div>
-        </div>
+          </ScrollRevealItem>
+        </ScrollReveal>
 
         {/* Footer Bottom */}
-        <div className="footer-bottom">
-          <div>
-            <p style={{ margin: 0 }}>
-              © {currentYear} {HOTEL_INFO.fullName}. Managed by Stay Pattern. All rights reserved.
-            </p>
-            <p style={{ margin: '6px 0 0', fontSize: '0.85rem', color: '#38bdf8' }}>
-              Design And Developed By -{' '}
-              <a
-                href="https://www.zoomdigital.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: '#38bdf8',
-                  textDecoration: 'none',
-                  fontWeight: 600,
-                }}
-              >
-                Zoom Digital
-              </a>
-            </p>
+        <FadeIn direction="up" delay={0.2}>
+          <div className="footer-bottom">
+            <div>
+              <p style={{ margin: 0 }}>
+                © {currentYear} {HOTEL_INFO.fullName}. Managed by Stay Pattern. All rights reserved.
+              </p>
+              <p style={{ margin: '6px 0 0', fontSize: '0.85rem', color: '#38bdf8' }}>
+                Design And Developed By -{' '}
+                <a
+                  href="https://www.zoomdigital.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#38bdf8',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                  }}
+                >
+                  Zoom Digital
+                </a>
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
+              <Link href="/privacy-policy" style={{ color: '#8c97ab' }}>Privacy Policy</Link>
+              <Link href="/terms-conditions" style={{ color: '#8c97ab' }}>Terms & Conditions</Link>
+              <Link href="/sitemap.xml" style={{ color: '#8c97ab' }}>XML Sitemap</Link>
+            </div>
           </div>
-          <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Link href="/privacy-policy" style={{ color: '#8c97ab' }}>Privacy Policy</Link>
-            <Link href="/terms-conditions" style={{ color: '#8c97ab' }}>Terms & Conditions</Link>
-            <Link href="/sitemap.xml" style={{ color: '#8c97ab' }}>XML Sitemap</Link>
-          </div>
-        </div>
+        </FadeIn>
       </div>
     </footer>
   );

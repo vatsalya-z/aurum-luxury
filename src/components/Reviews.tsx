@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SiTripadvisor } from 'react-icons/si';
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaExternalLinkAlt, FaAward } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { TRIPADVISOR_REVIEWS, TRIPADVISOR_SUMMARY, Review } from '@/data/reviews';
 import FadeIn from './animations/FadeIn';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -177,8 +178,8 @@ export default function Reviews() {
         </FadeIn>
 
 
-        {/* 4. Review Cards Horizontal Slider */}
-        <div className="guest-sentiment-slider-wrap" style={{ marginTop: 36, marginBottom: 28 }}>
+        {/* 4. Review Cards Horizontal Slider with Scroll Reveal */}
+        <FadeIn direction="up" delay={0.15} className="guest-sentiment-slider-wrap" style={{ marginTop: 36, marginBottom: 28 }}>
           <div
             ref={sliderRef}
             className="guest-sentiment-slider"
@@ -279,15 +280,17 @@ export default function Reviews() {
 
           {/* Centered Controls: Prev Arrow, Pagination Dots, Next Arrow */}
           <div className="slider-controls-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 24 }}>
-            <button
+            <motion.button
               type="button"
               onClick={() => scrollByCard(-1)}
               disabled={isAtStart}
               className="slider-arrow-btn"
               aria-label="Previous review"
+              whileHover={reducedMotion ? {} : { scale: 1.12 }}
+              whileTap={reducedMotion ? {} : { scale: 0.9 }}
             >
               <FaChevronLeft style={{ width: 14, height: 14 }} />
-            </button>
+            </motion.button>
 
             {/* Pagination Dots */}
             <div
@@ -297,7 +300,7 @@ export default function Reviews() {
               style={{ margin: 0 }}
             >
               {reviews.map((_, i) => (
-                <button
+                <motion.button
                   key={i}
                   type="button"
                   onClick={() => scrollToIndex(i)}
@@ -305,21 +308,25 @@ export default function Reviews() {
                   aria-selected={i === activeIndex}
                   role="tab"
                   className={`pagination-dot ${i === activeIndex ? 'active' : ''}`}
+                  whileHover={reducedMotion ? {} : { scale: 1.3 }}
+                  whileTap={reducedMotion ? {} : { scale: 0.9 }}
                 />
               ))}
             </div>
 
-            <button
+            <motion.button
               type="button"
               onClick={() => scrollByCard(1)}
               disabled={isAtEnd}
               className="slider-arrow-btn"
               aria-label="Next review"
+              whileHover={reducedMotion ? {} : { scale: 1.12 }}
+              whileTap={reducedMotion ? {} : { scale: 0.9 }}
             >
               <FaChevronRight style={{ width: 14, height: 14 }} />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </FadeIn>
 
         {/* 5. Footer Link Button (Tripadvisor Source Portal) */}
        

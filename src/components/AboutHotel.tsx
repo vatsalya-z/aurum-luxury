@@ -3,10 +3,15 @@
 import React from 'react';
 import { FaCompass, FaShieldHalved } from 'react-icons/fa6';
 import { HiSparkles } from 'react-icons/hi2';
+import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import FadeIn from './animations/FadeIn';
+import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export default function AboutHotel() {
+  const reducedMotion = useReducedMotion();
+
   const pillars = [
     {
       num: '01',
@@ -33,11 +38,11 @@ export default function AboutHotel() {
       <div className="forest-pattern absolute bottom-0 left-0 w-full h-80 opacity-5 pointer-events-none" />
 
       <div className="container relative" style={{ zIndex: 10 }}>
-        {/* Centered Emblem & Section Header */}
+        {/* Centered Emblem & Section Header (Bottom-to-Top Reveal) */}
         <FadeIn direction="up">
           <div className="head" style={{ maxWidth: 880, margin: '0 auto clamp(40px, 6vw, 68px)', textAlign: 'center' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-              <span
+              <motion.span
                 className="brand-mark"
                 style={{
                   width: 56,
@@ -47,9 +52,11 @@ export default function AboutHotel() {
                   background: 'var(--navy)',
                   color: 'var(--gold)',
                 }}
+                whileHover={reducedMotion ? {} : { rotate: 5, scale: 1.06 }}
+                transition={{ duration: 0.3 }}
               >
                 A
-              </span>
+              </motion.span>
             </div>
 
             <span className="eyebrow eyebrow-wide" style={{ display: 'inline-block', marginBottom: 12 }}>
@@ -69,6 +76,7 @@ export default function AboutHotel() {
         </FadeIn>
 
         <div className="about-split" style={{ alignItems: 'center', gap: 'clamp(36px, 5vw, 64px)' }}>
+          {/* Left Column: Image with Floating Card (Slide from Left) */}
           <FadeIn
             direction="right"
             style={{
@@ -79,16 +87,26 @@ export default function AboutHotel() {
               margin: 0,
             }}
           >
-            <div className="about-img-frame" style={{ width: '100%', margin: 0 }}>
-              <div className="img-inner">
-                <img
+            <div className="about-img-frame" style={{ width: '100%', margin: 0, overflow: 'hidden' }}>
+              <div className="img-inner" style={{ overflow: 'hidden' }}>
+                <motion.img
                   src="/images/hero/aurum-estate-brein-hills.png"
                   alt="The Aurum Luxury Collection property nestled in Brein Hills Srinagar"
                   loading="lazy"
+                  whileHover={reducedMotion ? {} : { scale: 1.06 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 />
               </div>
 
-              <div className="about-floating-card">
+              {/* Floating Luxury Card with subtle bounce/float */}
+              <motion.div
+                className="about-floating-card"
+                initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                whileHover={reducedMotion ? {} : { y: -4, scale: 1.02 }}
+              >
                 <span style={{ fontSize: '0.68rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--gold)', display: 'block', marginBottom: 6, fontWeight: 700 }}>
                   Scenic Sanctuary
                 </span>
@@ -98,10 +116,11 @@ export default function AboutHotel() {
                 <p style={{ fontSize: '0.82rem', color: '#c4cddc', margin: 0, lineHeight: 1.5 }}>
                   Boutique timber cottages overlooking the shimmering waters of Dal Lake.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </FadeIn>
 
+          {/* Right Column: Narrative + Staggered Pillars (Slide from Right) */}
           <FadeIn
             direction="left"
             style={{
@@ -123,19 +142,26 @@ export default function AboutHotel() {
                 chalet balcony, every moment is crafted with grace and warmth.
               </p>
 
-              <div className="about-pillars" style={{ marginTop: 8 }}>
+              {/* Staggered Pillars Reveal */}
+              <ScrollReveal className="about-pillars" staggerChildren={0.12} style={{ marginTop: 8 }}>
                 {pillars.map((pillar) => (
-                  <div key={pillar.num} className="about-pillar-item">
-                    <div className="pillar-num">{pillar.num}</div>
-                    <div className="pillar-content">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-                        <h4 style={{ fontFamily: 'var(--serif)', fontSize: '1.15rem' }}>{pillar.title}</h4>
+                  <ScrollRevealItem key={pillar.num} direction="up" distance={20}>
+                    <motion.div
+                      className="about-pillar-item"
+                      whileHover={reducedMotion ? {} : { x: 4 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <div className="pillar-num">{pillar.num}</div>
+                      <div className="pillar-content">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                          <h4 style={{ fontFamily: 'var(--serif)', fontSize: '1.15rem' }}>{pillar.title}</h4>
+                        </div>
+                        <p style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{pillar.desc}</p>
                       </div>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{pillar.desc}</p>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </ScrollRevealItem>
                 ))}
-              </div>
+              </ScrollReveal>
             </div>
           </FadeIn>
         </div>

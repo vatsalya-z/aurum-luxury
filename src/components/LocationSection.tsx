@@ -1,19 +1,23 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Mail, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Mail, ExternalLink } from 'lucide-react';
 import { FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import BookingForm from './BookingForm';
 import FadeIn from './animations/FadeIn';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export default function LocationSection() {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section id="contact" className="section-padding bg-pine-luxury relative overflow-hidden" style={{ backgroundColor: 'var(--navy)', paddingTop: 'clamp(48px, 7vw, 76px)', paddingBottom: 'clamp(48px, 7vw, 76px)' }}>
       <div className="forest-pattern absolute inset-0 opacity-10 pointer-events-none" />
 
       <div className="container relative" style={{ zIndex: 10 }}>
-        {/* Centered Section Header */}
+        {/* Centered Section Header: Bottom-to-Top Reveal */}
         <FadeIn direction="up">
           <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 36px' }}>
             <span className="eyebrow eyebrow-wide">
@@ -31,7 +35,7 @@ export default function LocationSection() {
 
         {/* Shawinn-style Contact & Enquiry Split Grid */}
         <div className="contact-split-shawinn" style={{ alignItems: 'stretch', gap: 24 }}>
-          {/* Left Column: Direct Coordinates & Contact Cards */}
+          {/* Left Column: Direct Coordinates & Contact Cards (Slide from Left) */}
           <FadeIn
             direction="right"
             style={{
@@ -91,7 +95,12 @@ export default function LocationSection() {
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   {/* Card 1: Call */}
-                  <div className="contact-card-box" style={{ padding: '12px 16px', gap: 14 }}>
+                  <motion.div
+                    className="contact-card-box"
+                    style={{ padding: '12px 16px', gap: 14 }}
+                    whileHover={reducedMotion ? {} : { x: 4, background: 'rgba(255, 255, 255, 0.06)' }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="icon-frame" style={{ width: 42, height: 42 }}>
                       <FaPhoneAlt style={{ width: 16, height: 16 }} />
                     </div>
@@ -102,10 +111,15 @@ export default function LocationSection() {
                       </p>
                       <span style={{ fontSize: '0.75rem', color: '#8c97ab' }}>Daily assistance 24/7</span>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Card 2: Email */}
-                  <div className="contact-card-box" style={{ padding: '12px 16px', gap: 14 }}>
+                  <motion.div
+                    className="contact-card-box"
+                    style={{ padding: '12px 16px', gap: 14 }}
+                    whileHover={reducedMotion ? {} : { x: 4, background: 'rgba(255, 255, 255, 0.06)' }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="icon-frame" style={{ width: 42, height: 42 }}>
                       <Mail style={{ width: 18, height: 18 }} />
                     </div>
@@ -116,10 +130,15 @@ export default function LocationSection() {
                       </p>
                       <span style={{ fontSize: '0.75rem', color: '#8c97ab' }}>Responses within 2 hours</span>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Card 3: Physical Address */}
-                  <div className="contact-card-box" style={{ padding: '12px 16px', gap: 14 }}>
+                  <motion.div
+                    className="contact-card-box"
+                    style={{ padding: '12px 16px', gap: 14 }}
+                    whileHover={reducedMotion ? {} : { x: 4, background: 'rgba(255, 255, 255, 0.06)' }}
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="icon-frame" style={{ width: 42, height: 42 }}>
                       <MapPin style={{ width: 18, height: 18 }} />
                     </div>
@@ -130,37 +149,41 @@ export default function LocationSection() {
                       </p>
                       <span style={{ fontSize: '0.75rem', color: 'var(--gold)' }}>Check-in: 2:00 PM · Check-out: 12:00 PM</span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div className="location-cta-buttons" style={{ display: 'flex', gap: 10, marginTop: 16, flexWrap: 'wrap' }}>
-                  <a
+                  <motion.a
                     href={HOTEL_INFO.urls.googleMapsDirections}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-gold btn-sm"
                     style={{ flex: 1, minWidth: 140, justifyContent: 'center', height: 40, minHeight: 40 }}
+                    whileHover={reducedMotion ? {} : { scale: 1.03 }}
+                    whileTap={reducedMotion ? {} : { scale: 0.97 }}
                   >
                     <ExternalLink style={{ width: 13, height: 13 }} />
                     <span>Directions</span>
-                  </a>
+                  </motion.a>
 
-                  <a
+                  <motion.a
                     href={`https://wa.me/${HOTEL_INFO.contact.whatsapp}?text=${encodeURIComponent('Hello, I am enquiring about location and directions to The Aurum Luxury Collection in Brein Hills Srinagar.')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-wa btn-sm"
                     style={{ flex: 1, minWidth: 140, justifyContent: 'center', height: 40, minHeight: 40 }}
+                    whileHover={reducedMotion ? {} : { scale: 1.03 }}
+                    whileTap={reducedMotion ? {} : { scale: 0.97 }}
                   >
                     <FaWhatsapp style={{ width: 15, height: 15 }} />
                     <span>WhatsApp</span>
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </div>
           </FadeIn>
 
-          {/* Right Column: Direct Reservation Inquiry Form */}
+          {/* Right Column: Direct Reservation Inquiry Form (Slide from Right) */}
           <FadeIn
             direction="left"
             style={{
@@ -193,7 +216,7 @@ export default function LocationSection() {
           </FadeIn>
         </div>
 
-        {/* Embedded Map Block (Shawinn "Prime Location") */}
+        {/* Embedded Map Block with Bottom-to-Top Reveal */}
         <FadeIn direction="up" style={{ marginTop: 44 }}>
           <div className="location-map-header" style={{ textAlign: 'center', marginBottom: 16 }}>
             <span className="eyebrow" style={{ color: 'var(--gold)' }}>Interactive Map</span>
@@ -202,7 +225,7 @@ export default function LocationSection() {
             </h3>
           </div>
 
-          <div className="map-frame" style={{ minHeight: 380, height: 380 }}>
+          <div className="map-frame" style={{ minHeight: 380, height: 380, overflow: 'hidden' }}>
             <iframe
               src={HOTEL_INFO.urls.googleMapsEmbed}
               width="100%"
@@ -217,11 +240,13 @@ export default function LocationSection() {
 
           {/* Action Button Placed Below the Map */}
           <div style={{ textAlign: 'center', marginTop: 18 }}>
-            <a
+            <motion.a
               href={HOTEL_INFO.urls.googleMapsDirections}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-gold btn-sm"
+              whileHover={reducedMotion ? {} : { scale: 1.04 }}
+              whileTap={reducedMotion ? {} : { scale: 0.96 }}
               style={{
                 fontSize: '0.88rem',
                 padding: '10px 22px',
@@ -234,7 +259,7 @@ export default function LocationSection() {
             >
               <span>Open in Google Maps</span>
               <ExternalLink style={{ width: 15, height: 15 }} />
-            </a>
+            </motion.a>
           </div>
         </FadeIn>
       </div>

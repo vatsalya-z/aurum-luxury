@@ -6,6 +6,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
+import FadeIn from '@/components/animations/FadeIn';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
@@ -32,14 +33,14 @@ export default function ExperiencesPage() {
           alt="Dal Lake Srinagar Shikara Boats"
           className="banner-bg"
         />
-        <div className="wrap">
+        <FadeIn direction="up" className="wrap">
           <Breadcrumbs items={breadcrumbs} />
           <h1>Discover the Beauty of Srinagar</h1>
           <p>
             Situated on the slopes of Brein Hills, Astanpora, The Aurum provides a peaceful mountain retreat
             while placing you minutes from Kashmir’s most enchanting historical and natural destinations.
           </p>
-        </div>
+        </FadeIn>
       </section>
 
       <Experiences />
