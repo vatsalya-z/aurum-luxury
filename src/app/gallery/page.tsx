@@ -7,6 +7,8 @@ import CTASection from '@/components/CTASection';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FadeIn from '@/components/animations/FadeIn';
+import JsonLd from '@/components/JsonLd';
+import { GALLERY_ITEMS } from '@/data/gallery';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
@@ -27,6 +29,7 @@ export default function GalleryPage() {
 
   return (
     <>
+      <JsonLd type="Gallery" data={GALLERY_ITEMS} />
       <section className="banner banner-full-height gallery-hero">
         <img
           src="/images/hero/aurum-estate-brein-hills.png"

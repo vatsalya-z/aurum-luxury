@@ -82,8 +82,8 @@ export default function BeyondHospitality() {
               style={{ overflow: 'hidden' }}
             >
               <motion.img
-                src="/images/rooms/sunset-chalet-panoramic-view.png"
-                alt="Sunset Shikara ride on Dal Lake Srinagar"
+                src="/images/destinations/dal-lake-shikara.jpg"
+                alt="Shikara boats gliding on Dal Lake Srinagar"
                 loading="lazy"
                 whileHover={reducedMotion ? {} : { scale: 1.07 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}

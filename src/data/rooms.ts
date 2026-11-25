@@ -229,9 +229,9 @@ export const ROOMS: Room[] = [
     mealPlans: ROOM_MEAL_PLANS,
     images: [
       {
-        src: '/images/rooms/sunset-chalet-dal-view.jpg',
-        alt: 'Sunset View Chalet – Dal View panoramic golden hour over Dal Lake with Shikaras and Zabarwan mountains',
-        caption: 'Signature golden hour sunset vista over Dal Lake from Sunset View Chalet',
+        src: '/images/rooms/sunset-chalet-emerald-suite.jpg',
+        alt: 'Sunset View Chalet – Dal View master bedroom suite with tufted emerald headboard, coffered ceiling, and panoramic balcony',
+        caption: 'Signature Master Chalet Bedroom Suite with coffered cedar timbers, private lounge, and panoramic balcony',
       },
       {
         src: '/images/rooms/sunset-chalet-master.png',
@@ -242,11 +242,6 @@ export const ROOMS: Room[] = [
         src: '/images/rooms/sunset-chalet-terrace.png',
         alt: 'Sunset View Chalet private viewing terrace',
         caption: 'Private viewing deck with sweeping vistas over Srinagar valley',
-      },
-      {
-        src: '/images/rooms/sunset-chalet-panoramic-view.png',
-        alt: 'Sunset View Chalet sunset horizon from private balcony',
-        caption: 'Spectacular sunset reflection across Dal Lake waters',
       },
       {
         src: '/images/rooms/sunset-chalet-lounge.png',

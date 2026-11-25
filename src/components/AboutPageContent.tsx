@@ -21,6 +21,7 @@ import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import Reviews from '@/components/Reviews';
+import FAQSection from '@/components/FAQSection';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
@@ -960,6 +961,15 @@ export default function AboutPageContent() {
           </FadeIn>
         </div>
       </section>
+
+      {/* ========================================================
+          AEO FAQ SECTION (Frequently Asked Questions & Schema)
+          ======================================================== */}
+      <FAQSection
+        page="home"
+        title="About The Aurum Luxury Collection FAQ"
+        subtitle="Frequently asked questions about our heritage, mountain sanctuary, and hospitality in Brein Hills."
+      />
 
       {/* ========================================================
           INTERNAL LINKING SILO (Related Pages Ribbon)

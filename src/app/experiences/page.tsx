@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
     'Discover celebrated attractions near The Aurum in Brein Hills Srinagar: Dal Lake, Tulip Garden, Pari Mahal, Nishat Bagh, Shalimar Bagh, and Hari Parbat Fort.',
   path: '/experiences',
   keywords: KEYWORD_MAP.experiences.secondaryKeywords,
-  image: '/images/destinations/dal-lake-srinagar.jpg',
+  image: '/images/experience/dal-lake-srinagar.jpg',
 });
 
 export default function ExperiencesPage() {
@@ -30,7 +30,7 @@ export default function ExperiencesPage() {
       <section className="banner">
         <img
           src="/images/gallery/aurum-luxury-cottage-exterior.jpg"
-          alt="Dal Lake Srinagar Shikara Boats"
+          alt="The Aurum Luxury Collection Cottage Exterior Srinagar"
           className="banner-bg"
         />
         <FadeIn direction="up" className="wrap">

@@ -20,9 +20,28 @@ export function generateHotelSchema() {
     logo: `${SITE_URL}/images/hero/aurum-estate-brein-hills.png`,
     image: [
       `${SITE_URL}/images/hero/aurum-estate-brein-hills.png`,
-      `${SITE_URL}/images/rooms/sunset-chalet-master.png`,
-      `${SITE_URL}/images/rooms/luxury-cottage-bedroom.png`,
+      `${SITE_URL}/images/gallery/aurum-sunset-deck-srinagar-panorama.jpg`,
+      `${SITE_URL}/images/gallery/aurum-aframe-chalets-mountain-panorama.jpg`,
+      `${SITE_URL}/images/gallery/aurum-sunset-chalet-emerald-suite.jpg`,
+      `${SITE_URL}/images/gallery/aurum-luxury-cottage-master-suite.jpg`,
       `${SITE_URL}/images/facilities/dining-hall-wazwan.png`,
+    ],
+    sameAs: [
+      HOTEL_INFO.urls.googleHotels,
+      HOTEL_INFO.urls.googleMapsDirections,
+      'https://www.tripadvisor.in/Hotel_Review-g297623-d34391477-Reviews-Aurum_Luxury_Collection_by_Stay_Pattern-Srinagar_Srinagar_District_Kashmir_Jammu_and_.html',
+      HOTEL_INFO.urls.stayPatternListing,
+      HOTEL_INFO.urls.agodaListing,
+      HOTEL_INFO.urls.makeMyTripListing,
+      HOTEL_INFO.urls.goibiboListing,
+    ],
+    knowsAbout: [
+      'Kashmir Luxury Travel',
+      'Srinagar Boutique Chalets',
+      'Dal Lake Sunset Views',
+      'Authentic Kashmiri Wazwan Cuisine',
+      'Zabarwan Mountain Stays',
+      'Brein Hills Astanpora Hospitality',
     ],
     starRating: {
       '@type': 'Rating',
@@ -151,9 +170,12 @@ export function generateOrganizationSchema() {
     ],
     sameAs: [
       HOTEL_INFO.urls.googleHotels,
+      HOTEL_INFO.urls.googleMapsDirections,
+      'https://www.tripadvisor.in/Hotel_Review-g297623-d34391477-Reviews-Aurum_Luxury_Collection_by_Stay_Pattern-Srinagar_Srinagar_District_Kashmir_Jammu_and_.html',
       HOTEL_INFO.urls.stayPatternListing,
       HOTEL_INFO.urls.agodaListing,
       HOTEL_INFO.urls.makeMyTripListing,
+      HOTEL_INFO.urls.goibiboListing,
     ],
   };
 }
@@ -228,5 +250,23 @@ export function generateRoomSchema(room: Room) {
         url: SITE_URL,
       },
     },
+  };
+}
+
+export function generateGallerySchema(items?: { title: string; description: string; src: string }[]) {
+  const galleryList = items || [];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: `Photo Gallery - ${HOTEL_INFO.fullName}`,
+    description:
+      'Authentic property photography of The Aurum Luxury Collection: handcrafted wooden chalets, luxury cottage suites, dining hall, and panoramic Dal Lake views in Brein Hills, Srinagar.',
+    url: `${SITE_URL}/gallery`,
+    image: galleryList.map((item) => ({
+      '@type': 'ImageObject',
+      contentUrl: item.src.startsWith('http') ? item.src : `${SITE_URL}${item.src}`,
+      caption: item.title,
+      description: item.description,
+    })),
   };
 }

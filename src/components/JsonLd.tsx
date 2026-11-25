@@ -6,11 +6,12 @@ import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateRoomSchema,
+  generateGallerySchema,
 } from '@/lib/seo/schema';
 import { Room } from '@/data/rooms';
 
 interface JsonLdProps {
-  type: 'Hotel' | 'BreadcrumbList' | 'FAQPage' | 'WebSite' | 'Organization' | 'Room' | 'Custom';
+  type: 'Hotel' | 'BreadcrumbList' | 'FAQPage' | 'WebSite' | 'Organization' | 'Room' | 'Gallery' | 'Custom';
   data?: any;
 }
 
@@ -35,6 +36,9 @@ export default function JsonLd({ type, data }: JsonLdProps) {
       break;
     case 'Room':
       schema = generateRoomSchema(data as Room);
+      break;
+    case 'Gallery':
+      schema = generateGallerySchema(data || []);
       break;
     case 'Custom':
       schema = data;
