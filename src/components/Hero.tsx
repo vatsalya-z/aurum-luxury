@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { getImageProps } from 'next/image';
 import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
@@ -13,41 +13,60 @@ interface HeroProps {
   onOpenBooking?: () => void;
 }
 
+interface HeroSlide {
+  id: string;
+  desktopImage: string;
+  mobileImage: string;
+  alt: string;
+  eyebrow: string;
+  headingPrefix: string;
+  headingHighlight: string;
+  subtitle: string;
+  desktopPosition: string;
+  mobilePosition: string;
+}
+
 const SLIDE_DURATION_MS = 7000;
 
-const HERO_SLIDES = [
+const HERO_SLIDES: HeroSlide[] = [
   {
-    image: '/images/rooms/elegant-chalet-dal-view.jpg',
-    alt: 'Master luxury chalet bedroom suite overlooking Dal Lake at The Aurum Luxury Collection',
-    eyebrow: 'WELCOME TO THE AURUM LUXURY COLLECTION',
+    id: 'twilight-aframe-estate',
+    desktopImage: '/images/hero/aurum-hero-1-desktop.jpg',
+    mobileImage: '/images/hero/aurum-hero-1-mobile.jpg',
+    alt: 'Illuminated A-frame wooden chalets at twilight nestled against the Zabarwan mountains at The Aurum by Stay Pattern, Brein Hills Srinagar',
+    eyebrow: 'WELCOME TO THE AURUM BY STAY PATTERN',
     headingPrefix: 'Experience the Art of ',
     headingHighlight: 'Luxury in Kashmir',
     subtitle:
-      'Refined timber cottages and panoramic Dal Lake views in Brein Hills, Srinagar.',
-    desktopPosition: 'center 46%',
-    mobilePosition: 'center 46%',
+      'Signature A-frame timber chalets and peaceful hillside sanctuary in Brein Hills, Srinagar.',
+    desktopPosition: 'center 42%',
+    mobilePosition: 'center 38%',
   },
   {
-    image: '/images/rooms/sunset-chalet-panoramic-view.png',
-    alt: 'Golden hour panoramic view over Dal Lake and Zabarwan mountains from The Aurum Sunset View Chalet',
-    eyebrow: 'SIGNATURE DAL VIEW CHALETS',
+    id: 'sunset-terrace-panorama',
+    desktopImage: '/images/hero/aurum-hero-2-desktop.jpg',
+    mobileImage: '/images/hero/aurum-hero-2-mobile.jpg',
+    alt: 'Panoramic golden hour sunset over Dal Lake and Srinagar valley from the private hillside terrace at The Aurum',
+    eyebrow: 'BREIN HILLS · PANORAMIC VALLEY HORIZON',
     headingPrefix: 'Golden Hour Splendour ',
     headingHighlight: 'Above Dal Lake',
     subtitle:
-      'Panoramic Dal Lake and Zabarwan mountain vistas from your private terrace.',
-    desktopPosition: 'center 44%',
-    mobilePosition: 'center 46%',
+      'Sweeping sunset vistas across Dal Lake and the glittering Srinagar valley from our private terrace.',
+    desktopPosition: 'center 46%',
+    mobilePosition: 'center 42%',
   },
   {
-    image: '/images/rooms/sunset-chalet-emerald-suite.jpg',
-    alt: 'Handcrafted timber master suite with tufted emerald headboard and Dal Lake balcony at The Aurum',
-    eyebrow: 'HANDCRAFTED TIMBER SANCTUARY',
+    id: 'handcrafted-chalet-suite',
+    desktopImage: '/images/hero/aurum-hero-3-desktop.jpg',
+    mobileImage: '/images/hero/aurum-hero-3-mobile.jpg',
+    alt: 'Authentic handcrafted timber A-frame chalet bedroom suite with emerald velvet headboard and open balcony doors overlooking Dal Lake',
+    eyebrow: 'SIGNATURE DAL VIEW CHALETS',
     headingPrefix: 'Timeless Warmth & ',
     headingHighlight: 'Bespoke Comfort',
     subtitle:
-      'Handcrafted Kashmiri deodar interiors designed for quiet mountain luxury.',
-    desktopPosition: 'center 48%',
-    mobilePosition: 'center 48%',
+      'Soaring Kashmiri pine interiors, plush emerald suites, and private balconies overlooking Dal Lake.',
+    desktopPosition: 'center 46%',
+    mobilePosition: 'center 44%',
   },
 ];
 
@@ -114,7 +133,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         className="hero-parallax-stage"
         style={{
           position: 'absolute',
-          inset: '-6% 0',
+          inset: '-5% 0',
           y: reducedMotion ? 0 : bgParallaxY,
           willChange: reducedMotion ? 'auto' : 'transform',
         }}
@@ -126,9 +145,35 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             '--hero-pos-mobile': s.mobilePosition,
           } as React.CSSProperties;
 
+          const loadProps = index === 0 ? { priority: true as const } : { loading: 'eager' as const };
+
+          const {
+            props: { srcSet: desktopSrcSet },
+          } = getImageProps({
+            alt: s.alt,
+            width: 2560,
+            height: 1440,
+            sizes: '100vw',
+            quality: 95,
+            src: s.desktopImage,
+            ...loadProps,
+          });
+
+          const {
+            props: { srcSet: mobileSrcSet, ...imgRest },
+          } = getImageProps({
+            alt: s.alt,
+            width: 1200,
+            height: 1760,
+            sizes: '100vw',
+            quality: 95,
+            src: s.mobileImage,
+            ...loadProps,
+          });
+
           return (
             <div
-              key={s.image}
+              key={s.id}
               className={`slide ${isActive ? 'is-active' : ''}`}
               role="group"
               aria-roledescription="slide"
@@ -136,19 +181,20 @@ export default function Hero({ onOpenBooking }: HeroProps) {
               aria-hidden={!isActive}
               style={posStyle}
             >
-              <Image
-                src={s.image}
-                alt={s.alt}
-                fill
-                priority={index === 0 || index === current}
-                sizes="100vw"
-                quality={95}
-                style={{
-                  objectFit: 'cover',
-                  transform: !reducedMotion && isActive ? 'scale(1.035)' : 'scale(1)',
-                  transition: 'transform 8s ease-out',
-                }}
-              />
+              <picture className="hero-picture">
+                <source media="(min-width: 769px)" srcSet={desktopSrcSet} sizes="100vw" />
+                <source media="(max-width: 768px)" srcSet={mobileSrcSet} sizes="100vw" />
+                <img
+                  {...imgRest}
+                  alt={s.alt}
+                  className="hero-slide-img"
+                  style={{
+                    ...imgRest.style,
+                    transform: !reducedMotion && isActive ? 'scale(1.035)' : 'scale(1)',
+                    transition: 'transform 8s ease-out',
+                  }}
+                />
+              </picture>
             </div>
           );
         })}

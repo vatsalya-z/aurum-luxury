@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
     'Stay Pattern Kashmir hospitality',
     'hillside retreat Dal Lake',
   ],
-  image: '/images/hero/aurum-luxury-estate-hero.jpg',
+  image: '/images/hero/aurum-about-hero-desktop.jpg',
 });
 
 export default function AboutPage() {

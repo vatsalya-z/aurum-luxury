@@ -166,8 +166,9 @@ export default function AboutPageContent() {
     <div className="about-page">
       <PageHero
         size="tall"
-        image="/images/hero/aurum-luxury-estate-hero.jpg"
-        alt="The Aurum Luxury Collection mountain estate in Brein Hills Srinagar"
+        image="/images/hero/aurum-about-hero-desktop.jpg"
+        mobileImage="/images/hero/aurum-about-hero-mobile.jpg"
+        alt="The Aurum Luxury Collection signature A-frame chalets and Zabarwan mountain estate in Brein Hills Srinagar"
         breadcrumbs={breadcrumbs}
         eyebrow="WELCOME TO THE AURUM LUXURY COLLECTION"
         title="Discover the Story Behind"
@@ -175,8 +176,8 @@ export default function AboutPageContent() {
         subtitle="Where thoughtful hospitality, memorable experiences, and the timeless beauty of Kashmir come together."
         ctaLabel="Explore Our Experience"
         ctaHref="#story"
-        desktopPosition="center 45%"
-        mobilePosition="center 40%"
+        desktopPosition="center 10%"
+        mobilePosition="center 8%"
       />
 
       {/* ========================================================

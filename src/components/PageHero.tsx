@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
 import { ArrowDown } from 'lucide-react';
 import Breadcrumbs, { BreadcrumbItem } from '@/components/seo/Breadcrumbs';
 import FadeIn from '@/components/animations/FadeIn';
 
 export interface PageHeroProps {
   image: string;
+  mobileImage?: string;
   alt: string;
   title: string;
   titleHighlight?: string;
@@ -26,6 +27,7 @@ export interface PageHeroProps {
 
 export default function PageHero({
   image,
+  mobileImage,
   alt,
   title,
   titleHighlight,
@@ -34,8 +36,8 @@ export default function PageHero({
   breadcrumbs,
   badge,
   size = 'standard',
-  desktopPosition = 'center center',
-  mobilePosition = 'center 35%',
+  desktopPosition = 'center 22%',
+  mobilePosition = 'center 20%',
   ctaLabel,
   ctaHref,
   scrollHint = false,
@@ -46,18 +48,63 @@ export default function PageHero({
     '--hero-pos-mobile': mobilePosition,
   } as React.CSSProperties;
 
+  let mediaNode: React.ReactNode;
+
+  if (mobileImage) {
+    const {
+      props: { srcSet: desktopSrcSet },
+    } = getImageProps({
+      alt,
+      width: 2560,
+      height: 1200,
+      sizes: '100vw',
+      quality: 94,
+      priority: true,
+      src: image,
+    });
+
+    const {
+      props: { srcSet: mobileSrcSet, ...imgRest },
+    } = getImageProps({
+      alt,
+      width: 1200,
+      height: 1500,
+      sizes: '100vw',
+      quality: 94,
+      priority: true,
+      src: mobileImage,
+    });
+
+    mediaNode = (
+      <picture className="page-hero-picture">
+        <source media="(min-width: 769px)" srcSet={desktopSrcSet} sizes="100vw" />
+        <source media="(max-width: 768px)" srcSet={mobileSrcSet} sizes="100vw" />
+        <img
+          {...imgRest}
+          alt={alt}
+          className="page-hero-img page-hero-img--art"
+          style={imgRest.style}
+        />
+      </picture>
+    );
+  } else {
+    mediaNode = (
+      <Image
+        src={image}
+        alt={alt}
+        fill
+        priority
+        sizes="100vw"
+        quality={92}
+        className="page-hero-img"
+      />
+    );
+  }
+
   return (
     <section className={`page-hero page-hero--${size}`}>
       <div className="page-hero-media" style={mediaStyle}>
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          priority
-          sizes="100vw"
-          quality={85}
-          className="page-hero-img"
-        />
+        {mediaNode}
       </div>
 
       <div className="page-hero-scrim" aria-hidden="true" />
@@ -73,10 +120,7 @@ export default function PageHero({
         )}
 
         {eyebrow && (
-          <span
-            className="eyebrow eyebrow-wide"
-            style={{ marginBottom: 10, letterSpacing: '0.32em' }}
-          >
+          <span className="eyebrow eyebrow-wide page-hero-eyebrow">
             {eyebrow}
           </span>
         )}
