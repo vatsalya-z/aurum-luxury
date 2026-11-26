@@ -44,7 +44,7 @@ export default function BookingModal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="modal-overlay"
+          className="bm-overlay"
           role="dialog"
           aria-modal="true"
           aria-labelledby="booking-modal-title"
@@ -57,38 +57,49 @@ export default function BookingModal({
           transition={{ duration: 0.22 }}
         >
           <motion.div
-            className="modal-card"
-            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.97 }}
+            className="bm-shell"
+            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 36, scale: 0.97 }}
-            transition={{ duration: 0.32, ease: luxuryEase }}
+            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: luxuryEase }}
           >
-            <div className="modal-header">
-              <div className="modal-drag-handle" aria-hidden="true" />
-              <div>
-                <span style={{ fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-soft)', fontWeight: 700 }}>
-                  Direct Reservation Desk
-                </span>
-                <h3 id="booking-modal-title">Book Your Stay at The Aurum</h3>
-                <p>23A, Brein Hills, Astanpora, Srinagar · Dal View</p>
+            {/* Cinematic Mountain Header with Centered Brand & Top-Right Close */}
+            <div className="bm-cinematic-header">
+              <div
+                className="bm-cinematic-bg"
+                style={{ backgroundImage: 'url(/images/hero/aurum-luxury-estate-hero.jpg)' }}
+                aria-hidden="true"
+              />
+              <div className="bm-cinematic-scrim" aria-hidden="true" />
+
+              <div className="bm-brand-row">
+                <div className="bm-brand">
+                  <div className="bm-monogram">A</div>
+                  <div className="bm-brand-text">
+                    <span className="bm-brand-name">THE AURUM</span>
+                    <span className="bm-brand-sub">BY STAY PATTERN</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="bm-close"
+                  onClick={onClose}
+                  aria-label="Close reservation modal"
+                >
+                  <X style={{ width: 20, height: 20 }} />
+                </button>
               </div>
-              <button
-                type="button"
-                className="modal-close"
-                onClick={onClose}
-                aria-label="Close booking modal"
-              >
-                <X style={{ width: 18, height: 18 }} />
-              </button>
             </div>
 
-            <div className="modal-body">
+            {/* Form Body */}
+            <div className="bm-body">
               <BookingForm
                 key={`${initialRoom}-${initialCheckIn || ''}-${initialCheckOut || ''}`}
                 initialRoom={initialRoom}
                 initialCheckIn={initialCheckIn}
                 initialCheckOut={initialCheckOut}
                 onSuccess={() => {}}
+                isInline={false}
               />
             </div>
           </motion.div>

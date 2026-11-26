@@ -186,31 +186,27 @@ export default function LocationSection() {
           {/* Right Column: Direct Reservation Inquiry Form (Slide from Right) */}
           <FadeIn
             direction="left"
+            className="rd-card"
             style={{
-              background: '#fff',
-              border: '1px solid var(--line)',
-              borderRadius: 'var(--radius)',
-              boxShadow: 'var(--shadow-lg)',
-              overflow: 'hidden',
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
               margin: 0,
             }}
           >
-            <div style={{ background: 'var(--navy-2)', color: '#fff', padding: '16px 24px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-              <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold-soft)', fontWeight: 700 }}>
-                Direct Reservation Desk
-              </span>
-              <h3 style={{ color: '#fff', fontSize: '1.35rem', marginTop: 2, marginBottom: 2 }}>
-                Reservation Inquiry
-              </h3>
-              <p style={{ color: '#c4cddc', fontSize: '0.84rem', margin: 0 }}>
-                Direct rate quotes with complimentary itinerary assistance.
-              </p>
+            <div className="rd-gold-bar" aria-hidden="true" />
+            <div className="rd-header">
+              <div>
+                <span className="rd-eyebrow">
+                  ✦ Direct Reservation Desk
+                </span>
+                <h3>Reservation Inquiry</h3>
+                <p>Direct rate quotes with complimentary itinerary assistance.</p>
+              </div>
+              <span className="rd-badge">Best Rate</span>
             </div>
 
-            <div style={{ padding: '20px 24px', flex: 1 }}>
+            <div className="rd-body">
               <BookingForm isInline={true} />
             </div>
           </FadeIn>
