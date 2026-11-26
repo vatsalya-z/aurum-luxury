@@ -5362,3 +5362,206 @@ p {
     animation: none !important;
   }
 }
+
+
+/* ==========================================================
+   EXCEPTIONAL COMFORTS — PHOTOGRAPHIC LUXURY GRID (DESKTOP 3-COL, MOBILE 2-COL)
+   ========================================================== */
+.comforts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2.5vw, 28px);
+  align-items: stretch;
+}
+
+.comfort-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.comfort-card--light {
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.28);
+  box-shadow: 0 14px 36px rgba(11, 25, 48, 0.06);
+}
+
+.comfort-card--light:hover {
+  border-color: rgba(201, 164, 92, 0.65);
+  box-shadow: 0 22px 48px rgba(11, 25, 48, 0.11);
+}
+
+.comfort-card--dark {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 164, 92, 0.26);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+}
+
+.comfort-card--dark:hover {
+  border-color: rgba(201, 164, 92, 0.58);
+}
+
+.comfort-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--navy);
+  flex-shrink: 0;
+}
+
+.comfort-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.comfort-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 25, 48, 0.14) 0%, transparent 45%, rgba(11, 25, 48, 0.62) 100%);
+  pointer-events: none;
+}
+
+.comfort-card-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 164, 92, 0.42);
+  color: var(--gold-soft);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.comfort-card-icon-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 164, 92, 0.55);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.comfort-card-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.comfort-card-body h3 {
+  font-family: var(--serif);
+  font-size: 1.24rem;
+  line-height: 1.26;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+
+.comfort-card--dark .comfort-card-body h3 {
+  color: #ffffff;
+}
+
+.comfort-card-body p {
+  font-size: 0.88rem;
+  line-height: 1.58;
+  color: var(--muted);
+  margin: 0;
+}
+
+.comfort-card--dark .comfort-card-body p {
+  color: #c4cddc;
+}
+
+.comfort-card-note {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.68rem;
+  color: var(--gold-2, #A8843B);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .comforts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comforts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .comfort-card {
+    border-radius: 14px;
+  }
+
+  .comfort-card-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .comfort-card-category {
+    display: none;
+  }
+
+  .comfort-card-icon-badge {
+    width: 30px;
+    height: 30px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .comfort-card-icon-badge svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .comfort-card-body {
+    padding: 12px 12px 14px;
+  }
+
+  .comfort-card-body h3 {
+    font-size: 0.98rem;
+    line-height: 1.22;
+    margin-bottom: 5px;
+  }
+
+  .comfort-card-body p {
+    font-size: 0.76rem;
+    line-height: 1.44;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .comfort-card-note {
+    font-size: 0.62rem;
+    margin-top: 6px;
+  }
+}

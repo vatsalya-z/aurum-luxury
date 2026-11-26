@@ -17,6 +17,7 @@ import { FACILITY_CATEGORIES } from '@/data/facilities';
 import FadeIn from './animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from './animations/ScrollReveal';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { luxuryEase } from './animations/variants';
 
 interface FacilitiesSectionProps {
   darkVariant?: boolean;
@@ -36,11 +37,11 @@ export default function FacilitiesSection({
   const reducedMotion = useReducedMotion();
 
   const getIcon = (iconName: string) => {
-    const size = 20;
+    const size = 16;
     switch (iconName) {
       case 'thermometer': return <FaTemperatureHigh size={size} />;
       case 'coffee': return <FaMugHot size={size} />;
-      case 'refrigerator': return <BiFridge size={22} />;
+      case 'refrigerator': return <BiFridge size={18} />;
       case 'bath': return <FaShower size={size} />;
       case 'sparkles': return <HiSparkles size={size} />;
       case 'wifi': return <FaWifi size={size} />;
@@ -92,11 +93,15 @@ export default function FacilitiesSection({
   const hasMore = (showFilters ? baseItems.length : allItems.length) > initialLimit;
 
   return (
-    <section id="amenities" className={`section-padding ${darkVariant ? 'bg-pine-luxury' : 'bg-ivory'}`} style={{ backgroundColor: darkVariant ? 'var(--navy)' : 'var(--beige)' }}>
+    <section
+      id="amenities"
+      className={`section-padding ${darkVariant ? 'bg-pine-luxury' : 'bg-ivory'} relative overflow-hidden`}
+      style={{ backgroundColor: darkVariant ? 'var(--navy)' : 'var(--ivory, #F8F5EF)' }}
+    >
       <div className="forest-pattern absolute inset-0 opacity-5 pointer-events-none" />
 
       <div className="container relative" style={{ zIndex: 10 }}>
-        {/* Section Header (Shawinn Style - Bottom-to-Top Reveal) */}
+        {/* Section Header */}
         <FadeIn direction="up" className="head" style={{ textAlign: 'center', marginBottom: 40 }}>
           <span
             className="eyebrow eyebrow-wide"
@@ -112,7 +117,7 @@ export default function FacilitiesSection({
           >
             Verified Amenities
           </span>
-          <h2 style={{ color: darkVariant ? '#fff' : 'var(--navy)', fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontFamily: 'var(--serif)', fontWeight: 400, margin: '0 0 16px' }}>
+          <h2 style={{ color: darkVariant ? '#fff' : 'var(--navy)', fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)', fontFamily: 'var(--serif)', fontWeight: 400, margin: '0 0 14px' }}>
             Exceptional <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Comforts</span>
           </h2>
           <p style={{ color: darkVariant ? '#c4cddc' : 'var(--muted)', maxWidth: 680, margin: '0 auto', fontSize: '1rem', lineHeight: 1.7 }}>
@@ -151,102 +156,46 @@ export default function FacilitiesSection({
           </FadeIn>
         )}
 
-        {/* Unified Staggered Grid Format (1-col horizontal list cards on mobile, 3-col on desktop) */}
-        <ScrollReveal className="grid g3" staggerChildren={0.07}>
+        {/* Photographic Luxury Amenities Grid (3-col Desktop, 2-col Mobile Grid) */}
+        <ScrollReveal className="comforts-grid" staggerChildren={0.07}>
           {displayedItems.map((item, idx) => (
             <ScrollRevealItem
-              key={idx}
+              key={`${item.name}-${idx}`}
               direction="up"
               distance={20}
               style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
             >
-              <motion.div
-                className={darkVariant ? 'feature' : 'feature-light'}
-                whileHover={reducedMotion ? {} : { y: -5, scale: 1.01 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
+              <motion.article
+                className={`comfort-card ${darkVariant ? 'comfort-card--dark' : 'comfort-card--light'}`}
+                whileHover={reducedMotion ? {} : { y: -6 }}
+                whileTap={reducedMotion ? {} : { scale: 0.985 }}
+                transition={{ duration: 0.35, ease: luxuryEase }}
               >
-                <div className="feature-mobile-row">
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      marginBottom: 14,
-                    }}
-                  >
-                    <div
-                      className="ico"
-                      style={{
-                        margin: 0,
-                        width: 46,
-                        height: 46,
-                        borderRadius: 12,
-                        background: darkVariant
-                          ? 'linear-gradient(135deg, rgba(198, 168, 105, 0.22), rgba(198, 168, 105, 0.08))'
-                          : 'linear-gradient(135deg, rgba(198, 168, 105, 0.18), rgba(198, 168, 105, 0.06))',
-                        border: '1px solid rgba(198, 168, 105, 0.35)',
-                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.04)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'var(--gold)',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {getIcon(item.icon)}
-                    </div>
-                  </div>
-
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <span
-                      className="feature-category-badge"
-                      style={{
-                        display: 'inline-block',
-                        fontSize: '0.66rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.12em',
-                        padding: '3px 8px',
-                        borderRadius: 999,
-                        background: darkVariant ? 'rgba(198, 168, 105, 0.15)' : 'var(--beige)',
-                        color: darkVariant ? 'var(--gold-soft)' : 'var(--gold-dark)',
-                        fontWeight: 700,
-                        border: darkVariant ? '1px solid rgba(198, 168, 105, 0.3)' : '1px solid rgba(198, 168, 105, 0.35)',
-                        marginBottom: 8,
-                      }}
-                    >
-                      {item.categoryTitle}
-                    </span>
-
-                    <h3 style={{ fontSize: '1.15rem', marginBottom: 6, color: darkVariant ? '#fff' : 'var(--navy)', fontFamily: 'var(--serif)' }}>
-                      {item.name}
-                    </h3>
-                    <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: darkVariant ? '#b9c2d3' : 'var(--muted)', margin: 0 }}>
-                      {item.description}
-                    </p>
-                    {item.notes && (
-                      <span
-                        style={{
-                          display: 'inline-block',
-                          marginTop: 10,
-                          fontSize: '0.7rem',
-                          color: 'var(--gold-dark)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.08em',
-                          fontWeight: 700,
-                        }}
-                      >
-                        * {item.notes}
-                      </span>
-                    )}
-                  </div>
+                {/* Context-Matched Amenity Photograph */}
+                <div className="comfort-card-media">
+                  <motion.img
+                    src={item.image}
+                    alt={`${item.name} at The Aurum Luxury Collection Srinagar`}
+                    loading="lazy"
+                    whileHover={reducedMotion ? {} : { scale: 1.07 }}
+                    transition={{ duration: 0.75, ease: luxuryEase }}
+                  />
+                  <div className="comfort-card-scrim" aria-hidden="true" />
+                  <span className="comfort-card-category">{item.categoryTitle}</span>
+                  <span className="comfort-card-icon-badge" aria-hidden="true">
+                    {getIcon(item.icon)}
+                  </span>
                 </div>
-              </motion.div>
+
+                {/* Editorial Card Body */}
+                <div className="comfort-card-body">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                  {item.notes && (
+                    <span className="comfort-card-note">* {item.notes}</span>
+                  )}
+                </div>
+              </motion.article>
             </ScrollRevealItem>
           ))}
         </ScrollReveal>
@@ -257,7 +206,7 @@ export default function FacilitiesSection({
             <div
               style={{
                 textAlign: 'center',
-                marginTop: 44,
+                marginTop: 40,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -273,9 +222,9 @@ export default function FacilitiesSection({
                   href="/facilities"
                   className={darkVariant ? 'btn btn-outline-gold' : 'btn btn-outline-navy'}
                   style={{
-                    padding: '0.95rem 2.8rem',
-                    fontSize: '0.82rem',
-                    letterSpacing: '0.22em',
+                    padding: '0.9rem 2.4rem',
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.2em',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '10px',
@@ -286,7 +235,7 @@ export default function FacilitiesSection({
                   <FaArrowRight style={{ width: 14, height: 14 }} />
                 </Link>
               </motion.div>
-              <span style={{ fontSize: '0.82rem', color: darkVariant ? '#9ba8bc' : 'var(--muted)', letterSpacing: '0.05em' }}>
+              <span style={{ fontSize: '0.82rem', color: darkVariant ? '#9ba8bc' : 'var(--muted)', letterSpacing: '0.04em' }}>
                 Showing {displayedItems.length} of {allItems.length} verified amenities · Click to explore full directory
               </span>
             </div>
@@ -296,7 +245,7 @@ export default function FacilitiesSection({
             <div
               style={{
                 textAlign: 'center',
-                marginTop: 44,
+                marginTop: 40,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -312,9 +261,9 @@ export default function FacilitiesSection({
                 whileHover={reducedMotion ? {} : { scale: 1.04 }}
                 whileTap={reducedMotion ? {} : { scale: 0.96 }}
                 style={{
-                  padding: '0.95rem 2.5rem',
-                  fontSize: '0.82rem',
-                  letterSpacing: '0.22em',
+                  padding: '0.9rem 2.4rem',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.2em',
                   cursor: 'pointer',
                 }}
               >
@@ -328,28 +277,28 @@ export default function FacilitiesSection({
                   </>
                 )}
               </motion.button>
-              <span style={{ fontSize: '0.82rem', color: darkVariant ? '#9ba8bc' : 'var(--muted)', letterSpacing: '0.05em' }}>
+              <span style={{ fontSize: '0.82rem', color: darkVariant ? '#9ba8bc' : 'var(--muted)', letterSpacing: '0.04em' }}>
                 Showing {displayedItems.length} of {baseItems.length} verified amenities
               </span>
             </div>
           </FadeIn>
         )}
 
-        {/* Bottom Concierge Callout (Shawinn Style) with Scroll Reveal */}
+        {/* Bottom Concierge Callout */}
         <FadeIn direction="up" delay={0.2}>
           <div
             style={{
-              marginTop: 60,
-              padding: '24px 32px',
+              marginTop: 52,
+              padding: '24px 28px',
               borderRadius: 'var(--radius)',
               background: darkVariant ? 'rgba(255, 255, 255, 0.05)' : '#fff',
-              border: darkVariant ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid var(--line)',
+              border: darkVariant ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(201, 164, 92, 0.28)',
               boxShadow: 'var(--shadow)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: 20,
+              gap: 18,
             }}
           >
             <div>
