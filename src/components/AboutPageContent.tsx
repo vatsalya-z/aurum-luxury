@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   FaHandHoldingHeart,
   FaBed,
@@ -200,7 +201,7 @@ export default function AboutPageContent() {
           </FadeIn>
 
           {/* 2-Column Story Grid */}
-          <div className="about-split about-pillars-grid">
+          <div className="about-split about-story-split">
             {/* Left Column: Story Narrative (Slide from Left) */}
             <FadeIn direction="right">
               <div>
@@ -295,89 +296,36 @@ export default function AboutPageContent() {
               </div>
             </FadeIn>
 
-            {/* Right Column: Framed Visual with Floating Highlight (Slide from Right) */}
+            {/* Right Column: Framed Unclipped Visual + Architectural Plaque */}
             <FadeIn direction="left">
-              <div
-                className="about-img-frame"
-                style={{
-                  position: 'relative',
-                  padding: 16,
-                  background: '#fff',
-                  border: '1px solid var(--beige-2)',
-                  borderRadius: 'var(--radius)',
-                  boxShadow: 'var(--shadow-lg)',
-                  overflow: 'hidden',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'relative',
-                    height: 'clamp(420px, 52vh, 620px)',
-                    overflow: 'hidden',
-                    borderRadius: 'var(--radius-sm)',
-                  }}
-                >
-                  <motion.img
-                    src="/images/gallery/aurum-courtyard-chalets-dusk.jpg"
-                    alt="The Aurum Luxury Collection chalets at twilight in Brein Hills Srinagar"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
-                    loading="lazy"
-                    whileHover={reducedMotion ? {} : { scale: 1.06 }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              <div className="about-story-media-card">
+                <div className="about-story-photo-wrap">
+                  <Image
+                    src="/images/gallery/aurum-hillside-sanctuary-dal-lake.jpg"
+                    alt="The Aurum Luxury Collection hillside sunset terrace in Brein Hills overlooking shimmering Dal Lake and the Srinagar valley"
+                    width={1600}
+                    height={1200}
+                    quality={95}
+                    sizes="(max-width: 1024px) 100vw, 52vw"
+                    className="about-story-photo"
                   />
                 </div>
 
-                {/* Floating Highlight Badge */}
-                <motion.div
-                  className="about-floating-card"
-                  style={{
-                    position: 'absolute',
-                    bottom: 32,
-                    right: 32,
-                    background: 'rgba(14, 30, 56, 0.95)',
-                    backdropFilter: 'blur(16px)',
-                    padding: '24px 28px',
-                    borderRadius: 'var(--radius)',
-                    color: '#fff',
-                    maxWidth: 300,
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.35)',
-                  }}
-                  whileHover={reducedMotion ? {} : { y: -4, scale: 1.02 }}
-                >
-                  <span
-                    style={{
-                      fontSize: '0.68rem',
-                      letterSpacing: '0.22em',
-                      textTransform: 'uppercase',
-                      color: 'var(--gold)',
-                      fontWeight: 700,
-                      display: 'block',
-                      marginBottom: 6,
-                    }}
-                  >
-                    ESTABLISHED RETREAT
-                  </span>
-                  <strong
-                    style={{
-                      display: 'block',
-                      fontFamily: 'var(--serif)',
-                      fontSize: '1.2rem',
-                      color: '#fff',
-                      marginBottom: 6,
-                    }}
-                  >
-                    Brein Hills, Astanpora
+                {/* Architectural Caption Plaque — sits cleanly beneath photo so 0% of chalets are covered */}
+                <div className="about-story-plaque">
+                  <div className="about-story-plaque-head">
+                    <span className="about-story-plaque-eyebrow">
+                      ✦ ESTABLISHED RETREAT
+                    </span>
+                    <span className="about-story-plaque-tag">23A Brein Hills</span>
+                  </div>
+                  <strong className="about-story-plaque-title">
+                    Brein Hills, Astanpora · Srinagar
                   </strong>
-                  <p style={{ fontSize: '0.82rem', color: '#c4cddc', margin: 0, lineHeight: 1.5 }}>
+                  <p className="about-story-plaque-desc">
                     Quiet alpine serenity with panoramic views across Dal Lake and the Zabarwan peaks.
                   </p>
-                </motion.div>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -412,65 +360,26 @@ export default function AboutPageContent() {
             staggerChildren={0.1}
           >
             {philosophies.map((item, idx) => (
-              <ScrollRevealItem key={idx} direction="up" distance={24}>
+              <ScrollRevealItem key={idx} direction="up" distance={24} className="philosophy-grid-item">
                 <motion.div
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: 'var(--radius)',
-                    padding: '32px 28px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    height: '100%',
-                  }}
+                  className="philosophy-card"
                   whileHover={reducedMotion ? {} : { y: -6, backgroundColor: 'rgba(255, 255, 255, 0.07)' }}
                   transition={{ duration: 0.3 }}
                 >
                   <div>
-                    <div
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: 'var(--radius-sm)',
-                        background: 'linear-gradient(135deg, rgba(198, 168, 105, 0.24), rgba(198, 168, 105, 0.08))',
-                        border: '1px solid rgba(198, 168, 105, 0.35)',
-                        color: 'var(--gold)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: 20,
-                      }}
-                    >
+                    <div className="philosophy-icon">
                       {item.icon}
                     </div>
 
-                    <span
-                      style={{
-                        fontSize: '0.72rem',
-                        letterSpacing: '0.18em',
-                        textTransform: 'uppercase',
-                        color: 'var(--gold-soft)',
-                        fontWeight: 700,
-                        display: 'block',
-                        marginBottom: 6,
-                      }}
-                    >
+                    <span className="philosophy-tagline">
                       {item.tagline}
                     </span>
 
-                    <h3
-                      style={{
-                        color: '#fff',
-                        fontSize: '1.28rem',
-                        fontFamily: 'var(--serif)',
-                        marginBottom: 12,
-                      }}
-                    >
+                    <h3 className="philosophy-title">
                       {item.title}
                     </h3>
 
-                    <p style={{ color: '#b9c2d3', fontSize: '0.92rem', lineHeight: 1.65, margin: 0 }}>
+                    <p className="philosophy-desc">
                       {item.desc}
                     </p>
                   </div>

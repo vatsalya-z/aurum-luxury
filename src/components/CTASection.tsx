@@ -80,9 +80,9 @@ export default function CTASection({
     rooms: {
       eyebrow: 'DIRECT RESERVATION BENEFITS',
       heading: 'Reserve Your Mountain Chalet With Direct Rates',
-      subtitle: 'Enjoy complimentary gourmet breakfast, best seasonal rates, and personalized itinerary guidance when booking directly with our reservations desk.',
-      bgImage: '/images/rooms/sunset-chalet-master.png',
-      primaryText: 'Check Rates & Availability',
+      subtitle: 'Complimentary gourmet breakfast, best seasonal rates, and personalized itinerary guidance when booking direct.',
+      bgImage: '/images/gallery/aurum-hillside-sanctuary-dal-lake.jpg',
+      primaryText: 'Check Direct Rates',
       secondaryText: 'Contact Concierge',
       secondaryLink: '/contact',
     },
@@ -90,7 +90,7 @@ export default function CTASection({
       eyebrow: 'BESPOKE MOUNTAIN LIVING',
       heading: roomName ? `Ready to Experience ${roomName}?` : 'Ready to Reserve Your Mountain Retreat?',
       subtitle: 'Handcrafted timber architecture, climate-controlled warmth, and breathtaking mountain vistas await. Secure your preferred dates directly.',
-      bgImage: '/images/rooms/sunset-chalet-master.png',
+      bgImage: '/images/gallery/aurum-hillside-sanctuary-dal-lake.jpg',
       primaryText: roomName ? `Book ${roomName}` : 'Book This Room',
       secondaryText: 'View All Accommodations',
       secondaryLink: '/rooms',
@@ -161,10 +161,7 @@ export default function CTASection({
       <div className="cta-overlay" />
       <WinterEnvironment
         intensity="subtle"
-        fog={true}
-        fogPosition="bottom"
-        fogIntensity="subtle"
-        fogZIndex={2}
+        fog={false}
         snowZIndex={3}
       />
 
