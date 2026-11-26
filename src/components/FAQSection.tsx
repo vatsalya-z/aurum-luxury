@@ -25,7 +25,6 @@ export default function FAQSection({
 }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  // Retrieve page-specific FAQs (guaranteed 5-6 tailored FAQs per page)
   let faqsList: FAQData[] = PAGE_FAQS[page] || PAGE_FAQS.home;
 
   if (category) {
@@ -48,7 +47,6 @@ export default function FAQSection({
 
   return (
     <section className="section-padding bg-white" id="faq">
-      {/* Schema.org FAQPage JSON-LD for Google Search and AI Answer Engines */}
       <JsonLd type="FAQPage" data={faqJsonData} />
 
       <div className="container wrap-narrow">
@@ -69,31 +67,66 @@ export default function FAQSection({
           <p>{subtitle}</p>
         </FadeIn>
 
-        <FadeIn direction="up" delay={0.15} className="faq-accordion">
+        <FadeIn direction="up" delay={0.12} className="faq-accordion">
           {displayFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
+            const numLabel = String(index + 1).padStart(2, '0');
             return (
-              <div key={faq.id} className="faq-item">
+              <div
+                key={faq.id}
+                className="faq-item"
+                style={{
+                  borderRadius: 16,
+                  borderColor: isOpen ? 'var(--gold)' : 'var(--line)',
+                  borderLeft: isOpen ? '3px solid var(--gold)' : '1px solid var(--line)',
+                  boxShadow: isOpen ? 'var(--shadow-sm)' : 'none',
+                  transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+                }}
+              >
                 <button
                   type="button"
                   className="faq-trigger"
                   aria-expanded={isOpen}
                   onClick={() => toggle(index)}
                 >
-                  <span style={{ fontWeight: 600, fontSize: '1.02rem', color: 'var(--navy)', textAlign: 'left' }}>
-                    {faq.question}
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 14, textAlign: 'left', flex: 1, minWidth: 0 }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--serif)',
+                        fontSize: '1.15rem',
+                        fontWeight: 700,
+                        color: isOpen ? 'var(--gold-dark)' : 'var(--gold)',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {numLabel}
+                    </span>
+                    <span style={{ fontWeight: 600, fontSize: '1.02rem', color: 'var(--navy)', lineHeight: 1.38 }}>
+                      {faq.question}
+                    </span>
                   </span>
+
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
-                    style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}
+                    style={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: '50%',
+                      background: isOpen ? 'rgba(198, 168, 105, 0.2)' : 'var(--beige)',
+                      border: '1px solid rgba(198, 168, 105, 0.35)',
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
                   >
-                    <ChevronDown style={{ width: 20, height: 20 }} />
+                    <ChevronDown style={{ width: 18, height: 18, color: 'var(--gold-dark)' }} />
                   </motion.div>
                 </button>
 
                 <AccordionContent isOpen={isOpen} className="faq-content">
-                  <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.94rem' }}>
+                  <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.94rem', paddingLeft: 34 }}>
                     {faq.answer}
                   </p>
                 </AccordionContent>

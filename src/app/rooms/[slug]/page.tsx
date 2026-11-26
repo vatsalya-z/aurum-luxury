@@ -1,14 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { ROOMS, Room } from '@/data/rooms';
+import { Users, BedDouble, Mountain, Maximize2, Calendar } from 'lucide-react';
+import { ROOMS } from '@/data/rooms';
 import BookingForm from '@/components/BookingForm';
 import RoomCard from '@/components/RoomCard';
+import PageHero from '@/components/PageHero';
 import JsonLd from '@/components/JsonLd';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FadeIn from '@/components/animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from '@/components/animations/ScrollReveal';
@@ -56,66 +56,29 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
     { name: room.name, url: `https://aurumhotelskashmir.com/rooms/${room.slug}` },
   ];
 
+  const heroBadge =
+    room.slug === 'sunset-view-chalet-dal-view'
+      ? 'Signature West-Facing Dal Lake Chalet'
+      : room.slug === 'elegant-chalet-dal-view'
+        ? 'Panoramic Dal View Chalet'
+        : `${room.category} Residence · Brein Hills`;
+
   return (
     <>
       {/* Schema.org HotelRoom and Offer Structured Data */}
       <JsonLd type="Room" data={room} />
 
-      {/* Banner */}
-      <section className="banner">
-        <img
-          src={room.images[0].src}
-          alt={`${room.name} at The Aurum Luxury Collection Srinagar`}
-          className="banner-bg"
-        />
-        <FadeIn direction="up" className="wrap">
-          <Breadcrumbs items={breadcrumbs} />
-          {room.slug === 'sunset-view-chalet-dal-view' && (
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '6px 18px',
-                borderRadius: '30px',
-                background: 'rgba(198, 168, 105, 0.22)',
-                border: '1px solid rgba(198, 168, 105, 0.65)',
-                color: '#f5ecd8',
-                fontSize: '0.8rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-                marginBottom: 16,
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              <span>Signature West-Facing Dal Lake Chalet</span>
-            </div>
-          )}
-          {room.slug === 'elegant-chalet-dal-view' && (
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '6px 18px',
-                borderRadius: '30px',
-                background: 'rgba(198, 168, 105, 0.22)',
-                border: '1px solid rgba(198, 168, 105, 0.65)',
-                color: '#f5ecd8',
-                fontSize: '0.8rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-                marginBottom: 16,
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              <span>Panoramic Dal View Chalet</span>
-            </div>
-          )}
-          <h1>{room.name}</h1>
-          <p>{room.tagline}</p>
-        </FadeIn>
-      </section>
+      <PageHero
+        size="standard"
+        image={room.images[0].src}
+        alt={`${room.name} at The Aurum Luxury Collection Srinagar`}
+        breadcrumbs={breadcrumbs}
+        badge={heroBadge}
+        title={room.name}
+        subtitle={room.tagline}
+        desktopPosition="center center"
+        mobilePosition="center 40%"
+      />
 
       {/* Main Details Section */}
       <section className="section room-detail-section">
@@ -129,40 +92,68 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
               {/* Quick Specs Bar */}
               <FadeIn direction="up" delay={0.1}>
                 <div className="room-specs-grid">
-                  <div>
-                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                      Occupancy
-                    </span>
-                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                      Up to {room.maxGuests} Guests
-                    </strong>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <Users style={{ width: 18, height: 18, color: 'var(--gold-dark)', marginTop: 2, flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                        Occupancy
+                      </span>
+                      <strong style={{ fontSize: '0.96rem', color: 'var(--navy)' }}>
+                        Up to {room.maxGuests} Guests
+                      </strong>
+                    </div>
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                      Bed Arrangement
-                    </span>
-                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                      {room.bedType}
-                    </strong>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <BedDouble style={{ width: 18, height: 18, color: 'var(--gold-dark)', marginTop: 2, flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                        Bed Arrangement
+                      </span>
+                      <strong style={{ fontSize: '0.96rem', color: 'var(--navy)' }}>
+                        {room.bedType}
+                      </strong>
+                    </div>
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                      Balcony & View
-                    </span>
-                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                      {room.view}
-                    </strong>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <Mountain style={{ width: 18, height: 18, color: 'var(--gold-dark)', marginTop: 2, flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                        Balcony & View
+                      </span>
+                      <strong style={{ fontSize: '0.96rem', color: 'var(--navy)' }}>
+                        {room.view}
+                      </strong>
+                    </div>
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
-                      Accommodations
-                    </span>
-                    <strong style={{ fontSize: '1rem', color: 'var(--navy)' }}>
-                      {room.category}
-                    </strong>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <Maximize2 style={{ width: 18, height: 18, color: 'var(--gold-dark)', marginTop: 2, flexShrink: 0 }} />
+                    <div>
+                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--muted)', display: 'block', letterSpacing: '0.06em' }}>
+                        Living Area
+                      </span>
+                      <strong style={{ fontSize: '0.96rem', color: 'var(--navy)' }}>
+                        {room.sizeSqFt ? `${room.sizeSqFt} sq ft · ${room.category}` : room.category}
+                      </strong>
+                    </div>
                   </div>
                 </div>
               </FadeIn>
+
+              {/* Mobile Quick-Reserve Jump Card */}
+              <div className="mobile-quick-reserve-bar">
+                <div style={{ minWidth: 0 }}>
+                  <span style={{ display: 'block', fontSize: '0.68rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold)', fontWeight: 700 }}>
+                    Direct Reservation
+                  </span>
+                  <strong style={{ fontSize: '0.96rem', color: '#fff', display: 'block', lineHeight: 1.25 }}>
+                    Check Dates & Best Rates
+                  </strong>
+                </div>
+                <a href="#booking" className="btn btn-gold btn-sm" style={{ flexShrink: 0 }}>
+                  <Calendar style={{ width: 14, height: 14 }} />
+                  <span>Reserve</span>
+                </a>
+              </div>
 
               {/* Exclusive Dal Lake Sunset View Spotlight */}
               {room.slug === 'sunset-view-chalet-dal-view' && (
@@ -216,66 +207,44 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
                   </p>
 
                   {/* Feature Image with Overlay Badge */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      borderRadius: 'var(--radius-sm)',
-                      overflow: 'hidden',
-                      aspectRatio: '16/9',
-                      border: '1px solid rgba(198, 168, 105, 0.3)',
-                      marginBottom: 24,
-                    }}
-                  >
-                    <img
-                      src="/images/rooms/sunset-chalet-dal-view.jpg"
-                      alt="Panoramic golden hour sunset over Dal Lake with Shikaras and Zabarwan mountains from Sunset View Chalet"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
+                  <div style={{ marginBottom: 22 }}>
                     <div
                       style={{
-                        position: 'absolute',
-                        bottom: 12,
-                        left: 14,
-                        right: 14,
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                        gap: 8,
-                        padding: '10px 14px',
-                        background: 'rgba(10, 22, 40, 0.88)',
+                        position: 'relative',
                         borderRadius: 'var(--radius-sm)',
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        overflow: 'hidden',
+                        aspectRatio: '16/9',
+                        border: '1px solid rgba(198, 168, 105, 0.3)',
                       }}
                     >
-                      <div>
-                        <span style={{ fontSize: '0.82rem', color: '#f5f0e8', fontWeight: 600 }}>
-                          Western Horizon Vista: Dal Lake & Zabarwan Mountain Range
+                      <img
+                        src="/images/rooms/sunset-chalet-dal-view.jpg"
+                        alt="Panoramic golden hour sunset over Dal Lake with Shikaras and Zabarwan mountains from Sunset View Chalet"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                      <div className="room-spotlight-caption">
+                        <div>
+                          <span style={{ fontSize: '0.82rem', color: '#f5f0e8', fontWeight: 600 }}>
+                            Western Horizon Vista: Dal Lake & Zabarwan Mountain Range
+                          </span>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            color: 'var(--gold)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                            fontWeight: 700,
+                          }}
+                        >
+                          Sunset View Chalet Exclusive
                         </span>
                       </div>
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          color: 'var(--gold)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.1em',
-                          fontWeight: 700,
-                        }}
-                      >
-                        Sunset View Chalet Exclusive
-                      </span>
                     </div>
                   </div>
 
                   {/* 4 Feature Points Grid */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-                      gap: 16,
-                    }}
-                  >
+                  <div className="spotlight-points-grid">
                     <div
                       style={{
                         padding: '16px',
@@ -395,66 +364,44 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
                   </p>
 
                   {/* Feature Image with Overlay Badge */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      borderRadius: 'var(--radius-sm)',
-                      overflow: 'hidden',
-                      aspectRatio: '16/9',
-                      border: '1px solid rgba(198, 168, 105, 0.3)',
-                      marginBottom: 24,
-                    }}
-                  >
-                    <img
-                      src="/images/rooms/elegant-chalet-dal-view.jpg"
-                      alt="Elegant Chalet Dal View master suite with vaulted cedar ceiling and panoramic Dal Lake views"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
+                  <div style={{ marginBottom: 22 }}>
                     <div
                       style={{
-                        position: 'absolute',
-                        bottom: 12,
-                        left: 14,
-                        right: 14,
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                        gap: 8,
-                        padding: '10px 14px',
-                        background: 'rgba(10, 22, 40, 0.88)',
+                        position: 'relative',
                         borderRadius: 'var(--radius-sm)',
-                        backdropFilter: 'blur(8px)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        overflow: 'hidden',
+                        aspectRatio: '16/9',
+                        border: '1px solid rgba(198, 168, 105, 0.3)',
                       }}
                     >
-                      <div>
-                        <span style={{ fontSize: '0.82rem', color: '#f5f0e8', fontWeight: 600 }}>
-                          Panoramic Window Portal: Dal Lake Basin & Mountain Ridges
+                      <img
+                        src="/images/rooms/elegant-chalet-dal-view.jpg"
+                        alt="Elegant Chalet Dal View master suite with vaulted cedar ceiling and panoramic Dal Lake views"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                      <div className="room-spotlight-caption">
+                        <div>
+                          <span style={{ fontSize: '0.82rem', color: '#f5f0e8', fontWeight: 600 }}>
+                            Panoramic Window Portal: Dal Lake Basin & Mountain Ridges
+                          </span>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '0.72rem',
+                            color: 'var(--gold)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                            fontWeight: 700,
+                          }}
+                        >
+                          Elevated Hillside Chalet
                         </span>
                       </div>
-                      <span
-                        style={{
-                          fontSize: '0.72rem',
-                          color: 'var(--gold)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.1em',
-                          fontWeight: 700,
-                        }}
-                      >
-                        Elevated Hillside Chalet
-                      </span>
                     </div>
                   </div>
 
                   {/* 4 Feature Points Grid */}
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-                      gap: 16,
-                    }}
-                  >
+                  <div className="spotlight-points-grid">
                     <div
                       style={{
                         padding: '16px',
@@ -537,7 +484,7 @@ export default function RoomDetailPage({ params }: RoomPageProps) {
                 <h3 style={{ fontSize: '1.3rem', color: 'var(--navy)', marginBottom: 16 }}>
                   Key Highlights
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
+                <div className="highlights-grid">
                   {room.highlights.map((h, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: '0.92rem', color: 'var(--navy)' }}>
                       <span style={{ color: 'var(--gold)', fontSize: '0.85rem', lineHeight: 1, flexShrink: 0 }}>✦</span>

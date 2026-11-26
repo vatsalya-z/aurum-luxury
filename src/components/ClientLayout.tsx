@@ -8,8 +8,14 @@ import FloatingActions from './FloatingActions';
 import MobileStickyBar from './MobileStickyBar';
 import PageTransition from './animations/PageTransition';
 
+export interface BookingOptions {
+  roomName?: string;
+  checkIn?: string;
+  checkOut?: string;
+}
+
 interface BookingContextType {
-  openBooking: (roomName?: string) => void;
+  openBooking: (roomOrOptions?: string | BookingOptions) => void;
   closeBooking: () => void;
 }
 
@@ -23,9 +29,22 @@ export const useBooking = () => useContext(BookingContext);
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState<string>('Luxury Bedroom Cottage');
+  const [selectedCheckIn, setSelectedCheckIn] = useState<string | undefined>(undefined);
+  const [selectedCheckOut, setSelectedCheckOut] = useState<string | undefined>(undefined);
 
-  const openBooking = (roomName?: string) => {
-    if (roomName) setSelectedRoom(roomName);
+  const openBooking = (roomOrOptions?: string | BookingOptions) => {
+    if (typeof roomOrOptions === 'string') {
+      setSelectedRoom(roomOrOptions);
+      setSelectedCheckIn(undefined);
+      setSelectedCheckOut(undefined);
+    } else if (roomOrOptions && typeof roomOrOptions === 'object') {
+      if (roomOrOptions.roomName) setSelectedRoom(roomOrOptions.roomName);
+      setSelectedCheckIn(roomOrOptions.checkIn);
+      setSelectedCheckOut(roomOrOptions.checkOut);
+    } else {
+      setSelectedCheckIn(undefined);
+      setSelectedCheckOut(undefined);
+    }
     setIsModalOpen(true);
   };
 
@@ -35,13 +54,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   return (
     <BookingContext.Provider value={{ openBooking, closeBooking }}>
-      <Header onOpenBooking={openBooking} />
+      <Header onOpenBooking={(roomName) => openBooking(roomName)} />
       <main id="main-content">
         <PageTransition>{children}</PageTransition>
       </main>
 
-      {/* Mobile Sticky Bottom Bar (3 buttons: Call Us, WhatsApp, Book Now) */}
-      <MobileStickyBar onOpenBooking={openBooking} />
+      {/* Mobile Sticky Bottom Bar (Book Your Stay, WhatsApp, Call) */}
+      <MobileStickyBar onOpenBooking={() => openBooking()} />
 
       <Footer />
 
@@ -49,9 +68,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         isOpen={isModalOpen}
         onClose={closeBooking}
         initialRoom={selectedRoom}
+        initialCheckIn={selectedCheckIn}
+        initialCheckOut={selectedCheckOut}
       />
 
-      {/* Floating Actions on Desktop & Mobile */}
+      {/* Floating Actions on Desktop */}
       <FloatingActions onOpenBooking={() => openBooking()} />
     </BookingContext.Provider>
   );

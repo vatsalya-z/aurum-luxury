@@ -1,12 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import Gallery from '@/components/Gallery';
+import PageHero from '@/components/PageHero';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
-import FadeIn from '@/components/animations/FadeIn';
 import JsonLd from '@/components/JsonLd';
 import { GALLERY_ITEMS } from '@/data/gallery';
 import { buildPageMetadata } from '@/lib/seo/metadata';
@@ -30,27 +28,21 @@ export default function GalleryPage() {
   return (
     <>
       <JsonLd type="Gallery" data={GALLERY_ITEMS} />
-      <section className="banner banner-full-height gallery-hero">
-        <img
-          src="/images/hero/aurum-estate-brein-hills.png"
-          alt="The Aurum Luxury Collection Exterior Srinagar"
-          className="banner-bg"
-        />
-        <FadeIn direction="up" className="wrap">
-          <Breadcrumbs items={breadcrumbs} />
-          <h1>Photo Gallery</h1>
-          <p>
-            Experience The Aurum Luxury Collection through authentic property photography.
-            Explore our handcrafted cottages, panoramic chalets, dining hall, and surrounding Himalayan vistas.
-          </p>
-          <div className="gallery-hero-scroll">
-            <a href="#gallery" className="btn btn-outline-white btn-sm" aria-label="Explore Photographs">
-              <span>Explore Collection</span>
-              <span className="scroll-arrow-down" aria-hidden="true">↓</span>
-            </a>
-          </div>
-        </FadeIn>
-      </section>
+      <PageHero
+        size="tall"
+        image="/images/hero/aurum-estate-brein-hills.png"
+        alt="The Aurum Luxury Collection Exterior Srinagar"
+        breadcrumbs={breadcrumbs}
+        eyebrow="CURATED PHOTOGRAPHY"
+        title="Photo"
+        titleHighlight="Gallery"
+        subtitle="Experience The Aurum Luxury Collection through authentic property photography. Explore our handcrafted cottages, panoramic chalets, dining hall, and surrounding Himalayan vistas."
+        ctaLabel="Explore Collection"
+        ctaHref="#gallery"
+        scrollHint={true}
+        desktopPosition="center 45%"
+        mobilePosition="center 35%"
+      />
 
       <Gallery showHeading={false} showFilters={true} redirectToGallery={false} showAllInitial={true} />
 

@@ -43,7 +43,7 @@ export default function HomePageClient() {
       <Gallery showFilters={false} redirectToGallery={true} />
 
       {/* 8. Destination / Srinagar Escapes (Experiences & Attractions) */}
-      <Experiences showImages={false} />
+      <Experiences showImages={true} layout="carousel-mobile" />
 
       {/* 10. Plan Your Escape (Coordinates, Contact & Interactive Map) */}
       <LocationSection />

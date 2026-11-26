@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, CalendarDays, Users, ArrowRight } from 'lucide-react';
+import { MapPin, CalendarDays, Home, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ROOMS } from '@/data/rooms';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import type { BookingOptions } from './ClientLayout';
 
 interface FloatingBookingBarProps {
-  onOpenBooking: (roomName?: string) => void;
+  onOpenBooking: (options?: BookingOptions) => void;
 }
 
 export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBarProps) {
@@ -24,53 +25,60 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
   const [room, setRoom] = useState(ROOMS[0].name);
   const reducedMotion = useReducedMotion();
 
+  const handleCheckInChange = (val: string) => {
+    setCheckIn(val);
+    if (val >= checkOut) {
+      const next = new Date(val);
+      if (!Number.isNaN(next.getTime())) {
+        next.setDate(next.getDate() + 1);
+        setCheckOut(next.toISOString().split('T')[0]);
+      }
+    }
+  };
+
   const handleQuickBook = (e: React.FormEvent) => {
     e.preventDefault();
-    onOpenBooking(room);
+    onOpenBooking({
+      roomName: room,
+      checkIn,
+      checkOut,
+    });
   };
 
   return (
     <div className="floating-booking-bar">
-      <form onSubmit={handleQuickBook} className="booking-bar-form">
-        {/* Destination Pill */}
+      <form onSubmit={handleQuickBook} className="booking-bar-form" aria-label="Quick availability search">
+        {/* Destination Badge */}
         <div className="bar-dest-badge">
           <div className="icon-box">
-            <MapPin style={{ width: 18, height: 18 }} />
+            <MapPin style={{ width: 17, height: 17 }} />
           </div>
           <div>
-            <p style={{ fontSize: '0.62rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.28em', color: 'var(--gold)', margin: 0 }}>
-              Reserve Stay
-            </p>
-            <p style={{ fontSize: '0.88rem', fontWeight: 700, margin: 0, whiteSpace: 'nowrap' }}>
-              Brein Hills - Dal View
-            </p>
+            <p className="bar-dest-eyebrow">Reserve Stay</p>
+            <p className="bar-dest-title">Brein Hills · Dal View</p>
           </div>
         </div>
 
         {/* Check In */}
         <div className="bar-input-group">
-          <CalendarDays style={{ width: 18, height: 18, color: 'var(--gold)', flexShrink: 0 }} />
-          <div style={{ width: '100%' }}>
-            <label htmlFor="bar-in" style={{ display: 'block', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', fontWeight: 700 }}>
-              Check-In
-            </label>
+          <CalendarDays className="bar-field-icon" aria-hidden="true" />
+          <div className="bar-field-inner">
+            <label htmlFor="bar-in">Check-In</label>
             <input
               id="bar-in"
               type="date"
               value={checkIn}
               min={formatDate(today)}
-              onChange={(e) => setCheckIn(e.target.value)}
+              onChange={(e) => handleCheckInChange(e.target.value)}
             />
           </div>
         </div>
 
         {/* Check Out */}
         <div className="bar-input-group">
-          <CalendarDays style={{ width: 18, height: 18, color: 'var(--gold)', flexShrink: 0 }} />
-          <div style={{ width: '100%' }}>
-            <label htmlFor="bar-out" style={{ display: 'block', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', fontWeight: 700 }}>
-              Check-Out
-            </label>
+          <CalendarDays className="bar-field-icon" aria-hidden="true" />
+          <div className="bar-field-inner">
+            <label htmlFor="bar-out">Check-Out</label>
             <input
               id="bar-out"
               type="date"
@@ -83,11 +91,9 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
 
         {/* Room Category */}
         <div className="bar-input-group">
-          <Users style={{ width: 18, height: 18, color: 'var(--gold)', flexShrink: 0 }} />
-          <div style={{ width: '100%' }}>
-            <label htmlFor="bar-room" style={{ display: 'block', fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', fontWeight: 700 }}>
-              Residence
-            </label>
+          <Home className="bar-field-icon" aria-hidden="true" />
+          <div className="bar-field-inner">
+            <label htmlFor="bar-room">Residence</label>
             <select
               id="bar-room"
               value={room}
@@ -106,7 +112,7 @@ export default function FloatingBookingBar({ onOpenBooking }: FloatingBookingBar
         <motion.button
           type="submit"
           className="btn btn-gold bar-submit-btn"
-          whileHover={reducedMotion ? {} : { scale: 1.03 }}
+          whileHover={reducedMotion ? {} : { scale: 1.02 }}
           whileTap={reducedMotion ? {} : { scale: 0.97 }}
         >
           <span>Check Rates</span>

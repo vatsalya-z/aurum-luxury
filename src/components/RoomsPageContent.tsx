@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Clock, Utensils, ShieldCheck } from 'lucide-react';
 import { ROOMS } from '@/data/rooms';
 import RoomCard from '@/components/RoomCard';
+import PageHero from '@/components/PageHero';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
 import FadeIn from '@/components/animations/FadeIn';
 import { ScrollReveal, ScrollRevealItem } from '@/components/animations/ScrollReveal';
@@ -24,25 +25,18 @@ export default function RoomsPageContent() {
 
   return (
     <>
-      {/* Page Banner with Slow Zoom */}
-      <section className="banner" style={{ overflow: 'hidden' }}>
-        <motion.img
-          src="/images/rooms/elegant-chalet-dal-view.jpg"
-          alt="Luxury Chalets and Master Bedroom Suites overlooking Dal Lake at The Aurum Srinagar"
-          className="banner-bg"
-          initial={reducedMotion ? {} : { scale: 1 }}
-          animate={reducedMotion ? {} : { scale: 1.05 }}
-          transition={{ duration: 7, ease: 'easeOut' }}
-        />
-        <FadeIn direction="up" className="wrap">
-          <Breadcrumbs items={breadcrumbs} />
-          <h1>Rooms & Luxury Chalets</h1>
-          <p>
-            Surround yourself with the natural splendour of Kashmir. Each cottage and chalet
-            features handcrafted timber finishes, climate control, and tranquil mountain or Dal Lake vistas.
-          </p>
-        </FadeIn>
-      </section>
+      <PageHero
+        size="tall"
+        image="/images/rooms/elegant-chalet-dal-view.jpg"
+        alt="Luxury Chalets and Master Bedroom Suites overlooking Dal Lake at The Aurum Srinagar"
+        breadcrumbs={breadcrumbs}
+        eyebrow="ELITE RESIDENCES"
+        title="Rooms &"
+        titleHighlight="Luxury Chalets"
+        subtitle="Surround yourself with the natural splendour of Kashmir. Each cottage and chalet features handcrafted timber finishes, climate control, and tranquil mountain or Dal Lake vistas."
+        desktopPosition="center center"
+        mobilePosition="center 40%"
+      />
 
       {/* Rooms Listing Section */}
       <section className="section">
@@ -73,47 +67,118 @@ export default function RoomsPageContent() {
 
           {/* Accommodation Highlights & Policy Card */}
           <FadeIn direction="up" delay={0.15}>
-            <motion.div
+            <div
               style={{
-                marginTop: 64,
-                padding: '36px 32px',
-                borderRadius: 'var(--radius)',
-                background: 'var(--beige)',
-                border: '1px solid var(--line)',
+                marginTop: 56,
+                padding: 'clamp(24px, 4vw, 40px)',
+                borderRadius: 18,
+                background: 'linear-gradient(145deg, #0e1e38 0%, #162b4d 100%)',
+                border: '1px solid rgba(198, 168, 105, 0.35)',
+                boxShadow: 'var(--shadow-lg)',
+                color: '#fff',
               }}
-              whileHover={reducedMotion ? {} : { y: -3 }}
-              transition={{ duration: 0.3 }}
             >
-              <h3 style={{ fontSize: '1.45rem', marginBottom: 14, color: 'var(--navy)' }}>
+              <span className="eyebrow" style={{ marginBottom: 6, display: 'block', letterSpacing: '0.24em' }}>
+                Direct Stay Privileges
+              </span>
+              <h3 style={{ fontSize: 'clamp(1.35rem, 2.8vw, 1.75rem)', marginBottom: 8, color: '#fff' }}>
                 Booking Guidelines & Complimentary Perks
               </h3>
               <div className="policy-grid">
-                <div>
-                  <strong style={{ display: 'block', color: 'var(--navy)', marginBottom: 6 }}>
-                    Standard Timings
-                  </strong>
-                  <p style={{ fontSize: '0.9rem' }}>
+                <div
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 14,
+                    padding: '20px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                    <div
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 10,
+                        background: 'rgba(198, 168, 105, 0.16)',
+                        color: 'var(--gold)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Clock style={{ width: 17, height: 17 }} />
+                    </div>
+                    <strong style={{ color: '#fff', fontSize: '1rem' }}>Standard Timings</strong>
+                  </div>
+                  <p style={{ fontSize: '0.88rem', color: '#cbd5e1', margin: 0, lineHeight: 1.6 }}>
                     Check-in from 2:00 PM. Check-out until 12:00 PM. Early check-in or late checkout is subject to cottage availability.
                   </p>
                 </div>
-                <div>
-                  <strong style={{ display: 'block', color: 'var(--navy)', marginBottom: 6 }}>
-                    Flexible Meal Packages
-                  </strong>
-                  <p style={{ fontSize: '0.9rem' }}>
+
+                <div
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 14,
+                    padding: '20px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                    <div
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 10,
+                        background: 'rgba(198, 168, 105, 0.16)',
+                        color: 'var(--gold)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Utensils style={{ width: 17, height: 17 }} />
+                    </div>
+                    <strong style={{ color: '#fff', fontSize: '1rem' }}>Flexible Meal Packages</strong>
+                  </div>
+                  <p style={{ fontSize: '0.88rem', color: '#cbd5e1', margin: 0, lineHeight: 1.6 }}>
                     Choose from Room Only (EP), Room + Breakfast (CP), or Room + Breakfast + 1 Meal (MAP) freshly prepared in our kitchen.
                   </p>
                 </div>
-                <div>
-                  <strong style={{ display: 'block', color: 'var(--navy)', marginBottom: 6 }}>
-                    Direct Booking Promise
-                  </strong>
-                  <p style={{ fontSize: '0.9rem' }}>
+
+                <div
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 14,
+                    padding: '20px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                    <div
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 10,
+                        background: 'rgba(198, 168, 105, 0.16)',
+                        color: 'var(--gold)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <ShieldCheck style={{ width: 17, height: 17 }} />
+                    </div>
+                    <strong style={{ color: '#fff', fontSize: '1rem' }}>Direct Booking Promise</strong>
+                  </div>
+                  <p style={{ fontSize: '0.88rem', color: '#cbd5e1', margin: 0, lineHeight: 1.6 }}>
                     Enquire directly through our website or WhatsApp desk for current promotional seasonal rates with no hidden fees.
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </FadeIn>
         </div>
       </section>

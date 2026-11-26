@@ -10,6 +10,7 @@ import { useBooking } from './ClientLayout';
 import FadeIn from './animations/FadeIn';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { luxuryEase } from './animations/variants';
+import WinterEnvironment from './animations/WinterEnvironment';
 
 export type CTAVariant =
   | 'home'
@@ -158,6 +159,14 @@ export default function CTASection({
         transition={{ duration: 7, ease: 'easeOut' }}
       />
       <div className="cta-overlay" />
+      <WinterEnvironment
+        intensity="subtle"
+        fog={true}
+        fogPosition="bottom"
+        fogIntensity="subtle"
+        fogZIndex={2}
+        snowZIndex={3}
+      />
 
       <FadeIn direction="up" className="wrap">
         <span className="eyebrow" style={{ color: 'var(--gold-soft)' }}>

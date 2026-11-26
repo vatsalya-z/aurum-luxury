@@ -5,6 +5,7 @@ import { SiTripadvisor } from 'react-icons/si';
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaExternalLinkAlt, FaAward } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { TRIPADVISOR_REVIEWS, TRIPADVISOR_SUMMARY, Review } from '@/data/reviews';
+import { HOTEL_INFO } from '@/data/hotelInfo';
 import FadeIn from './animations/FadeIn';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
@@ -163,11 +164,11 @@ export default function Reviews() {
       <div className="container relative" style={{ zIndex: 10 }}>
         {/* Section Header (Centered) */}
         <FadeIn direction="up">
-          <div className="head" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 36px' }}>
+          <div className="head" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 28px' }}>
             <span className="eyebrow eyebrow-wide">
               Guest Sentiment
             </span>
-            <h2 style={{ fontSize: 'clamp(2.4rem, 5vw, 4rem)', margin: '8px 0 14px', textAlign: 'center' }}>
+            <h2 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', margin: '8px 0 14px', textAlign: 'center' }}>
               Trusted by <span className="italic font-medium text-gold">Discerning Guests</span>
             </h2>
             <p style={{ margin: '0 auto', textAlign: 'center', maxWidth: 640 }}>
@@ -177,6 +178,59 @@ export default function Reviews() {
           </div>
         </FadeIn>
 
+        {/* Verified Guest Excellence Summary Strip */}
+        <FadeIn direction="up" delay={0.08}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: '10px 18px',
+              padding: '14px 20px',
+              margin: '0 auto 24px',
+              maxWidth: 760,
+              borderRadius: 16,
+              background: 'var(--beige)',
+              border: '1px solid rgba(198, 168, 105, 0.35)',
+              boxShadow: 'var(--shadow-sm)',
+            }}
+          >
+            <a
+              href={summary.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
+            >
+              <SiTripadvisor style={{ color: '#00AA6C', width: 20, height: 20 }} />
+              <strong style={{ color: 'var(--navy)', fontSize: '0.94rem' }}>
+                {summary.overallRating.toFixed(1)} ★ Tripadvisor
+              </strong>
+            </a>
+            <span style={{ color: 'var(--gold-dark)', fontWeight: 700 }} aria-hidden="true">·</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--navy)', fontSize: '0.86rem', fontWeight: 600 }}>
+              <FaAward style={{ color: 'var(--gold-dark)', width: 15, height: 15 }} />
+              <span>{summary.rank}</span>
+            </div>
+            <span style={{ color: 'var(--gold-dark)', fontWeight: 700 }} aria-hidden="true">·</span>
+            <a
+              href={HOTEL_INFO.urls.googleHotels}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                color: 'var(--gold-dark)',
+                fontSize: '0.84rem',
+                fontWeight: 700,
+              }}
+            >
+              <span>{HOTEL_INFO.googleRating} ★ Google Hotels</span>
+              <FaExternalLinkAlt style={{ width: 11, height: 11 }} />
+            </a>
+          </div>
+        </FadeIn>
 
         {/* 4. Review Cards Horizontal Slider with Scroll Reveal */}
         <FadeIn direction="up" delay={0.15} className="guest-sentiment-slider-wrap" style={{ marginTop: 36, marginBottom: 28 }}>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { X, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, ZoomIn, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,6 +31,8 @@ export default function Gallery({
   const [showAll, setShowAll] = useState<boolean>(showAllInitial);
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const reducedMotion = useReducedMotion();
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   const filteredItems = selectedCategory === 'All Photos'
     ? GALLERY_ITEMS
@@ -273,7 +275,7 @@ export default function Gallery({
           </FadeIn>
         )}
 
-        {/* Lightbox Modal with Framer Motion AnimatePresence */}
+        {/* Lightbox Modal with Touch Swipe & Framer Motion AnimatePresence */}
         <AnimatePresence>
           {activeLightboxIndex !== null && filteredItems[activeLightboxIndex] && (
             <motion.div
@@ -284,12 +286,46 @@ export default function Gallery({
               onClick={(e) => {
                 if (e.target === e.currentTarget) closeLightbox();
               }}
+              onTouchStart={(e) => {
+                touchStartX.current = e.touches[0].clientX;
+                touchStartY.current = e.touches[0].clientY;
+              }}
+              onTouchEnd={(e) => {
+                if (touchStartX.current === null || touchStartY.current === null) return;
+                const dx = e.changedTouches[0].clientX - touchStartX.current;
+                const dy = e.changedTouches[0].clientY - touchStartY.current;
+                if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+                  if (dx < 0) showNext();
+                  else showPrev();
+                }
+                touchStartX.current = null;
+                touchStartY.current = null;
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
             >
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'max(18px, env(safe-area-inset-top, 18px))',
+                  left: 18,
+                  padding: '6px 14px',
+                  borderRadius: 999,
+                  background: 'rgba(255, 255, 255, 0.12)',
+                  border: '1px solid rgba(198, 168, 105, 0.4)',
+                  color: 'var(--gold-soft)',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                }}
+              >
+                {activeLightboxIndex + 1} / {filteredItems.length}
+              </div>
+
               <motion.button
+                type="button"
                 className="lb-btn lb-close"
                 aria-label="Close image viewer"
                 onClick={closeLightbox}

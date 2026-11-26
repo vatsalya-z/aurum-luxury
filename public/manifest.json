@@ -1,0 +1,17 @@
+{
+  "name": "The Aurum Luxury Collection",
+  "short_name": "The Aurum",
+  "description": "Boutique hillside sanctuary in Brein Hills, Astanpora, Srinagar overlooking Dal Lake.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1628",
+  "theme_color": "#0A1628",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

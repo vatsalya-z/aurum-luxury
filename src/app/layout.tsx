@@ -9,11 +9,18 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: 'cover',
   themeColor: '#0A1628',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'The Aurum',
+  },
   title: {
     default: `${HOTEL_INFO.fullName} | Luxury Hotel in Srinagar`,
     template: `%s | ${HOTEL_INFO.brand}`,
@@ -89,6 +96,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@300;400;500;600;700&display=swap"
+        />
       </head>
       <body>
         {/* Core Global Structured Data */}

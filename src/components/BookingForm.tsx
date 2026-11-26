@@ -1,22 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Calendar, Users, Home, Utensils, CheckCircle, AlertCircle, Send } from 'lucide-react';
+import React, { useState, useId, useEffect } from 'react';
+import { AlertCircle } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { ROOMS } from '@/data/rooms';
 import { HOTEL_INFO } from '@/data/hotelInfo';
 
 interface BookingFormProps {
   initialRoom?: string;
+  initialCheckIn?: string;
+  initialCheckOut?: string;
   onSuccess?: (enquiryId: string, whatsappUrl: string) => void;
   isInline?: boolean;
 }
 
 export default function BookingForm({
   initialRoom = 'Luxury Bedroom Cottage',
+  initialCheckIn,
+  initialCheckOut,
   onSuccess,
   isInline = false,
 }: BookingFormProps) {
+  const uid = useId();
   // Get tomorrow's date string and day after tomorrow
   const today = new Date();
   const tomorrow = new Date(today);
@@ -27,8 +32,8 @@ export default function BookingForm({
   const formatDate = (d: Date) => d.toISOString().split('T')[0];
 
   const [formData, setFormData] = useState({
-    checkIn: formatDate(tomorrow),
-    checkOut: formatDate(dayAfter),
+    checkIn: initialCheckIn || formatDate(tomorrow),
+    checkOut: initialCheckOut || formatDate(dayAfter),
     adults: 2,
     children: 0,
     roomsCount: 1,
@@ -40,6 +45,15 @@ export default function BookingForm({
     specialRequests: '',
   });
 
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      preferredRoom: initialRoom || prev.preferredRoom,
+      checkIn: initialCheckIn || prev.checkIn,
+      checkOut: initialCheckOut || prev.checkOut,
+    }));
+  }, [initialRoom, initialCheckIn, initialCheckOut]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [submittedData, setSubmittedData] = useState<{
@@ -49,7 +63,17 @@ export default function BookingForm({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      const next = { ...prev, [name]: value };
+      if (name === 'checkIn' && value >= prev.checkOut) {
+        const nextDay = new Date(value);
+        if (!Number.isNaN(nextDay.getTime())) {
+          nextDay.setDate(nextDay.getDate() + 1);
+          next.checkOut = nextDay.toISOString().split('T')[0];
+        }
+      }
+      return next;
+    });
     setErrorMsg(null);
   };
 
@@ -267,10 +291,10 @@ _Please confirm room availability and current best promotional rates._`;
       <div className="form-grid">
         {/* Check-In */}
         <div className="form-group">
-          <label htmlFor="checkIn">Check-In Date *</label>
+          <label htmlFor={`${uid}-checkIn`}>Check-In Date *</label>
           <input
             type="date"
-            id="checkIn"
+            id={`${uid}-checkIn`}
             name="checkIn"
             required
             className="form-control"
@@ -282,10 +306,10 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Check-Out */}
         <div className="form-group">
-          <label htmlFor="checkOut">Check-Out Date *</label>
+          <label htmlFor={`${uid}-checkOut`}>Check-Out Date *</label>
           <input
             type="date"
-            id="checkOut"
+            id={`${uid}-checkOut`}
             name="checkOut"
             required
             className="form-control"
@@ -297,9 +321,9 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Accommodation Choice */}
         <div className="form-group">
-          <label htmlFor="preferredRoom">Preferred Room / Chalet</label>
+          <label htmlFor={`${uid}-preferredRoom`}>Preferred Room / Chalet</label>
           <select
-            id="preferredRoom"
+            id={`${uid}-preferredRoom`}
             name="preferredRoom"
             className="form-control"
             value={formData.preferredRoom}
@@ -315,9 +339,9 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Meal Plan */}
         <div className="form-group">
-          <label htmlFor="mealPlan">Preferred Meal Plan</label>
+          <label htmlFor={`${uid}-mealPlan`}>Preferred Meal Plan</label>
           <select
-            id="mealPlan"
+            id={`${uid}-mealPlan`}
             name="mealPlan"
             className="form-control"
             value={formData.mealPlan}
@@ -330,11 +354,11 @@ _Please confirm room availability and current best promotional rates._`;
         </div>
 
         {/* Occupancy Row: Rooms, Adults, Children (Compact 3-column row) */}
-        <div className="form-trio-row" style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+        <div className="form-trio-row" style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 10 }}>
           <div className="form-group">
-            <label htmlFor="roomsCount">Rooms</label>
+            <label htmlFor={`${uid}-roomsCount`}>Rooms</label>
             <select
-              id="roomsCount"
+              id={`${uid}-roomsCount`}
               name="roomsCount"
               className="form-control"
               value={formData.roomsCount}
@@ -348,9 +372,9 @@ _Please confirm room availability and current best promotional rates._`;
           </div>
 
           <div className="form-group">
-            <label htmlFor="adults">Adults (12+)</label>
+            <label htmlFor={`${uid}-adults`}>Adults</label>
             <select
-              id="adults"
+              id={`${uid}-adults`}
               name="adults"
               className="form-control"
               value={formData.adults}
@@ -364,28 +388,28 @@ _Please confirm room availability and current best promotional rates._`;
           </div>
 
           <div className="form-group">
-            <label htmlFor="children">Children</label>
+            <label htmlFor={`${uid}-children`}>Kids</label>
             <select
-              id="children"
+              id={`${uid}-children`}
               name="children"
               className="form-control"
               value={formData.children}
               onChange={handleChange}
             >
-              <option value={0}>0 Child</option>
-              <option value={1}>1 Child</option>
-              <option value={2}>2 Children</option>
-              <option value={3}>3+ Children</option>
+              <option value={0}>0 Kids</option>
+              <option value={1}>1 Kid</option>
+              <option value={2}>2 Kids</option>
+              <option value={3}>3+ Kids</option>
             </select>
           </div>
         </div>
 
         {/* Guest Full Name */}
         <div className="form-group">
-          <label htmlFor="guestName">Full Name *</label>
+          <label htmlFor={`${uid}-guestName`}>Full Name *</label>
           <input
             type="text"
-            id="guestName"
+            id={`${uid}-guestName`}
             name="guestName"
             placeholder="e.g. Rahul Sharma"
             required
@@ -397,10 +421,10 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Phone Number */}
         <div className="form-group">
-          <label htmlFor="phone">Phone / WhatsApp *</label>
+          <label htmlFor={`${uid}-phone`}>Phone / WhatsApp *</label>
           <input
             type="tel"
-            id="phone"
+            id={`${uid}-phone`}
             name="phone"
             placeholder="+91 98765 43210"
             required
@@ -412,10 +436,10 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Email */}
         <div className="form-group">
-          <label htmlFor="email">Email Address *</label>
+          <label htmlFor={`${uid}-email`}>Email Address *</label>
           <input
             type="email"
-            id="email"
+            id={`${uid}-email`}
             name="email"
             placeholder="name@example.com"
             required
@@ -427,10 +451,10 @@ _Please confirm room availability and current best promotional rates._`;
 
         {/* Special Requests */}
         <div className="form-group">
-          <label htmlFor="specialRequests">Special Notes / Requests</label>
+          <label htmlFor={`${uid}-specialRequests`}>Special Notes / Requests</label>
           <input
             type="text"
-            id="specialRequests"
+            id={`${uid}-specialRequests`}
             name="specialRequests"
             placeholder="e.g. Airport shuttle, early check-in"
             className="form-control"

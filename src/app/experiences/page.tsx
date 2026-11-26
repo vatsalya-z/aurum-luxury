@@ -1,12 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import Experiences from '@/components/Experiences';
+import PageHero from '@/components/PageHero';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import RelatedPages from '@/components/seo/RelatedPages';
-import FadeIn from '@/components/animations/FadeIn';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { KEYWORD_MAP } from '@/data/seo/keywordMap';
 
@@ -27,23 +25,20 @@ export default function ExperiencesPage() {
 
   return (
     <>
-      <section className="banner">
-        <img
-          src="/images/gallery/aurum-luxury-cottage-exterior.jpg"
-          alt="The Aurum Luxury Collection Cottage Exterior Srinagar"
-          className="banner-bg"
-        />
-        <FadeIn direction="up" className="wrap">
-          <Breadcrumbs items={breadcrumbs} />
-          <h1>Discover the Beauty of Srinagar</h1>
-          <p>
-            Situated on the slopes of Brein Hills, Astanpora, The Aurum provides a peaceful mountain retreat
-            while placing you minutes from Kashmir’s most enchanting historical and natural destinations.
-          </p>
-        </FadeIn>
-      </section>
+      <PageHero
+        size="standard"
+        image="/images/gallery/aurum-luxury-cottage-exterior.jpg"
+        alt="The Aurum Luxury Collection Cottage Exterior Srinagar"
+        breadcrumbs={breadcrumbs}
+        eyebrow="SRINAGAR ESCAPES"
+        title="Discover the Beauty of"
+        titleHighlight="Srinagar"
+        subtitle="Situated on the slopes of Brein Hills, Astanpora, The Aurum provides a peaceful mountain retreat while placing you minutes from Kashmir’s most enchanting historical and natural destinations."
+        desktopPosition="center center"
+        mobilePosition="center 40%"
+      />
 
-      <Experiences />
+      <Experiences layout="stack-mobile" />
 
       {/* Internal Linking Silo */}
       <RelatedPages

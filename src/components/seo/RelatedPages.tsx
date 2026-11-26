@@ -34,22 +34,14 @@ export default function RelatedPages({
           <div className="head" style={{ marginBottom: 36 }}>
             <span className="eyebrow">
               <Compass style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />
-              Internal Navigation
+              Curated Discovery
             </span>
             <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}>{title}</h2>
             <p>{subtitle}</p>
           </div>
         </FadeIn>
 
-        <ScrollReveal
-          className="related-pages-grid"
-          staggerChildren={0.1}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: 20,
-          }}
-        >
+        <ScrollReveal className="related-pages-grid" staggerChildren={0.08}>
           {links.map((link) => (
             <ScrollRevealItem key={link.href} direction="up" distance={20} style={{ display: 'flex', flexDirection: 'column' }}>
               <motion.div
@@ -66,8 +58,9 @@ export default function RelatedPages({
                     justifyContent: 'space-between',
                     padding: '24px 22px',
                     background: '#ffffff',
-                    border: '1px solid var(--line)',
-                    borderRadius: 'var(--radius)',
+                    border: '1px solid rgba(198, 168, 105, 0.28)',
+                    borderTop: '3px solid var(--gold)',
+                    borderRadius: 16,
                     boxShadow: 'var(--shadow)',
                     textDecoration: 'none',
                     height: '100%',
@@ -78,12 +71,15 @@ export default function RelatedPages({
                     <span
                       style={{
                         display: 'inline-block',
-                        fontSize: '0.72rem',
+                        fontSize: '0.68rem',
                         textTransform: 'uppercase',
-                        letterSpacing: '0.12em',
-                        fontWeight: 600,
+                        letterSpacing: '0.14em',
+                        fontWeight: 700,
                         color: 'var(--gold-dark)',
-                        marginBottom: 8,
+                        background: 'var(--beige)',
+                        padding: '3px 10px',
+                        borderRadius: 999,
+                        marginBottom: 10,
                       }}
                     >
                       {link.category}
@@ -115,13 +111,13 @@ export default function RelatedPages({
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 6,
-                      color: 'var(--gold-dark)',
-                      fontSize: '0.88rem',
-                      fontWeight: 600,
+                      color: 'var(--navy)',
+                      fontSize: '0.86rem',
+                      fontWeight: 700,
                     }}
                   >
                     <span>Discover</span>
-                    <ArrowRight style={{ width: 15, height: 15 }} />
+                    <ArrowRight style={{ width: 15, height: 15, color: 'var(--gold-dark)' }} />
                   </div>
                 </Link>
               </motion.div>

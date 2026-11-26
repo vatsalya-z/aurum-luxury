@@ -125,7 +125,7 @@ export function generateHotelSchema() {
       },
       amenityFeature: r.amenities.slice(0, 8).map((a) => ({
         '@type': 'LocationFeatureSpecification',
-        name: a,
+        name: a.name,
         value: true,
       })),
     })),

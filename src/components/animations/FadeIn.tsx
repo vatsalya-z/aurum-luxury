@@ -20,13 +20,13 @@ export interface FadeInProps {
 export function FadeIn({
   children,
   delay = 0,
-  duration = 0.7,
-  distance = 32,
+  duration = 0.6,
+  distance = 24,
   direction = 'up',
   className,
   style,
   once = true,
-  amount = 0.15,
+  amount = 'some',
 }: FadeInProps) {
   const reducedMotion = useReducedMotion();
 
@@ -38,11 +38,12 @@ export function FadeIn({
     );
   }
 
+  const horizontalDistance = Math.min(distance, 18);
   const directionMap = {
     up: { y: distance, x: 0 },
     down: { y: -distance, x: 0 },
-    left: { x: distance, y: 0 },
-    right: { x: -distance, y: 0 },
+    left: { x: horizontalDistance, y: 0 },
+    right: { x: -horizontalDistance, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -52,7 +53,7 @@ export function FadeIn({
     <motion.div
       initial={{ opacity: 0, ...initialOffset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once, margin: '-40px', amount }}
+      viewport={{ once, margin: '0px 0px -20px 0px', amount }}
       transition={{ duration, delay, ease: luxuryEase }}
       className={className}
       style={style}

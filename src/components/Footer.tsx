@@ -131,21 +131,6 @@ export default function Footer() {
               <p style={{ margin: 0 }}>
                 © {currentYear} {HOTEL_INFO.fullName}. Managed by Stay Pattern. All rights reserved.
               </p>
-              <p style={{ margin: '6px 0 0', fontSize: '0.85rem', color: '#38bdf8' }}>
-                Design And Developed By -{' '}
-                <a
-                  href="https://www.zoomdigital.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: '#38bdf8',
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                  }}
-                >
-                  Zoom Digital
-                </a>
-              </p>
             </div>
             <div className="footer-legal-links" style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
               <Link href="/privacy-policy" style={{ color: '#8c97ab' }}>Privacy Policy</Link>

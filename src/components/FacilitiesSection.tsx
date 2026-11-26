@@ -151,13 +151,13 @@ export default function FacilitiesSection({
           </FadeIn>
         )}
 
-        {/* Unified Staggered Grid Format */}
-        <ScrollReveal className="grid g3" staggerChildren={0.08}>
+        {/* Unified Staggered Grid Format (1-col horizontal list cards on mobile, 3-col on desktop) */}
+        <ScrollReveal className="grid g3" staggerChildren={0.07}>
           {displayedItems.map((item, idx) => (
             <ScrollRevealItem
               key={idx}
               direction="up"
-              distance={24}
+              distance={20}
               style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
             >
               <motion.div
@@ -171,15 +171,22 @@ export default function FacilitiesSection({
                   height: '100%',
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                <div className="feature-mobile-row">
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: 14,
+                    }}
+                  >
                     <div
                       className="ico"
                       style={{
                         margin: 0,
                         width: 46,
                         height: 46,
-                        borderRadius: 10,
+                        borderRadius: 12,
                         background: darkVariant
                           ? 'linear-gradient(135deg, rgba(198, 168, 105, 0.22), rgba(198, 168, 105, 0.08))'
                           : 'linear-gradient(135deg, rgba(198, 168, 105, 0.18), rgba(198, 168, 105, 0.06))',
@@ -194,46 +201,51 @@ export default function FacilitiesSection({
                     >
                       {getIcon(item.icon)}
                     </div>
+                  </div>
+
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <span
                       className="feature-category-badge"
                       style={{
-                        fontSize: '0.68rem',
+                        display: 'inline-block',
+                        fontSize: '0.66rem',
                         textTransform: 'uppercase',
                         letterSpacing: '0.12em',
                         padding: '3px 8px',
-                        borderRadius: 4,
+                        borderRadius: 999,
                         background: darkVariant ? 'rgba(198, 168, 105, 0.15)' : 'var(--beige)',
-                        color: darkVariant ? 'var(--gold-soft)' : 'var(--navy)',
-                        fontWeight: 600,
-                        border: darkVariant ? '1px solid rgba(198, 168, 105, 0.3)' : '1px solid var(--line)',
+                        color: darkVariant ? 'var(--gold-soft)' : 'var(--gold-dark)',
+                        fontWeight: 700,
+                        border: darkVariant ? '1px solid rgba(198, 168, 105, 0.3)' : '1px solid rgba(198, 168, 105, 0.35)',
+                        marginBottom: 8,
                       }}
                     >
                       {item.categoryTitle}
                     </span>
-                  </div>
-                  <h3 style={{ fontSize: '1.15rem', marginBottom: 8, color: darkVariant ? '#fff' : 'var(--navy)', fontFamily: 'var(--serif)' }}>
-                    {item.name}
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: darkVariant ? '#b9c2d3' : 'var(--muted)', margin: 0 }}>
-                    {item.description}
-                  </p>
-                </div>
 
-                {item.notes && (
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      marginTop: 12,
-                      fontSize: '0.72rem',
-                      color: 'var(--gold)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
-                      fontWeight: 700,
-                    }}
-                  >
-                    * {item.notes}
-                  </span>
-                )}
+                    <h3 style={{ fontSize: '1.15rem', marginBottom: 6, color: darkVariant ? '#fff' : 'var(--navy)', fontFamily: 'var(--serif)' }}>
+                      {item.name}
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', lineHeight: 1.6, color: darkVariant ? '#b9c2d3' : 'var(--muted)', margin: 0 }}>
+                      {item.description}
+                    </p>
+                    {item.notes && (
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          marginTop: 10,
+                          fontSize: '0.7rem',
+                          color: 'var(--gold-dark)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          fontWeight: 700,
+                        }}
+                      >
+                        * {item.notes}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             </ScrollRevealItem>
           ))}

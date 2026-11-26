@@ -15,40 +15,40 @@ export default function TrustBar() {
 
   const credentials = [
     {
-      icon: <Award style={{ width: 22, height: 22 }} />,
+      icon: <Award style={{ width: 20, height: 20 }} />,
       title: '4-Star Boutique Hotel',
       subtitle: 'Brein Hills · Astanpora',
     },
     {
-      icon: <Star style={{ width: 22, height: 22 }} />,
-      title: '4.8 / 5 on Google Hotels',
-      subtitle: '32 Verified Guest Reviews',
+      icon: <Star style={{ width: 20, height: 20 }} />,
+      title: '4.8 / 5 on Google',
+      subtitle: '32 Verified Reviews',
     },
     {
-      icon: <ShieldCheck style={{ width: 22, height: 22 }} />,
-      title: 'Managed by Stay Pattern',
-      subtitle: 'Curated Kashmiri Hospitality',
+      icon: <ShieldCheck style={{ width: 20, height: 20 }} />,
+      title: 'Stay Pattern',
+      subtitle: 'Kashmiri Hospitality',
     },
     {
-      icon: <Mountain style={{ width: 22, height: 22 }} />,
-      title: 'Scenic Dal Lake Vantage',
-      subtitle: 'Pine Slopes & Mountain Ridges',
+      icon: <Mountain style={{ width: 20, height: 20 }} />,
+      title: 'Dal Lake Vantage',
+      subtitle: 'Pine & Ridge Views',
     },
   ];
 
   return (
     <section className="trust-bar" aria-label="Hotel Credentials and Ratings">
       <div className="container trust-bar-container">
-        <ScrollReveal className="trust-grid" staggerChildren={0.1}>
+        <ScrollReveal className="trust-grid" staggerChildren={0.08}>
           {credentials.map((c, i) => (
-            <ScrollRevealItem key={i} direction="up" distance={20}>
+            <ScrollRevealItem key={i} direction="up" distance={16}>
               <motion.div
                 className="trust-item"
-                whileHover={reducedMotion ? {} : { y: -3, scale: 1.02 }}
+                whileHover={reducedMotion ? {} : { y: -2 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
               >
                 <div className="icon-circle">{c.icon}</div>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <strong>{c.title}</strong>
                   <span>{c.subtitle}</span>
                 </div>
@@ -57,8 +57,8 @@ export default function TrustBar() {
           ))}
         </ScrollReveal>
 
-        {/* Attached Quick Booking Search Bar with Scroll Reveal */}
-        <FadeIn direction="up" delay={0.2} className="trust-booking-wrapper">
+        {/* Attached Quick Booking Console (Desktop & Tablet) */}
+        <FadeIn direction="up" delay={0.15} className="trust-booking-wrapper">
           <FloatingBookingBar onOpenBooking={openBooking} />
         </FadeIn>
       </div>

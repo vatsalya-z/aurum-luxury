@@ -19,7 +19,7 @@ import {
 import { HiSparkles } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
 import { HOTEL_INFO } from '@/data/hotelInfo';
-import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import PageHero from '@/components/PageHero';
 import Reviews from '@/components/Reviews';
 import FAQSection from '@/components/FAQSection';
 import RelatedPages from '@/components/seo/RelatedPages';
@@ -164,110 +164,20 @@ export default function AboutPageContent() {
 
   return (
     <div className="about-page">
-      {/* ========================================================
-          HERO SECTION: Full-Width, Slow Zoom, Centered Heading & CTA
-          ======================================================== */}
-      <section
-        className="about-hero"
-        style={{
-          position: 'relative',
-          minHeight: '80vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: '140px 24px 80px',
-          overflow: 'hidden',
-          backgroundColor: 'var(--navy)',
-        }}
-      >
-        <motion.img
-          src="/images/hero/aurum-luxury-estate-hero.jpg"
-          alt="The Aurum Luxury Collection mountain estate in Brein Hills Srinagar"
-          initial={reducedMotion ? {} : { scale: 1 }}
-          animate={reducedMotion ? {} : { scale: 1.05 }}
-          transition={{ duration: 7, ease: 'easeOut' }}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 1,
-            filter: 'brightness(0.85)',
-          }}
-        />
-
-        {/* Centered Hero Content */}
-        <div className="container relative" style={{ zIndex: 10, maxWidth: 960 }}>
-          <FadeIn direction="up">
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
-              <Breadcrumbs items={breadcrumbs} />
-            </div>
-
-            <span
-              className="eyebrow eyebrow-wide"
-              style={{
-                color: 'var(--gold)',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                display: 'inline-block',
-                marginBottom: 16,
-              }}
-            >
-              WELCOME TO THE AURUM LUXURY COLLECTION
-            </span>
-
-            <h1
-              style={{
-                color: '#fff',
-                fontSize: 'clamp(2.5rem, 5.5vw, 4.2rem)',
-                fontFamily: 'var(--serif)',
-                fontWeight: 400,
-                lineHeight: 1.15,
-                margin: '0 auto 24px',
-                maxWidth: 880,
-                textAlign: 'center',
-              }}
-            >
-              Discover the Story Behind{' '}
-              <span className="italic font-medium text-gold relative px-2">
-                Aurum Luxury Collection
-              </span>
-            </h1>
-
-            <p
-              style={{
-                color: '#d4dde8',
-                fontSize: 'clamp(1.08rem, 2vw, 1.28rem)',
-                lineHeight: 1.7,
-                maxWidth: 720,
-                margin: '0 auto 36px',
-                textAlign: 'center',
-                fontWeight: 300,
-              }}
-            >
-              Where thoughtful hospitality, memorable experiences, and the timeless beauty of Kashmir come together.
-            </p>
-
-            {/* Centered CTA Button */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <motion.div
-                whileHover={reducedMotion ? {} : { scale: 1.04 }}
-                whileTap={reducedMotion ? {} : { scale: 0.96 }}
-              >
-                <a href="#story" className="btn btn-gold btn-lg">
-                  <span>Explore Our Experience</span>
-                  <FaArrowRight size={14} />
-                </a>
-              </motion.div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <PageHero
+        size="tall"
+        image="/images/hero/aurum-luxury-estate-hero.jpg"
+        alt="The Aurum Luxury Collection mountain estate in Brein Hills Srinagar"
+        breadcrumbs={breadcrumbs}
+        eyebrow="WELCOME TO THE AURUM LUXURY COLLECTION"
+        title="Discover the Story Behind"
+        titleHighlight="Aurum Luxury Collection"
+        subtitle="Where thoughtful hospitality, memorable experiences, and the timeless beauty of Kashmir come together."
+        ctaLabel="Explore Our Experience"
+        ctaHref="#story"
+        desktopPosition="center 45%"
+        mobilePosition="center 40%"
+      />
 
       {/* ========================================================
           SECTION 1: OUR STORY (Alternating Left & Right Reveals)
@@ -289,15 +199,7 @@ export default function AboutPageContent() {
           </FadeIn>
 
           {/* 2-Column Story Grid */}
-          <div
-            className="about-split"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: 'clamp(36px, 5vw, 68px)',
-              alignItems: 'center',
-            }}
-          >
+          <div className="about-split about-pillars-grid">
             {/* Left Column: Story Narrative (Slide from Left) */}
             <FadeIn direction="right">
               <div>
@@ -505,13 +407,8 @@ export default function AboutPageContent() {
 
           {/* 5 Philosophy Cards Staggered Grid */}
           <ScrollReveal
-            className="grid"
+            className="philosophy-grid"
             staggerChildren={0.1}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 24,
-            }}
           >
             {philosophies.map((item, idx) => (
               <ScrollRevealItem key={idx} direction="up" distance={24}>
@@ -603,12 +500,8 @@ export default function AboutPageContent() {
 
           {/* Showcase Cards Staggered Grid */}
           <ScrollReveal
+            className="stay-exp-grid"
             staggerChildren={0.12}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: 32,
-            }}
           >
             {stayExperiences.map((exp, idx) => (
               <ScrollRevealItem key={idx} direction="up" distance={28} style={{ display: 'flex', flexDirection: 'column' }}>
@@ -707,12 +600,8 @@ export default function AboutPageContent() {
 
           {/* 4 Commitments Staggered Grid */}
           <ScrollReveal
+            className="commitments-grid"
             staggerChildren={0.08}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: 24,
-            }}
           >
             {commitments.map((item, idx) => (
               <ScrollRevealItem key={idx} direction="up" distance={20}>
@@ -791,12 +680,8 @@ export default function AboutPageContent() {
 
           {/* 6 Advantage Cards Staggered Grid */}
           <ScrollReveal
+            className="why-choose-grid"
             staggerChildren={0.08}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: 24,
-            }}
           >
             {whyChooseUs.map((benefit, idx) => (
               <ScrollRevealItem key={idx} direction="up" distance={24}>
@@ -854,11 +739,7 @@ export default function AboutPageContent() {
       {/* ========================================================
           SECTION 6: GUEST EXPERIENCES (Reusing Verified Reviews Slider)
           ======================================================== */}
-      <section className="section-padding bg-ivory" style={{ backgroundColor: 'var(--white)' }}>
-        <div className="container">
-          <Reviews />
-        </div>
-      </section>
+      <Reviews />
 
       {/* ========================================================
           SECTION 7: LOCATION & DESTINATION (Sights Grid + Centered CTA)
@@ -880,13 +761,8 @@ export default function AboutPageContent() {
 
           {/* Sights Distance Grid with Staggered Entrance */}
           <ScrollReveal
+            className="destinations-grid"
             staggerChildren={0.06}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 20,
-              marginBottom: 44,
-            }}
           >
             {destinations.map((dest, idx) => (
               <ScrollRevealItem key={idx} direction="up" distance={20}>
@@ -894,20 +770,21 @@ export default function AboutPageContent() {
                   style={{
                     background: '#fff',
                     border: '1px solid var(--line)',
-                    borderRadius: 'var(--radius)',
-                    padding: '24px 22px',
+                    borderRadius: 16,
+                    padding: '22px 20px',
                     boxShadow: 'var(--shadow)',
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: 16,
+                    gap: 14,
+                    height: '100%',
                   }}
                   whileHover={reducedMotion ? {} : { y: -4 }}
                   transition={{ duration: 0.25 }}
                 >
                   <div
                     style={{
-                      width: 44,
-                      height: 44,
+                      width: 42,
+                      height: 42,
                       borderRadius: '50%',
                       background: 'rgba(198, 168, 105, 0.15)',
                       color: 'var(--gold)',
@@ -919,24 +796,26 @@ export default function AboutPageContent() {
                   >
                     <FaMapLocationDot size={18} />
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 6 }}>
                       <h4 style={{ color: 'var(--navy)', fontSize: '1.05rem', margin: 0 }}>{dest.name}</h4>
                       <span
                         style={{
-                          fontSize: '0.74rem',
+                          fontSize: '0.72rem',
                           fontWeight: 700,
-                          color: 'var(--gold)',
+                          color: 'var(--gold-dark)',
                           background: 'var(--beige)',
-                          padding: '2px 8px',
-                          borderRadius: 4,
+                          border: '1px solid rgba(198, 168, 105, 0.35)',
+                          padding: '3px 9px',
+                          borderRadius: 999,
                           letterSpacing: '0.04em',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {dest.time}
                       </span>
                     </div>
-                    <p style={{ color: 'var(--muted)', fontSize: '0.86rem', margin: 0, lineHeight: 1.5 }}>
+                    <p style={{ color: 'var(--muted)', fontSize: '0.86rem', margin: 0, lineHeight: 1.55 }}>
                       {dest.desc}
                     </p>
                   </div>
