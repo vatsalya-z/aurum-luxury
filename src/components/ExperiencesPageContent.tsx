@@ -100,7 +100,7 @@ export default function ExperiencesPageContent() {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const heroParallaxY = useTransform(heroScroll, [0, 1], [0, 52]);
+  const heroParallaxY = useTransform(heroScroll, [0, 1], [0, 22]);
 
   const breadcrumbs = [
     { name: 'Home', url: 'https://aurumhotelskashmir.com' },
@@ -110,11 +110,11 @@ export default function ExperiencesPageContent() {
   const {
     props: { srcSet: desktopHeroSrcSet },
   } = getImageProps({
-    alt: 'Traditional Kashmiri cedarwood Shikara gliding across tranquil Dal Lake toward the Zabarwan mountains in Srinagar',
+    alt: 'Snow-capped Himalayan mountains rising above Dal Lake with traditional Kashmiri Shikaras in Srinagar',
     width: 2560,
-    height: 1200,
+    height: 1708,
     sizes: '100vw',
-    quality: 94,
+    quality: 96,
     priority: true,
     src: '/images/hero/aurum-experiences-hero-desktop.jpg',
   });
@@ -122,11 +122,11 @@ export default function ExperiencesPageContent() {
   const {
     props: { srcSet: mobileHeroSrcSet, ...heroImgRest },
   } = getImageProps({
-    alt: 'Traditional Kashmiri cedarwood Shikara gliding across tranquil Dal Lake toward the Zabarwan mountains in Srinagar',
+    alt: 'Snow-capped Himalayan mountains rising above Dal Lake with traditional Kashmiri Shikaras in Srinagar',
     width: 1200,
     height: 1500,
     sizes: '100vw',
-    quality: 94,
+    quality: 96,
     priority: true,
     src: '/images/hero/aurum-experiences-hero-mobile.jpg',
   });
@@ -449,8 +449,8 @@ export default function ExperiencesPageContent() {
                         quality={90}
                         sizes={
                           isFeatured
-                            ? '(max-width: 1024px) 100vw, 60vw'
-                            : '(max-width: 768px) 100vw, 33vw'
+                            ? '(max-width: 768px) 50vw, (max-width: 1024px) 100vw, 60vw'
+                            : '(max-width: 768px) 50vw, 33vw'
                         }
                         className="exp-sight-img"
                       />
