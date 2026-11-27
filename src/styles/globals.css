@@ -7314,11 +7314,39 @@ select.bf-input option {
 }
 
 .rooms-hero-actions {
-  display: flex;
-  align-items: center;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  align-items: stretch;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rooms-hero-actions .btn {
+  width: 100% !important;
+  min-height: 46px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .rooms-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(100%, 272px);
+    gap: 10px;
+  }
+
+  .rooms-hero-actions .btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 45px !important;
+    height: 45px !important;
+    padding: 0 18px !important;
+    white-space: nowrap !important;
+  }
 }
 
 /* ─ Section 02: Editorial Introduction & Quick-Jump Bar ─ */
@@ -9031,4 +9059,1384 @@ select.bf-input option {
   .rooms-mosaic-meta p {
     display: none;
   }
+}
+
+
+/* ==========================================================
+   ULTRA-PREMIUM CONTACT & LOCATION PAGE (.contact-luxury-page)
+   ========================================================== */
+.contact-luxury-page {
+  background: #f8f5ef;
+}
+
+.contact-hero-cinematic {
+  min-height: clamp(540px, 74svh, 760px);
+}
+
+.contact-hero-zoom {
+  object-position: center 34%;
+  animation: slowZoom 18s infinite alternate ease-in-out;
+}
+
+.contact-hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.22) 0%,
+    rgba(11, 25, 48, 0.04) 24%,
+    rgba(11, 25, 48, 0.08) 54%,
+    rgba(11, 25, 48, 0.78) 78%,
+    rgba(11, 25, 48, 0.94) 100%
+  );
+}
+
+/* ─ Section 02: Instant Concierge Channels Ribbon ─ */
+.contact-channels-section {
+  background: #0b1930;
+  border-top: 1px solid rgba(201, 164, 92, 0.28);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.28);
+  padding: 22px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 16px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(16, 33, 61, 0.94) 0%, rgba(11, 25, 48, 0.98) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.28);
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.contact-channel-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26);
+}
+
+.contact-channel-card--wa:hover {
+  border-color: rgba(37, 211, 102, 0.65);
+}
+
+.contact-channel-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(201, 164, 92, 0.15);
+  border: 1px solid rgba(201, 164, 92, 0.38);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-channel-icon--wa {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.42);
+  color: #25d366;
+}
+
+.contact-channel-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.contact-channel-kicker {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.contact-channel-body strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-channel-meta {
+  display: block;
+  font-size: 0.72rem;
+  color: #aebad0;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─ Section 03: Bespoke Stay Enquiry & Estate Coordinates ─ */
+.contact-main-section {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: #f8f5ef;
+}
+
+.contact-section-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(32px, 4.5vw, 52px);
+}
+
+.contact-section-intro h2 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  color: var(--navy);
+  line-height: 1.14;
+  margin: 6px 0 12px;
+}
+
+.contact-section-intro p {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.contact-luxury-split {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(22px, 3vw, 34px);
+  align-items: start;
+}
+
+.contact-rd-shell {
+  margin: 0;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.contact-form-assurances {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(11, 25, 48, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+
+.contact-form-assurances span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.contact-form-assurances svg {
+  color: var(--gold-dark, #9e7b34);
+  flex-shrink: 0;
+}
+
+.contact-details-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-estate-card {
+  background: linear-gradient(160deg, #0b1930 0%, #122646 100%);
+  border: 1px solid rgba(201, 164, 92, 0.36);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 24px 56px rgba(11, 25, 48, 0.16);
+  color: #ffffff;
+}
+
+.contact-estate-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b1930;
+}
+
+.contact-estate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-estate-card:hover .contact-estate-img {
+  transform: scale(1.04);
+}
+
+.contact-estate-media-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 164, 92, 0.45);
+  color: var(--gold-soft);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-estate-body {
+  padding: clamp(20px, 2.8vw, 28px);
+}
+
+.contact-estate-body h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.contact-coord-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-coord-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-coord-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(201, 164, 92, 0.16);
+  border: 1px solid rgba(201, 164, 92, 0.35);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.contact-coord-row strong {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 3px;
+}
+
+.contact-coord-row p {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.contact-gps-tag {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  color: var(--gold-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  opacity: 0.92;
+}
+
+.contact-estate-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-estate-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Google Verified Profile Card */
+.contact-google-card {
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.34);
+  border-radius: 20px;
+  padding: 22px 24px;
+  box-shadow: 0 14px 36px rgba(11, 25, 48, 0.06);
+}
+
+.contact-google-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.contact-google-kicker {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-dark, #9e7b34);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.contact-google-top strong {
+  font-family: var(--serif);
+  font-size: 1.24rem;
+  color: var(--navy);
+}
+
+.contact-rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(201, 164, 92, 0.16);
+  border: 1px solid rgba(201, 164, 92, 0.42);
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.contact-rating-pill svg {
+  color: #c9a45c;
+}
+
+.contact-google-card p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.contact-google-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Section 04: Interactive GPS Map & Srinagar Proximity Ledger ─ */
+.contact-map-showcase {
+  background: #0b1930;
+  color: #ffffff;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  border-top: 1px solid rgba(201, 164, 92, 0.24);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.24);
+}
+
+.contact-map-head {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(18px, 4vw, 44px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.contact-map-head h2 {
+  color: #ffffff;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.14;
+  margin: 6px 0 0;
+}
+
+.contact-map-head p {
+  color: #c4cddc;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.contact-map-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.contact-map-console {
+  background: #10213d;
+  border: 1px solid rgba(201, 164, 92, 0.34);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+.contact-map-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 18px;
+  background: rgba(11, 25, 48, 0.92);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.22);
+}
+
+.contact-map-pin-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.contact-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.2);
+  flex-shrink: 0;
+}
+
+.contact-map-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+
+.contact-map-open-link:hover {
+  color: #ffffff;
+}
+
+.contact-map-iframe-wrap {
+  flex: 1;
+  min-height: 410px;
+  width: 100%;
+}
+
+.contact-map-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 410px;
+}
+
+.contact-proximity-panel {
+  background: linear-gradient(155deg, rgba(16, 33, 61, 0.95) 0%, rgba(11, 25, 48, 0.98) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.32);
+  border-radius: 22px;
+  padding: clamp(20px, 2.6vw, 28px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.contact-subkicker {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contact-proximity-header h3 {
+  font-family: var(--serif);
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.contact-distance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.contact-distance-item {
+  padding: 12px 13px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+.contact-distance-item:hover {
+  border-color: rgba(201, 164, 92, 0.42);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-distance-tag {
+  display: block;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.contact-distance-item strong {
+  display: block;
+  font-size: 0.86rem;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.contact-distance-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.73rem;
+  color: #b7c2d4;
+}
+
+.contact-airport-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 15px;
+  border-radius: 15px;
+  background: rgba(201, 164, 92, 0.12);
+  border: 1px solid rgba(201, 164, 92, 0.38);
+  flex-wrap: wrap;
+}
+
+.contact-airport-info {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.contact-airport-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(201, 164, 92, 0.22);
+  color: var(--gold-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-airport-info strong {
+  display: block;
+  font-size: 0.84rem;
+  color: #ffffff;
+}
+
+.contact-airport-info span {
+  display: block;
+  font-size: 0.73rem;
+  color: #d6deeb;
+}
+
+/* ─ Responsive Contact Page Breakpoints ─ */
+@media (max-width: 1024px) {
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-luxury-split {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map-head,
+  .contact-map-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map-iframe-wrap,
+  .contact-map-iframe-wrap iframe {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero-cinematic {
+    min-height: clamp(500px, 72svh, 600px);
+  }
+
+  .contact-hero-zoom {
+    object-position: center 26%;
+  }
+
+  .contact-channels-section {
+    padding: 14px 0;
+  }
+
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .contact-channel-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .contact-channel-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .contact-channel-kicker {
+    font-size: 0.5rem;
+    letter-spacing: 0.13em;
+  }
+
+  .contact-channel-body strong {
+    font-size: 0.78rem;
+  }
+
+  .contact-channel-meta {
+    font-size: 0.65rem;
+  }
+
+  .contact-estate-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .contact-estate-actions .btn {
+    min-height: 40px !important;
+    padding: 8px 10px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .contact-map-topbar {
+    padding: 10px 14px;
+  }
+
+  .contact-map-pin-label {
+    font-size: 0.7rem;
+  }
+
+  .contact-map-iframe-wrap,
+  .contact-map-iframe-wrap iframe {
+    min-height: 300px;
+  }
+
+  .contact-distance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .contact-distance-item {
+    padding: 10px 11px;
+    border-radius: 12px;
+  }
+
+  .contact-distance-item strong {
+    font-size: 0.78rem;
+  }
+
+  .contact-distance-meta {
+    font-size: 0.67rem;
+  }
+
+  .contact-airport-strip .btn {
+    width: 100% !important;
+  }
+}
+
+
+/* ==========================================================
+   ULTRA-PREMIUM EXPERIENCES & SIGHTS PAGE (.exp-luxury-page)
+   ========================================================== */
+.exp-luxury-page {
+  background: #f8f5ef;
+}
+
+.exp-hero-cinematic {
+  min-height: clamp(540px, 74svh, 760px);
+}
+
+.exp-hero-zoom {
+  object-position: center 36%;
+  animation: slowZoom 18s infinite alternate ease-in-out;
+}
+
+.exp-hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.22) 0%,
+    rgba(11, 25, 48, 0.03) 24%,
+    rgba(11, 25, 48, 0.08) 54%,
+    rgba(11, 25, 48, 0.78) 78%,
+    rgba(11, 25, 48, 0.94) 100%
+  );
+}
+
+/* ─ Section 02: Valley Proximity Highlights Ribbon ─ */
+.exp-highlights-ribbon {
+  background: #0b1930;
+  border-top: 1px solid rgba(201, 164, 92, 0.28);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.28);
+  padding: 22px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.exp-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.exp-highlight-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 16px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(16, 33, 61, 0.94) 0%, rgba(11, 25, 48, 0.98) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.26);
+  color: #ffffff;
+}
+
+.exp-highlight-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: rgba(201, 164, 92, 0.16);
+  border: 1px solid rgba(201, 164, 92, 0.36);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exp-highlight-kicker {
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.exp-highlight-tile strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.exp-highlight-tile p {
+  font-size: 0.74rem;
+  color: #aebad0;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* ─ Section 03: Celebrated Srinagar Destinations Collection ─ */
+.exp-collection-section {
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  background: #f8f5ef;
+}
+
+.exp-collection-head {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(32px, 4.5vw, 48px);
+}
+
+.exp-collection-head h2 {
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  color: var(--navy);
+  line-height: 1.14;
+  margin: 6px 0 12px;
+}
+
+.exp-collection-head p {
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 660px;
+  margin: 0 auto 24px;
+}
+
+.exp-filter-bar {
+  margin-top: 6px;
+}
+
+.exp-sights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.exp-sight-card {
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 42px rgba(11, 25, 48, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.exp-sight-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 56px rgba(11, 25, 48, 0.12);
+}
+
+.exp-sight-card--featured {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+}
+
+.exp-sight-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0b1930;
+}
+
+.exp-sight-card--featured .exp-sight-media {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 340px;
+}
+
+.exp-sight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.exp-sight-card:hover .exp-sight-img {
+  transform: scale(1.06);
+}
+
+.exp-sight-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.18) 0%,
+    rgba(11, 25, 48, 0) 42%,
+    rgba(11, 25, 48, 0.62) 100%
+  );
+  pointer-events: none;
+}
+
+.exp-sight-cat-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.84);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 164, 92, 0.48);
+  color: var(--gold-soft);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.exp-sight-geo-row {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.exp-geo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.exp-geo-chip--gold {
+  border-color: rgba(201, 164, 92, 0.48);
+  color: var(--gold-soft);
+}
+
+.exp-sight-body {
+  padding: clamp(18px, 2.4vw, 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  flex: 1;
+}
+
+.exp-sight-copy h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 1.8vw, 1.52rem);
+  color: var(--navy);
+  line-height: 1.22;
+  margin: 0 0 8px;
+}
+
+.exp-sight-copy p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.58;
+  margin: 0;
+}
+
+.exp-sight-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8f5ef;
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  font-size: 0.78rem;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.42;
+}
+
+.exp-sight-highlight svg {
+  color: var(--gold-dark, #9e7b34);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.exp-sight-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: auto;
+}
+
+.exp-sight-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Section 04: Full-Day Kashmir Valley Excursions ─ */
+.exp-valley-section {
+  background: #0b1930;
+  color: #ffffff;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  border-top: 1px solid rgba(201, 164, 92, 0.24);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.24);
+}
+
+.exp-valley-head {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(18px, 4vw, 44px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.exp-valley-head h2 {
+  color: #ffffff;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.14;
+  margin: 6px 0 0;
+}
+
+.exp-valley-head p {
+  color: #c4cddc;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.exp-valley-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.exp-valley-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, rgba(16, 33, 61, 0.92) 0%, rgba(11, 25, 48, 0.98) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exp-valley-code {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.exp-valley-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.exp-valley-dist {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.exp-valley-card p {
+  font-size: 0.82rem;
+  color: #b7c2d4;
+  line-height: 1.5;
+  margin: 2px 0 0;
+}
+
+.exp-concierge-banner {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: linear-gradient(145deg, #10213d 0%, #0d1c35 100%);
+  border: 1px solid rgba(201, 164, 92, 0.38);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.exp-concierge-banner-media {
+  position: relative;
+  min-height: 220px;
+  background: #0b1930;
+}
+
+.exp-concierge-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-concierge-banner-body {
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exp-concierge-banner-body h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.exp-concierge-banner-body p {
+  font-size: 0.9rem;
+  color: #c4cddc;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 0 18px;
+}
+
+.exp-concierge-banner-btns {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(195px, 1fr));
+  gap: 10px;
+  max-width: 440px;
+}
+
+.exp-concierge-banner-btns .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Responsive Breakpoints for Experiences Page ─ */
+@media (max-width: 1024px) {
+  .exp-highlights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp-sights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp-sight-card--featured {
+    grid-column: 1 / -1;
+  }
+
+  .exp-valley-head {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-valley-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp-concierge-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-concierge-banner-media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-hero-cinematic {
+    min-height: clamp(500px, 72svh, 600px);
+  }
+
+  .exp-hero-zoom {
+    object-position: center 28%;
+  }
+
+  .exp-highlights-ribbon {
+    padding: 14px 0;
+  }
+
+  .exp-highlights-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .exp-highlight-tile {
+    flex-direction: column;
+    gap: 7px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .exp-highlight-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .exp-highlight-kicker {
+    font-size: 0.5rem;
+  }
+
+  .exp-highlight-tile strong {
+    font-size: 0.94rem;
+  }
+
+  .exp-highlight-tile p {
+    font-size: 0.68rem;
+  }
+
+  .exp-sights-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .exp-sight-card--featured {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+  .exp-sight-card--featured .exp-sight-media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .exp-sight-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .exp-sight-actions .btn {
+    min-height: 40px !important;
+    padding: 8px 10px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .exp-valley-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .exp-valley-card {
+    padding: 14px;
+    border-radius: 14px;
+    gap: 5px;
+  }
+
+  .exp-valley-code {
+    font-size: 0.5rem;
+  }
+
+  .exp-valley-card h3 {
+    font-size: 1.04rem;
+  }
+
+  .exp-valley-dist {
+    font-size: 0.66rem;
+  }
+
+  .exp-valley-card p {
+    font-size: 0.72rem;
+    line-height: 1.38;
+  }
+
+  .exp-concierge-banner-btns {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    max-width: 100%;
+    gap: 8px !important;
+  }
+}
+
+
+/* ─ Multi-Photo Switcher & Zoom Controls on Landmark Cards ─ */
+.exp-sight-media-col {
+  display: flex;
+  flex-direction: column;
+  background: #0b1930;
+}
+
+.exp-sight-media {
+  cursor: pointer;
+}
+
+.exp-sight-card--featured .exp-sight-media-col {
+  height: 100%;
+}
+
+.exp-sight-card--featured .exp-sight-media {
+  flex: 1;
+  min-height: 290px;
+}
+
+.exp-sight-zoom-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 164, 92, 0.45);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+.exp-sight-media:hover .exp-sight-zoom-btn {
+  background: var(--gold);
+  color: #0b1930;
+}
+
+.exp-photo-count {
+  letter-spacing: 0.06em;
+}
+
+.exp-sight-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #0d1d37;
+  border-top: 1px solid rgba(201, 164, 92, 0.22);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.exp-sight-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.exp-sight-thumb-btn {
+  position: relative;
+  width: 62px;
+  height: 42px;
+  border-radius: 7px;
+  overflow: hidden;
+  padding: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: #0b1930;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.72;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.exp-sight-thumb-btn:hover,
+.exp-sight-thumb-btn.is-active {
+  opacity: 1;
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.exp-sight-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

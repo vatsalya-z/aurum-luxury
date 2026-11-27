@@ -107,10 +107,10 @@ export default function CTASection({
     experiences: {
       eyebrow: 'CURATED VALLEY ITINERARIES',
       heading: 'Begin Your Srinagar Adventure With Us',
-      subtitle: 'From private shikara sunset rides on Dal Lake to blooming tulip strolls and Mughal heritage trails, our concierge arranges every detail of your Kashmir journey.',
-      bgImage: '/images/destinations/dal-lake-shikara.jpg',
-      primaryText: 'Plan Trip With Concierge',
-      secondaryText: 'Explore Living Spaces',
+      subtitle: 'From private Dal Lake Shikara rides to Mughal heritage gardens and alpine excursions, our concierge arranges every detail.',
+      bgImage: '/images/cta/aurum-experiences-cta-bg.jpg',
+      primaryText: 'Plan With Concierge',
+      secondaryText: 'Explore Chalets',
       secondaryLink: '/rooms',
     },
     facilities: {
@@ -126,8 +126,8 @@ export default function CTASection({
     contact: {
       eyebrow: 'PERSONALIZED ASSISTANCE',
       heading: 'Have Questions About Your Visit to Srinagar?',
-      subtitle: 'Our reservations coordinators are available daily to assist with custom room bookings, airport transfers, and tailored sightseeing packages.',
-      bgImage: '/images/hero/aurum-estate-brein-hills.png',
+      subtitle: 'Our 24/7 front desk & reservations concierge assists with custom chalet bookings, airport transfers, and Kashmir itineraries.',
+      bgImage: '/images/facilities/front-desk-concierge.jpg',
       primaryText: 'Submit Quick Enquiry',
       secondaryText: 'WhatsApp Helpdesk',
       secondaryLink: `https://wa.me/${HOTEL_INFO.contact.whatsapp}?text=${encodeURIComponent('Hello, I am reaching out to The Aurum Luxury Collection reservations desk.')}`,
