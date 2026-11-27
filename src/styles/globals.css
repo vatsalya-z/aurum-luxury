@@ -10555,3 +10555,1520 @@ select.bf-input option {
     display: none;
   }
 }
+
+
+/* ==========================================================
+   ULTRA-PREMIUM PHOTO GALLERY PAGE (.gal-luxury-page)
+   ========================================================== */
+.gal-luxury-page {
+  background: #f8f5ef;
+}
+
+.gal-hero-cinematic {
+  min-height: clamp(640px, 55vw, 920px);
+  padding-bottom: 26px;
+}
+
+.gal-hero-zoom {
+  object-position: center 20%;
+  transform-origin: center top;
+}
+
+.gal-hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.14) 0%,
+    rgba(11, 25, 48, 0.03) 26%,
+    rgba(11, 25, 48, 0.08) 58%,
+    rgba(11, 25, 48, 0.78) 82%,
+    rgba(11, 25, 48, 0.94) 100%
+  );
+}
+
+.gal-hero-content .breadcrumbs {
+  margin-bottom: 6px;
+}
+
+.gal-hero-content .rooms-hero-loc-pill {
+  margin-bottom: 6px;
+}
+
+.gal-hero-content .page-hero-eyebrow {
+  margin-bottom: 4px;
+}
+
+.gal-hero-content h1 {
+  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.gal-hero-content .page-hero-subtitle {
+  font-size: clamp(0.86rem, 1.06vw, 0.98rem);
+  line-height: 1.48;
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+
+.gal-hero-actions {
+  display: inline-grid !important;
+  grid-template-columns: repeat(2, minmax(208px, 1fr));
+  gap: 12px;
+}
+
+.gal-hero-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Section 03: Visual Sanctuary Archive & Mosaic ─ */
+.gal-archive-section {
+  scroll-margin-top: 86px;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  background: #f8f5ef;
+}
+
+.gal-archive-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(28px, 4vw, 40px);
+}
+
+.gal-archive-head h2 {
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  color: var(--navy);
+  line-height: 1.14;
+  margin: 6px 0 12px;
+}
+
+.gal-archive-head p {
+  font-size: 0.96rem;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.gal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201, 164, 92, 0.25);
+}
+
+.gal-filter-rail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gal-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 25, 48, 0.14);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.22s ease;
+}
+
+.gal-filter-pill:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.gal-filter-pill.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(11, 25, 48, 0.16);
+}
+
+.gal-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.07);
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.gal-filter-pill.is-active .gal-filter-count {
+  background: rgba(201, 164, 92, 0.24);
+  color: var(--gold-soft);
+}
+
+.gal-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.34);
+  flex-shrink: 0;
+}
+
+.gal-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gal-view-btn.is-active {
+  background: var(--navy);
+  color: var(--gold-soft);
+}
+
+/* Editorial Mosaic & Uniform Grid */
+.gal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: clamp(275px, 23vw, 330px);
+  grid-auto-flow: dense;
+  gap: 18px;
+}
+
+.gal-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b1930;
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  box-shadow: 0 16px 40px rgba(11, 25, 48, 0.08);
+  cursor: pointer;
+  transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.gal-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 54px rgba(11, 25, 48, 0.16);
+}
+
+.gal-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.gal-card--wide {
+  grid-column: span 2;
+}
+
+.gal-card-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b1930;
+}
+
+.gal-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gal-card:hover .gal-card-img {
+  transform: scale(1.06);
+}
+
+.gal-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.24) 0%,
+    rgba(11, 25, 48, 0) 34%,
+    rgba(11, 25, 48, 0.14) 54%,
+    rgba(11, 25, 48, 0.88) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gal-card-top {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.gal-card-cat {
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 164, 92, 0.48);
+  color: var(--gold-soft);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gal-card-zoom {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(11, 25, 48, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+
+.gal-card:hover .gal-card-zoom {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b1930;
+}
+
+.gal-card-overlay-copy {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 3;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.gal-card-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 3px;
+}
+
+.gal-card-overlay-copy h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.06rem, 1.45vw, 1.28rem);
+  color: #ffffff;
+  line-height: 1.22;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.gal-card-overlay-copy p {
+  font-size: 0.78rem;
+  color: rgba(241, 245, 249, 0.88);
+  line-height: 1.42;
+  margin: 5px 0 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.32s ease, opacity 0.28s ease;
+}
+
+.gal-card:hover .gal-card-overlay-copy p {
+  max-height: 60px;
+  opacity: 1;
+}
+
+.gal-card-mobile-caption {
+  display: none;
+}
+
+.gal-load-more-wrap {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.gal-progress-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+.gal-progress-meta strong {
+  color: var(--navy);
+}
+
+.gal-load-more-btn {
+  padding: 13px 28px !important;
+  border-radius: 999px !important;
+}
+
+/* ─ Section 04: From Frame to Sanctuary Residences ─ */
+.gal-residences-section {
+  background: #0b1930;
+  color: #ffffff;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  border-top: 1px solid rgba(201, 164, 92, 0.26);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.26);
+}
+
+.gal-residences-head {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(18px, 4vw, 44px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.gal-residences-head h2 {
+  color: #ffffff;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.14;
+  margin: 6px 0 0;
+}
+
+.gal-residences-head p {
+  color: #c4cddc;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.gal-residences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gal-res-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(155deg, rgba(16, 33, 61, 0.95) 0%, rgba(11, 25, 48, 0.99) 100%);
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, border-color 0.28s ease;
+}
+
+.gal-res-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.gal-res-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #081224;
+}
+
+.gal-res-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gal-res-card:hover .gal-res-img {
+  transform: scale(1.05);
+}
+
+.gal-res-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 164, 92, 0.48);
+  color: var(--gold-soft);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gal-res-filter-chip {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.gal-res-filter-chip:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b1930;
+}
+
+.gal-res-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1;
+}
+
+.gal-res-specs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--gold-soft);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.gal-res-specs span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gal-res-body h3 {
+  font-family: var(--serif);
+  font-size: 1.38rem;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.gal-res-body h3 a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.gal-res-body h3 a:hover {
+  color: var(--gold-soft);
+}
+
+.gal-res-body p {
+  font-size: 0.84rem;
+  color: #b8c4d8;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.gal-res-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.gal-res-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Lightbox Filmstrip Enhancements ─ */
+.gal-lb-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: #0b1930;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.gal-lb-book-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.94;
+}
+
+.gal-lightbox-bottom {
+  position: relative;
+  z-index: 4;
+  padding: 8px clamp(14px, 3vw, 32px) max(14px, env(safe-area-inset-bottom, 14px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.gal-lightbox-desc {
+  font-size: 0.84rem;
+  color: rgba(241, 245, 249, 0.88);
+  text-align: center;
+  max-width: 720px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.gal-lightbox-strip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: min(92vw, 960px);
+  overflow-x: auto;
+  padding: 4px 2px;
+  scrollbar-width: none;
+}
+
+.gal-lightbox-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.gal-lb-thumb {
+  width: 68px;
+  height: 46px;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  background: #0b1930;
+  opacity: 0.52;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.gal-lb-thumb:hover {
+  opacity: 0.85;
+}
+
+.gal-lb-thumb.is-active {
+  opacity: 1;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.gal-lb-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─ Responsive Breakpoints for Gallery Page ─ */
+@media (max-width: 1024px) {
+  .gal-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 265px;
+  }
+
+  .gal-card--wide {
+    grid-column: 1 / -1;
+  }
+
+  .gal-residences-head {
+    grid-template-columns: 1fr;
+  }
+
+  .gal-residences-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .gal-hero-cinematic {
+    min-height: clamp(510px, 74svh, 620px);
+    padding-bottom: 20px;
+  }
+
+  .gal-hero-zoom {
+    object-position: center 24%;
+  }
+
+  .gal-hero-actions {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin-inline: auto;
+    gap: 9px;
+  }
+
+  .gal-hero-actions .btn {
+    width: 100% !important;
+    min-height: 44px;
+  }
+
+  .gal-archive-section {
+    padding: 40px 0 48px;
+  }
+
+  .gal-toolbar {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .gal-filter-rail {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gal-filter-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gal-filter-pill {
+    padding: 7px 12px;
+    font-size: 0.64rem;
+    gap: 5px;
+  }
+
+  .gal-view-toggle {
+    display: none;
+  }
+
+  /* Sleek 2-Column Mobile Luxury Grid */
+  .gal-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  .gal-card,
+  .gal-card--wide {
+    grid-column: span 1;
+    border-radius: 14px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gal-cards-grid > .gal-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .gal-card-media {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+
+  .gal-cards-grid > .gal-card:last-child:nth-child(odd) .gal-card-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gal-card-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 25, 48, 0.22) 0%,
+      rgba(11, 25, 48, 0) 45%,
+      rgba(11, 25, 48, 0.18) 100%
+    );
+  }
+
+  .gal-card-top {
+    top: 7px;
+    left: 7px;
+    right: 7px;
+  }
+
+  .gal-card-cat {
+    padding: 2px 7px;
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+  }
+
+  .gal-card-zoom {
+    width: 24px;
+    height: 24px;
+  }
+
+  .gal-card-overlay-copy {
+    display: none;
+  }
+
+  .gal-card-mobile-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 9px 10px;
+    background: #ffffff;
+    flex: 1;
+  }
+
+  .gal-card-mobile-loc {
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-dark, #9e7b34);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .gal-card-mobile-caption h3 {
+    font-family: var(--serif);
+    font-size: 0.84rem;
+    color: var(--navy);
+    line-height: 1.2;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .gal-load-more-btn {
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+    font-size: 0.68rem !important;
+    padding: 12px 16px !important;
+  }
+
+  .gal-residences-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gal-res-body {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .gal-res-body h3 {
+    font-size: 1.22rem;
+  }
+
+  .gal-lb-book-btn span {
+    display: none;
+  }
+
+  .gal-lb-book-btn {
+    padding: 7px 9px;
+  }
+
+  .gal-lightbox-desc {
+    font-size: 0.74rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .gal-lb-thumb {
+    width: 52px;
+    height: 36px;
+    border-radius: 6px;
+  }
+}
+
+
+/* ==========================================================
+   ULTRA-PREMIUM FACILITIES & DINING PAGE (.fac-luxury-page)
+   ========================================================== */
+.fac-luxury-page {
+  background: #f8f5ef;
+}
+
+.fac-hero-cinematic {
+  min-height: clamp(640px, 54vw, 900px);
+  padding-bottom: 26px;
+}
+
+.fac-hero-zoom {
+  object-position: center 22%;
+  transform-origin: center top;
+}
+
+.fac-hero-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.16) 0%,
+    rgba(11, 25, 48, 0.04) 28%,
+    rgba(11, 25, 48, 0.12) 56%,
+    rgba(11, 25, 48, 0.8) 82%,
+    rgba(11, 25, 48, 0.94) 100%
+  );
+}
+
+.fac-hero-content .breadcrumbs {
+  margin-bottom: 6px;
+}
+
+.fac-hero-content .rooms-hero-loc-pill {
+  margin-bottom: 6px;
+}
+
+.fac-hero-content .page-hero-eyebrow {
+  margin-bottom: 4px;
+}
+
+.fac-hero-content h1 {
+  font-size: clamp(2.05rem, 3.7vw, 3.25rem);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.fac-hero-content .page-hero-subtitle {
+  font-size: clamp(0.86rem, 1.06vw, 0.98rem);
+  line-height: 1.48;
+  max-width: 630px;
+  margin-bottom: 16px;
+}
+
+.fac-hero-actions {
+  display: inline-grid !important;
+  grid-template-columns: repeat(2, minmax(212px, 1fr));
+  gap: 12px;
+}
+
+.fac-hero-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Section 03: Royal Kashmiri Dining & Meal Plans Showcase ─ */
+.fac-culinary-section {
+  scroll-margin-top: 86px;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  background: #f8f5ef;
+}
+
+.fac-culinary-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: clamp(28px, 4.2vw, 52px);
+  align-items: start;
+}
+
+.fac-culinary-media-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fac-culinary-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0b1930;
+  border: 1px solid rgba(201, 164, 92, 0.34);
+  box-shadow: 0 24px 58px rgba(11, 25, 48, 0.12);
+}
+
+.fac-culinary-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fac-culinary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fac-culinary-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.38) 0%,
+    transparent 26%,
+    transparent 64%,
+    rgba(11, 25, 48, 0.86) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fac-culinary-top {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fac-hours-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.fac-culinary-caption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  z-index: 3;
+  color: rgba(248, 245, 239, 0.95);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+}
+
+.fac-culinary-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.fac-culinary-thumb {
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  background: #0b1930;
+  opacity: 0.62;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.fac-culinary-thumb:hover {
+  opacity: 0.9;
+}
+
+.fac-culinary-thumb.is-active {
+  opacity: 1;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.fac-culinary-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fac-culinary-info-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fac-culinary-info-col h2 {
+  font-size: clamp(1.9rem, 3.3vw, 2.75rem);
+  color: var(--navy);
+  line-height: 1.14;
+  margin: 6px 0 12px;
+}
+
+.fac-culinary-lead {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.fac-dietary-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.fac-dietary-chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.38);
+  color: var(--navy);
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+.fac-dietary-chips svg {
+  color: var(--gold-dark, #9e7b34);
+}
+
+.fac-mealplans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.fac-mealplan-card {
+  padding: 13px 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 25, 48, 0.1);
+  box-shadow: 0 8px 22px rgba(11, 25, 48, 0.04);
+}
+
+.fac-mealplan-card--featured {
+  background: linear-gradient(145deg, #ffffff 0%, #fcf8ef 100%);
+  border-color: rgba(201, 164, 92, 0.65);
+  box-shadow: 0 12px 28px rgba(201, 164, 92, 0.14);
+}
+
+.fac-mealplan-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.fac-mealplan-top strong {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  color: var(--navy);
+}
+
+.fac-mealplan-badge {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #0b1930;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fac-mealplan-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.48;
+  margin: 0;
+}
+
+.fac-culinary-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.fac-culinary-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ─ Section 04: Complete Verified Amenities Directory ─ */
+.fac-directory-section {
+  scroll-margin-top: 86px;
+  padding: clamp(56px, 7.5vw, 100px) 0;
+  background: #f2ece1;
+  border-top: 1px solid rgba(201, 164, 92, 0.24);
+}
+
+.fac-directory-head {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 26px;
+}
+
+.fac-directory-head h2 {
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  color: var(--navy);
+  line-height: 1.14;
+  margin: 6px 0 10px;
+}
+
+.fac-directory-head p {
+  font-size: 0.96rem;
+  color: var(--muted);
+  line-height: 1.62;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.fac-filter-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.fac-filter-rail {
+  justify-content: center;
+}
+
+.fac-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.fac-amenity-card {
+  background: #ffffff;
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 14px 38px rgba(11, 25, 48, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.fac-amenity-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 22px 50px rgba(11, 25, 48, 0.12);
+}
+
+.fac-amenity-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0b1930;
+}
+
+.fac-amenity-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fac-amenity-card:hover .fac-amenity-img {
+  transform: scale(1.06);
+}
+
+.fac-amenity-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 48, 0.22) 0%,
+    transparent 45%,
+    rgba(11, 25, 48, 0.58) 100%
+  );
+  pointer-events: none;
+}
+
+.fac-amenity-cat {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 164, 92, 0.48);
+  color: var(--gold-soft);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.fac-amenity-verified {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(11, 25, 48, 0.84);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(74, 222, 128, 0.45);
+  color: #86efac;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.fac-amenity-ico {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(11, 25, 48, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(201, 164, 92, 0.55);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.fac-amenity-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.fac-amenity-body h3 {
+  font-family: var(--serif);
+  font-size: 1.24rem;
+  color: var(--navy);
+  line-height: 1.24;
+  margin: 0 0 7px;
+}
+
+.fac-amenity-body p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.56;
+  margin: 0;
+}
+
+.fac-amenity-note {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark, #9e7b34);
+}
+
+.fac-discover-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* ─ Responsive Breakpoints for Facilities Page ─ */
+@media (max-width: 1024px) {
+  .fac-culinary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fac-amenities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fac-discover-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .fac-hero-cinematic {
+    min-height: clamp(510px, 74svh, 620px);
+    padding-bottom: 20px;
+  }
+
+  .fac-hero-zoom {
+    object-position: center 22%;
+  }
+
+  .fac-hero-actions {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin-inline: auto;
+    gap: 9px;
+  }
+
+  .fac-hero-actions .btn {
+    width: 100% !important;
+    min-height: 44px;
+  }
+
+  .fac-culinary-section {
+    padding: 40px 0 46px;
+  }
+
+  .fac-culinary-top {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .fac-hours-pill {
+    display: none;
+  }
+
+  .fac-culinary-caption {
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    font-size: 0.72rem;
+  }
+
+  .fac-culinary-thumbs {
+    gap: 6px;
+  }
+
+  .fac-culinary-thumb {
+    border-radius: 8px;
+  }
+
+  .fac-dietary-chips {
+    gap: 6px;
+  }
+
+  .fac-dietary-chips span {
+    font-size: 0.66rem;
+    padding: 5px 10px;
+  }
+
+  .fac-culinary-actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .fac-directory-section {
+    padding: 40px 0 48px;
+  }
+
+  .fac-filter-wrap {
+    justify-content: flex-start;
+    margin-bottom: 18px;
+  }
+
+  .fac-filter-rail {
+    justify-content: flex-start;
+  }
+
+  /* Sleek 2-Column Mobile Amenities Grid */
+  .fac-amenities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .fac-amenities-grid > .fac-amenity-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .fac-amenity-card {
+    border-radius: 14px;
+  }
+
+  .fac-amenity-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .fac-amenities-grid > .fac-amenity-card:last-child:nth-child(odd) .fac-amenity-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .fac-amenity-cat {
+    top: 7px;
+    left: 7px;
+    padding: 2px 7px;
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+  }
+
+  .fac-amenity-verified {
+    display: none;
+  }
+
+  .fac-amenity-ico {
+    width: 28px;
+    height: 28px;
+    right: 7px;
+    bottom: 7px;
+  }
+
+  .fac-amenity-body {
+    padding: 10px 10px 12px;
+  }
+
+  .fac-amenity-body h3 {
+    font-size: 0.92rem;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .fac-amenity-body p {
+    font-size: 0.7rem;
+    line-height: 1.38;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .fac-amenity-note {
+    font-size: 0.56rem;
+    margin-top: 5px;
+  }
+}

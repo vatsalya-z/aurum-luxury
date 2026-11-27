@@ -74,7 +74,6 @@ export default function Header({ onOpenBooking }: HeaderProps) {
     { name: 'About', href: '/about' },
     { name: 'Rooms', href: '/rooms' },
     { name: 'Facilities', href: '/facilities' },
-    { name: 'Dining', href: '/#experience' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Experiences', href: '/experiences' },
     { name: 'Contact', href: '/contact' },

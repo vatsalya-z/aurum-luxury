@@ -71,16 +71,16 @@ export const FACILITY_CATEGORIES: FacilityCategory[] = [
     items: [
       {
         name: 'On-Site Restaurant',
-        description: 'Warm indoor dining room serving traditional Kashmiri specialties, Indian, and continental options.',
+        description: 'Warm indoor dining room serving authentic Kashmiri Wazwan specialties, Indian, and continental options.',
         icon: 'utensils',
-        image: '/images/facilities/dining-hall-wazwan.png',
+        image: '/images/facilities/royal-wazwan-trami-dining.jpg',
         verified: true,
       },
       {
         name: 'Complimentary Breakfast',
         description: 'Gourmet morning spread included with designated CP & MAP accommodation packages.',
         icon: 'egg-fried',
-        image: '/images/facilities/breakfast-dining-spread.png',
+        image: '/images/gallery/aurum-buffet-dining-spread.jpg',
         verified: true,
         notes: 'Included on eligible meal plans',
       },
@@ -163,11 +163,11 @@ export const FACILITY_CATEGORIES: FacilityCategory[] = [
       },
       {
         name: 'Airport Shuttle',
-        description: 'Convenient transfers between Sheikh ul-Alam International Airport and the hotel.',
+        description: 'Convenient chauffeured transfers between Sheikh ul-Alam International Airport and the estate.',
         icon: 'plane',
-        image: '/images/hero/aurum-luxury-estate-hero.jpg',
+        image: '/images/hero/aurum-contact-hero-desktop.jpg',
         verified: true,
-        notes: 'Additional charge applies',
+        notes: 'Pre-arranged via concierge desk',
       },
       {
         name: 'Private Car Rental',
