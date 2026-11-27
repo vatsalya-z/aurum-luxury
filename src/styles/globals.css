@@ -1029,9 +1029,10 @@ p {
 
   .sheet-cta-bar {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: 1fr auto auto;
     gap: 10px;
     padding-top: 12px;
+    padding-bottom: 4px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 }

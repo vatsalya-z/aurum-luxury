@@ -289,28 +289,8 @@ export default function Header({ onOpenBooking }: HeaderProps) {
                 </Link>
               </div>
 
-              {/* Bottom Sticky Sheet CTA Bar */}
+              {/* Bottom Sticky Sheet CTA Bar: 1. Reserve Your Stay -> 2. WhatsApp -> 3. Call */}
               <div className="sheet-cta-bar">
-                <a
-                  href={`tel:${HOTEL_INFO.contact.phone}`}
-                  className="btn btn-outline-white btn-sm"
-                  style={{ minWidth: 52, padding: '0 14px' }}
-                  aria-label="Call hotel"
-                >
-                  <FaPhoneAlt style={{ width: 15, height: 15, color: 'var(--gold)' }} />
-                </a>
-
-                <a
-                  href={waHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-wa btn-sm"
-                  style={{ minWidth: 52, padding: '0 14px' }}
-                  aria-label="WhatsApp hotel"
-                >
-                  <FaWhatsapp style={{ width: 18, height: 18 }} />
-                </a>
-
                 <button
                   type="button"
                   onClick={() => {
@@ -323,6 +303,26 @@ export default function Header({ onOpenBooking }: HeaderProps) {
                   <Calendar style={{ width: 15, height: 15 }} />
                   <span>Reserve Your Stay</span>
                 </button>
+
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-wa btn-sm"
+                  style={{ minWidth: 50, padding: '0 14px' }}
+                  aria-label="WhatsApp hotel"
+                >
+                  <FaWhatsapp style={{ width: 18, height: 18 }} />
+                </a>
+
+                <a
+                  href={`tel:${HOTEL_INFO.contact.phone}`}
+                  className="btn btn-outline-white btn-sm"
+                  style={{ minWidth: 50, padding: '0 14px' }}
+                  aria-label="Call hotel"
+                >
+                  <FaPhoneAlt style={{ width: 15, height: 15, color: 'var(--gold)' }} />
+                </a>
               </div>
             </motion.div>
           </>
